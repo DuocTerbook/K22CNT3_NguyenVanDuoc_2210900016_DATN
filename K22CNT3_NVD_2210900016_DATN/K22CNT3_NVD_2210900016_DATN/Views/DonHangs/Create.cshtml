@@ -1,0 +1,84 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.DonHang
+
+<style>
+    .dh-create-box {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+    }
+
+    .dh-create-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 25px;
+    }
+
+    .dh-create-group {
+        margin-bottom: 18px;
+    }
+
+    .dh-create-label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .dh-create-input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .dh-create-btn {
+        background: #198754;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .dh-create-back {
+        background: #6c757d;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="dh-create-box">
+    <div class="dh-create-title">➕ Tạo đơn hàng</div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="dh-create-group">
+            <label class="dh-create-label">Khách hàng</label>
+            @Html.DropDownList("ID_KhachHang", null, new { @class = "dh-create-input" })
+        </div>
+
+        <div class="dh-create-group">
+            <label class="dh-create-label">Ngày đặt</label>
+            @Html.TextBoxFor(m => m.NgayDat, new { @class = "dh-create-input", type = "date" })
+        </div>
+
+        <div class="dh-create-group">
+            <label class="dh-create-label">Tổng tiền</label>
+            @Html.TextBoxFor(m => m.TongTien, new { @class = "dh-create-input" })
+        </div>
+
+        <div class="dh-create-group">
+            <label class="dh-create-label">Trạng thái</label>
+            @Html.TextBoxFor(m => m.TrangThai, new { @class = "dh-create-input" })
+        </div>
+
+        <input type="submit" value="Tạo đơn" class="dh-create-btn" />
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "dh-create-back" })
+    }
+</div>

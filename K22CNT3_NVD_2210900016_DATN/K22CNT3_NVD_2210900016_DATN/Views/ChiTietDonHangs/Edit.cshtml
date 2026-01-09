@@ -1,0 +1,104 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonHang
+
+<style>
+    .ct-edit-box {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .ct-edit-title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #0d6efd;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .ct-group {
+        margin-bottom: 18px;
+    }
+
+    .ct-label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .ct-input {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+    }
+
+    .ct-btn-box {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .ct-btn-save {
+        background: #0d6efd;
+        color: white;
+        padding: 8px 22px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .ct-btn-back {
+        background: #6c757d;
+        color: white;
+        padding: 8px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="ct-edit-box">
+    <div class="ct-edit-title">✏️ Chỉnh sửa chi tiết đơn hàng</div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ID_CTDonHang)
+
+        <div class="ct-group">
+            <label class="ct-label">Đơn hàng</label>
+            @Html.DropDownListFor(m => m.ID_DonHang,
+                (SelectList)ViewBag.ID_DonHang,
+                "-- Chọn đơn hàng --",
+                new { @class = "ct-input" })
+        </div>
+
+        <div class="ct-group">
+            <label class="ct-label">Sản phẩm</label>
+            @Html.DropDownListFor(m => m.ID_SP,
+                (SelectList)ViewBag.ID_SP,
+                "-- Chọn sản phẩm --",
+                new { @class = "ct-input" })
+        </div>
+
+        <div class="ct-group">
+            <label class="ct-label">Số lượng</label>
+            @Html.TextBoxFor(m => m.SoLuong, new { @class = "ct-input", type = "number" })
+        </div>
+
+        <div class="ct-group">
+            <label class="ct-label">Đơn giá</label>
+            @Html.TextBoxFor(m => m.DonGia, new { @class = "ct-input" })
+        </div>
+
+        <div class="ct-group">
+            <label class="ct-label">Thành tiền</label>
+            @Html.TextBoxFor(m => m.ThanhTien, new { @class = "ct-input" })
+        </div>
+
+        <div class="ct-btn-box">
+            <input type="submit" value="💾 Lưu" class="ct-btn-save" />
+            @Html.ActionLink("⬅️ Quay lại", "Index", null, new { @class = "ct-btn-back" })
+        </div>
+    }
+</div>

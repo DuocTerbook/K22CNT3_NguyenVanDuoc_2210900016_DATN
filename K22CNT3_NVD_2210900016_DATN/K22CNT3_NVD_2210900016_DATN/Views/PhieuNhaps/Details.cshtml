@@ -1,0 +1,70 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.PhieuNhap
+
+@{
+    ViewBag.Title = "Chi tiết phiếu nhập";
+}
+
+<style>
+    .pn-details-wrapper {
+        margin-top: 30px;
+    }
+
+    .pn-details-card {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .pn-details-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    dt {
+        font-weight: 600;
+    }
+
+    .btn {
+        min-width: 100px;
+        border-radius: 6px;
+    }
+</style>
+
+<h2 class="pn-details-title">Chi tiết phiếu nhập</h2>
+
+<div class="row justify-content-center pn-details-wrapper">
+    <div class="col-md-6">
+        <div class="pn-details-card">
+
+            <dl class="row">
+                <dt class="col-sm-4">Ngày nhập</dt>
+                <dd class="col-sm-8">
+                    @String.Format("{0:dd/MM/yyyy}", Model.NgayNhap)
+                </dd>
+
+                <dt class="col-sm-4">Tổng tiền</dt>
+                <dd class="col-sm-8">
+                    @String.Format("{0:N0} đ", Model.TongTien)
+                </dd>
+
+                <dt class="col-sm-4">Nhà cung cấp</dt>
+                <dd class="col-sm-8">
+                    @Model.NhaCungCap.TenNCC
+                </dd>
+            </dl>
+
+            <div class="text-center mt-4">
+                @Html.ActionLink("Sửa", "Edit",
+                    new { id = Model.ID_PhieuNhap },
+                    new { @class = "btn btn-warning" })
+
+                @Html.ActionLink("Quay lại", "Index",
+                    null,
+                    new { @class = "btn btn-secondary ms-2" })
+            </div>
+
+        </div>
+    </div>
+</div>

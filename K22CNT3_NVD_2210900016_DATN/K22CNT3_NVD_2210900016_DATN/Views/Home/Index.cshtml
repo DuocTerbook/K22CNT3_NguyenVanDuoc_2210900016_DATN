@@ -1,0 +1,126 @@
+﻿@{
+    ViewData["Title"] = "Hệ Thống Quản Trị";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="admin-box">
+        <h1>HỆ THỐNG QUẢN TRỊ</h1>
+        <p class="subtitle">
+            Chào mừng bạn trở lại, vui lòng chọn danh mục quản lý
+        </p>
+
+        <div class="dashboard">
+            <a href="@Url.Action("Index", "SanPhams")" class="card">
+                <div class="icon">🏸</div>
+                <span>SẢN PHẨM</span>
+            </a>
+
+            <a href="@Url.Action("Index", "NhaCungCaps")" class="card">
+                <div class="icon">🏢</div>
+                <span>NHÀ PHÂN PHỐI</span>
+            </a>
+
+            <a href="@Url.Action("Index", "KhachHangs")" class="card">
+                <div class="icon">👥</div>
+                <span>KHÁCH HÀNG</span>
+            </a>
+
+            <a href="@Url.Action("Index", "DonHangs")" class="card">
+                <div class="icon">📦</div>
+                <span>ĐƠN HÀNG</span>
+            </a>
+
+            <a href="@Url.Action("Index", "ChiTietDonHangs")" class="card">
+                <div class="icon">📄</div>
+                <span>CHI TIẾT ĐƠN</span>
+            </a>
+            <a href="@Url.Action("Index", "Dashboard")" class="card">
+                <div class="icon">📊</div>
+                <span>DASHBOARD</span>
+            </a>
+
+        </div>
+
+        <div class="footer">
+            © 2025 QuanLyCuaHangVot
+        </div>
+    </div>
+</div>
+
+<style>
+    /* nền xám toàn trang */
+    .page-wrapper {
+        min-height: 100vh;
+        background: #f2f3f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* KHUNG LỚN */
+    .admin-box {
+        background: #ffffff;
+        width: 85%;
+        max-width: 1100px;
+        padding: 50px 30px;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        text-align: center;
+    }
+
+        .admin-box h1 {
+            margin-bottom: 10px;
+        }
+
+    .subtitle {
+        color: #666;
+        margin-bottom: 40px;
+    }
+
+    /* dashboard */
+    .dashboard {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    /* từng ô */
+    .card {
+        width: 160px;
+        height: 140px;
+        background: #f9fafb;
+        border-radius: 20px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        text-decoration: none;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            background: #eef6ff;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .card span {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .footer {
+        margin-top: 40px;
+        font-size: 13px;
+        color: #888;
+    }
+</style>

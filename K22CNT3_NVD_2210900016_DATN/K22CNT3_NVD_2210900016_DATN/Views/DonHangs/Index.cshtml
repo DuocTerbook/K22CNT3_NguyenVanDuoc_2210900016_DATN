@@ -1,0 +1,112 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.DonHang>
+
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+}
+
+<style>
+    .dh-index-box {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .dh-index-title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+
+    .dh-index-create {
+        display: inline-block;
+        margin-bottom: 15px;
+        padding: 8px 18px;
+        background: #198754;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .dh-index-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .dh-index-table th {
+            background: #f1f3f5;
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .dh-index-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .dh-index-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .dh-index-action a {
+        margin: 0 5px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .dh-edit {
+        background: #ffc107;
+        color: #000;
+    }
+
+    .dh-detail {
+        background: #0dcaf0;
+        color: #000;
+    }
+
+    .dh-delete {
+        background: #dc3545;
+        color: white;
+    }
+</style>
+
+<div class="dh-index-box">
+    <div class="dh-index-title">📦 Danh sách đơn hàng</div>
+
+    @Html.ActionLink("➕ Tạo đơn hàng", "Create", null, new { @class = "dh-index-create" })
+
+    <table class="dh-index-table">
+        <tr>
+            <th>Ngày đặt</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+            <th>Khách hàng</th>
+            <th>Thao tác</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NgayDat</td>
+                <td>@String.Format("{0:N0} đ", item.TongTien)</td>
+                <td>@item.TrangThai</td>
+                <td>@item.KhachHang.TenKhach</td>
+                <td class="dh-index-action">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.ID_DonHang }, new { @class = "dh-edit" })
+                    @Html.ActionLink("Xem", "Details", new { id = item.ID_DonHang }, new { @class = "dh-detail" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID_DonHang }, new { @class = "dh-delete" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

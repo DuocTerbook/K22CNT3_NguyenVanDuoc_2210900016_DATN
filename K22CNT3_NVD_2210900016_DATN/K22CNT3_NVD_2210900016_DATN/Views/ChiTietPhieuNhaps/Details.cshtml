@@ -1,0 +1,76 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietPhieuNhap
+
+@{
+    ViewBag.Title = "Chi tiết phiếu nhập";
+}
+
+<style>
+    .ctpn-wrapper {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ctpn-card {
+        width: 650px;
+        background: #ffffff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .ctpn-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .ctpn-list dt {
+        font-weight: 600;
+        width: 40%;
+    }
+
+    .ctpn-list dd {
+        width: 60%;
+        margin-left: 0;
+    }
+
+    .btn {
+        min-width: 100px;
+        border-radius: 8px;
+    }
+</style>
+
+<h2 class="ctpn-title">Chi tiết phiếu nhập</h2>
+
+<div class="ctpn-wrapper">
+    <div class="ctpn-card">
+
+        <dl class="row ctpn-list">
+            <dt class="col-sm-4">Số lượng</dt>
+            <dd class="col-sm-8">@Model.SoLuong</dd>
+
+            <dt class="col-sm-4">Đơn giá nhập</dt>
+            <dd class="col-sm-8">
+                @String.Format("{0:N0} VNĐ", Model.DonGiaNhap)
+            </dd>
+
+            <dt class="col-sm-4">Phiếu nhập</dt>
+            <dd class="col-sm-8">@Model.PhieuNhap.ID_PhieuNhap</dd>
+
+            <dt class="col-sm-4">Sản phẩm</dt>
+            <dd class="col-sm-8">@Model.SanPham.TenSP</dd>
+        </dl>
+
+        <div class="text-center mt-4">
+            @Html.ActionLink("Sửa", "Edit",
+                new { id = Model.ID_CTPhieuNhap },
+                new { @class = "btn btn-warning" })
+
+            @Html.ActionLink("Quay lại", "Index",
+                null,
+                new { @class = "btn btn-secondary ms-2" })
+        </div>
+
+    </div>
+</div>

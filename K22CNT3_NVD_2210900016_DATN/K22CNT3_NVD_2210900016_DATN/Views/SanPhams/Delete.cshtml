@@ -1,0 +1,73 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.SanPham
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>Bạn có chắc chắn muốn xóa sản phẩm này?</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.HinhAnh))
+        {
+            <img src="@Model.HinhAnh" class="img-thumbnail" style="width:100%; height:auto;" alt="@Model.TenSP" />
+        }
+    </div>
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(m => m.TenSP)</dt>
+            <dd>@Html.DisplayFor(m => m.TenSP)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.ThuongHieu)</dt>
+            <dd>@Html.DisplayFor(m => m.ThuongHieu)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.DonGia)</dt>
+            <dd>@Html.DisplayFor(m => m.DonGia)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.SoLuong)</dt>
+            <dd>@Html.DisplayFor(m => m.SoLuong)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.DVT)</dt>
+            <dd>@Html.DisplayFor(m => m.DVT)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.BaoHanhThang)</dt>
+            <dd>@Html.DisplayFor(m => m.BaoHanhThang)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.MoTa)</dt>
+            <dd>@Html.DisplayFor(m => m.MoTa)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.TrangThai)</dt>
+            <dd>@(Model.TrangThai == true ? "Đang bán" : "Ngừng bán")</dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions">
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .dl-horizontal dt {
+        width: 120px;
+        float: left;
+        clear: left;
+        font-weight: bold;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 130px;
+        margin-bottom: 10px;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+</style>

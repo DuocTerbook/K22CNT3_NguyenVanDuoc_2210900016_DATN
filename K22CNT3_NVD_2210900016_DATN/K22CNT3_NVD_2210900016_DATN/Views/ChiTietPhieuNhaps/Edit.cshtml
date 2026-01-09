@@ -1,0 +1,93 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietPhieuNhap
+
+@{
+    ViewBag.Title = "Cập nhật chi tiết phiếu nhập";
+}
+
+<style>
+    .edit-wrapper {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .edit-card {
+        width: 700px;
+        background: #ffffff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .edit-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: 600;
+    }
+
+    .btn {
+        min-width: 110px;
+        border-radius: 8px;
+    }
+
+    .btn-back {
+        margin-left: 10px;
+    }
+</style>
+
+<h2 class="edit-title">Cập nhật chi tiết phiếu nhập</h2>
+
+<div class="edit-wrapper">
+    <div class="edit-card">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_CTPhieuNhap)
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.ID_PhieuNhap, "Phiếu nhập")
+                @Html.DropDownList("ID_PhieuNhap", null,
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_PhieuNhap, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.ID_SP, "Sản phẩm")
+                @Html.DropDownList("ID_SP", null,
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_SP, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.SoLuong, "Số lượng")
+                @Html.EditorFor(model => model.SoLuong,
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4">
+                @Html.LabelFor(model => model.DonGiaNhap, "Đơn giá nhập")
+                @Html.EditorFor(model => model.DonGiaNhap,
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DonGiaNhap, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="💾 Lưu" class="btn btn-success" />
+                @Html.ActionLink("↩ Quay lại", "Index", null,
+                    new { @class = "btn btn-secondary btn-back" })
+            </div>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

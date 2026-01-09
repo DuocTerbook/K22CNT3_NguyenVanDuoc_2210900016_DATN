@@ -1,0 +1,106 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.KhachHang
+
+<style>
+    .kh-edit-box {
+        max-width: 760px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 32px;
+        border-radius: 16px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+        border-left: 6px solid #ffc107;
+    }
+
+    .kh-edit-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #ffc107;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .kh-form-group {
+        margin-bottom: 18px;
+    }
+
+    .kh-form-label {
+        font-weight: 700;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .kh-edit-input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+        font-size: 15px;
+    }
+
+        .kh-edit-input:focus {
+            outline: none;
+            border-color: #ffc107;
+            box-shadow: 0 0 0 2px rgba(255,193,7,0.25);
+        }
+
+    .kh-btn-group {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .kh-btn {
+        display: inline-block;
+        padding: 10px 26px;
+        border-radius: 12px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 0 6px;
+    }
+
+    .kh-btn-save {
+        background: #ffc107;
+        color: #000;
+    }
+
+    .kh-btn-back {
+        background: #6c757d;
+        color: #fff;
+    }
+</style>
+
+<div class="kh-edit-box">
+    <div class="kh-edit-title">✏️ Chỉnh sửa thông tin khách hàng</div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ID_KhachHang)
+
+        <div class="kh-form-group">
+            <label class="kh-form-label">Tên khách hàng</label>
+            @Html.TextBoxFor(m => m.TenKhach, new { @class = "kh-edit-input" })
+        </div>
+
+        <div class="kh-form-group">
+            <label class="kh-form-label">Điện thoại</label>
+            @Html.TextBoxFor(m => m.DienThoai, new { @class = "kh-edit-input" })
+        </div>
+
+        <div class="kh-form-group">
+            <label class="kh-form-label">Email</label>
+            @Html.TextBoxFor(m => m.Email, new { @class = "kh-edit-input" })
+        </div>
+
+        <div class="kh-form-group">
+            <label class="kh-form-label">Địa chỉ</label>
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "kh-edit-input" })
+        </div>
+
+        <div class="kh-btn-group">
+            <input type="submit" value="💾 Cập nhật" class="kh-btn kh-btn-save" />
+            @Html.ActionLink("⬅️ Quay lại", "Index", null, new { @class = "kh-btn kh-btn-back" })
+        </div>
+    }
+</div>

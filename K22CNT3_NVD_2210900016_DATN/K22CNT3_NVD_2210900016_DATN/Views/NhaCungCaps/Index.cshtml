@@ -1,0 +1,86 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.NhaCungCap>
+
+@{
+    ViewBag.Title = "Danh sách nhà cung cấp";
+}
+
+<style>
+    /* ===== INDEX TABLE ===== */
+    .table-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .page-title {
+        text-align: center;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 25px;
+    }
+
+    .table thead th {
+        background-color: #0d6efd;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table tbody td {
+        vertical-align: middle;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f5ff;
+    }
+
+    .action-buttons a {
+        margin-right: 5px;
+    }
+
+    .top-actions {
+        text-align: right;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="table-wrapper">
+
+    <h2 class="page-title">Danh sách nhà cung cấp</h2>
+
+    <div class="top-actions">
+        @Html.ActionLink("➕ Thêm mới", "Create", null, new { @class = "btn btn-success" })
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Tên nhà cung cấp</th>
+                <th>Địa chỉ</th>
+                <th>Điện thoại</th>
+                <th>Email</th>
+                <th style="width:180px">Chức năng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.TenNCC)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DienThoai)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td class="text-center action-buttons">
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.ID_NCC }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_NCC }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.ID_NCC }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

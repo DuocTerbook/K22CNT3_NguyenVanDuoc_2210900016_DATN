@@ -1,0 +1,81 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.KhachHang
+<style>
+    .create-box {
+        max-width: 750px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    }
+
+    .create-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 25px;
+    }
+
+    .create-group {
+        margin-bottom: 18px;
+    }
+
+        .create-group label {
+            font-weight: 600;
+        }
+
+    .create-input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .create-btn {
+        padding: 8px 18px;
+        border-radius: 8px;
+        border: none;
+        background: #198754;
+        color: white;
+    }
+
+    .create-back {
+        padding: 8px 18px;
+        border-radius: 8px;
+        background: #6c757d;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div class="create-box">
+    <div class="create-title">➕ Thêm khách hàng</div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="create-group">
+            @Html.LabelFor(m => m.TenKhach)
+            @Html.TextBoxFor(m => m.TenKhach, new { @class = "create-input" })
+        </div>
+
+        <div class="create-group">
+            @Html.LabelFor(m => m.DienThoai)
+            @Html.TextBoxFor(m => m.DienThoai, new { @class = "create-input" })
+        </div>
+
+        <div class="create-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "create-input" })
+        </div>
+
+        <div class="create-group">
+            @Html.LabelFor(m => m.DiaChi)
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "create-input" })
+        </div>
+
+        <input type="submit" value="Lưu" class="create-btn" />
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "create-back" })
+    }
+</div>

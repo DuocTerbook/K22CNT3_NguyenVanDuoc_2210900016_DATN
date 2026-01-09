@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Đăng nhập quản trị</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1f2933, #111827);
+        }
+
+        .login-card {
+            border-radius: 12px;
+        }
+
+            .login-card .card-header {
+                border-top-left-radius: 12px;
+                border-top-right-radius: 12px;
+            }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-login {
+            border-radius: 8px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="d-flex align-items-center justify-content-center">
+
+    <div class="col-md-4 col-sm-8 col-11">
+        <div class="card login-card shadow-lg">
+
+            <div class="card-header bg-dark text-white text-center py-3">
+                <h4 class="mb-0">ĐĂNG NHẬP QUẢN TRỊ</h4>
+            </div>
+
+            <div class="card-body p-4">
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger text-center">
+                        @ViewBag.Error
+                    </div>
+                }
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Tài khoản</label>
+                        <input name="taiKhoan"
+                               class="form-control"
+                               placeholder="Nhập tài khoản"
+                               required />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Mật khẩu</label>
+                        <input type="password"
+                               name="matKhau"
+                               class="form-control"
+                               placeholder="Nhập mật khẩu"
+                               required />
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100 btn-login">
+                        Đăng nhập
+                    </button>
+                }
+
+            </div>
+
+            <div class="card-footer text-center text-muted small">
+                Hệ thống quản trị cửa hàng vợt
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

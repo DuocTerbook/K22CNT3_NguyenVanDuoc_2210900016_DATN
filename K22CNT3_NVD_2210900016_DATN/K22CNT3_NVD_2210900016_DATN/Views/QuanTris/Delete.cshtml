@@ -1,0 +1,97 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.QuanTri
+
+@{
+    ViewBag.Title = "Xóa quản trị";
+}
+
+<style>
+    /* ===== DELETE VIEW ===== */
+    .delete-wrapper {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .delete-title {
+        color: #dc3545;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .delete-subtitle {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #555;
+    }
+
+    .info-box h4 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .info-box dl {
+        margin-top: 10px;
+    }
+
+    .info-box dt {
+        width: 150px;
+        font-weight: 600;
+    }
+
+    .info-box dd {
+        margin-left: 170px;
+        margin-bottom: 12px;
+    }
+
+    .form-actions {
+        text-align: right;
+        margin-top: 30px;
+    }
+
+        .form-actions .btn {
+            margin-left: 10px;
+        }
+</style>
+
+<div class="delete-wrapper">
+
+    <h2 class="delete-title">Xóa tài khoản quản trị</h2>
+    <p class="delete-subtitle">
+        Bạn có chắc chắn muốn xóa tài khoản này không?
+        <span class="text-danger fw-bold">Thao tác này không thể hoàn tác.</span>
+    </p>
+
+    <div class="info-box">
+        <h4>Thông tin quản trị</h4>
+        <hr />
+
+        <dl class="dl-horizontal">
+            <dt>Tài khoản</dt>
+            <dd>@Html.DisplayFor(model => model.TaiKhoan)</dd>
+
+            <dt>Mật khẩu</dt>
+            <dd class="text-danger">******</dd>
+
+            <dt>Vai trò</dt>
+            <dd>@Html.DisplayFor(model => model.VaiTro)</dd>
+
+            <dt>Trạng thái</dt>
+            <dd>@Html.DisplayFor(model => model.TrangThai)</dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Xóa" class="btn btn-danger"
+                   onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?');" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

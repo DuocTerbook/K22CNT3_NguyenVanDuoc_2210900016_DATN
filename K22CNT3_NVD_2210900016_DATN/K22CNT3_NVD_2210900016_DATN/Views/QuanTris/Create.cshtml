@@ -1,0 +1,104 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.QuanTri
+
+@{
+    ViewBag.Title = "Thêm quản trị";
+}
+
+<style>
+    /* ===== CREATE VIEW ===== */
+    .create-wrapper {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .page-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #0d6efd;
+    }
+
+    .form-box h4 {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-check {
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-left: 6px;
+    }
+</style>
+
+<div class="create-wrapper">
+
+    <h2 class="page-title">Thêm tài khoản quản trị</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-box">
+    <h4>Thông tin quản trị</h4>
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <!-- Tài khoản -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.TaiKhoan, new { @class = "fw-bold" })
+        @Html.TextBoxFor(model => model.TaiKhoan, new { @class = "form-control", placeholder = "Nhập tài khoản" })
+        @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+    </div>
+
+    <!-- Mật khẩu -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.MatKhau, new { @class = "fw-bold" })
+        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+    </div>
+
+    <!-- Vai trò -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.VaiTro, new { @class = "fw-bold" })
+        @Html.TextBoxFor(model => model.VaiTro, new { @class = "form-control", placeholder = "Vai trò" })
+        @Html.ValidationMessageFor(model => model.VaiTro, "", new { @class = "text-danger" })
+    </div>
+
+    <!-- Trạng thái -->
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label fw-bold">Trạng thái</label>
+        <div class="col-md-9">
+            <div class="form-check mt-2">
+                @Html.EditorFor(model => model.TrangThai)
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Buttons -->
+    <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary">
+            Lưu
+        </button>
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

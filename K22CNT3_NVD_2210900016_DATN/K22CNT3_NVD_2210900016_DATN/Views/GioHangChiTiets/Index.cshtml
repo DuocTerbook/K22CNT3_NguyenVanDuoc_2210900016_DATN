@@ -1,0 +1,125 @@
+﻿@using System.Linq
+@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.GioHangChiTiet>
+
+
+@{
+    ViewBag.Title = "Giỏ hàng chi tiết";
+    var gioHang = Model.FirstOrDefault()?.GioHang;
+    var khachHang = gioHang?.KhachHang;
+    decimal tongTien = Model.Sum(x => x.ThanhTien ?? 0);
+}
+
+
+<style>
+    .card {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background: #0d6efd;
+        color: white;
+        font-weight: 600;
+    }
+
+    .total {
+        font-size: 22px;
+        font-weight: bold;
+        color: #dc3545;
+    }
+</style>
+
+<h2 class="mb-4">🛒 Giỏ hàng của bạn</h2>
+
+<!-- CHI TIẾT GIỎ HÀNG -->
+<div class="card">
+    <div class="card-header">📦 Sản phẩm trong giỏ</div>
+    <div class="card-body">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                    <th style="width:160px">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SanPham.TenSP</td>
+                        <td>@item.SoLuong</td>
+                        <td>@String.Format("{0:N0} ₫", item.DonGia)</td>
+                        <td>@String.Format("{0:N0} ₫", item.ThanhTien)</td>
+                        <td>
+                            @Html.ActionLink("✏ Sửa", "Edit", new { id = item.ID_CTGH }, new { @class = "btn btn-sm btn-warning" })
+                            @Html.ActionLink("🗑 Xóa", "Delete", new { id = item.ID_CTGH }, new { @class = "btn btn-sm btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-end total">
+            Tổng tiền: @String.Format("{0:N0} ₫", tongTien)
+        </div>
+    </div>
+</div>
+@if (khachHang == null)
+{
+    <div class="card">
+        <div class="card-header">👤 Nhập thông tin khách hàng</div>
+        <div class="card-body">
+
+            @using (Html.BeginForm("LuuThongTinKhach", "GioHangChiTiets", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken() // ⭐ BẮT BUỘC PHẢI CÓ
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Tên khách</label>
+                        <input name="TenKhach" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Điện thoại</label>
+                        <input name="DienThoai" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Email</label>
+                        <input name="Email" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Địa chỉ</label>
+                        <input name="DiaChi" class="form-control" required />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    💾 Lưu thông tin khách hàng
+                </button>
+            }
+        </div>
+    </div>
+}
+@if (Model.Any())
+{
+    <div class="text-end mt-3">
+        @using (Html.BeginForm("ThanhToan", "GioHangChiTiets", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-success btn-lg">
+                💳 Thanh toán
+            </button>
+        }
+    </div>
+}
+
+
+
+

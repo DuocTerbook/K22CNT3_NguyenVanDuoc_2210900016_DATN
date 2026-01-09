@@ -1,0 +1,96 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Xóa chi tiết đơn hàng";
+}
+
+<style>
+    .ct-delete-box {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+    }
+
+    .ct-delete-title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #dc3545;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .ct-warning {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .ct-list dt {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .ct-list dd {
+        margin-bottom: 12px;
+    }
+
+    .ct-btn-box {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .ct-btn-delete {
+        background: #dc3545;
+        color: white;
+        padding: 8px 22px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .ct-btn-back {
+        background: #6c757d;
+        color: white;
+        padding: 8px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="ct-delete-box">
+    <div class="ct-delete-title">🗑️ Xóa chi tiết đơn hàng</div>
+
+    <div class="ct-warning">
+        ⚠️ Bạn có chắc chắn muốn <b>xóa</b> chi tiết đơn hàng này không?
+    </div>
+
+    <dl class="dl-horizontal ct-list">
+        <dt>Số lượng</dt>
+        <dd>@Html.DisplayFor(m => m.SoLuong)</dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@Html.DisplayFor(m => m.DonGia)</dd>
+
+        <dt>Thành tiền</dt>
+        <dd>@Html.DisplayFor(m => m.ThanhTien)</dd>
+
+        <dt>Trạng thái đơn hàng</dt>
+        <dd>@Html.DisplayFor(m => m.DonHang.TrangThai)</dd>
+
+        <dt>Sản phẩm</dt>
+        <dd>@Html.DisplayFor(m => m.SanPham.TenSP)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ID_CTDonHang)
+
+        <div class="ct-btn-box">
+            <input type="submit" value="❌ Xóa" class="ct-btn-delete" />
+            @Html.ActionLink("⬅️ Quay lại", "Index", null, new { @class = "ct-btn-back" })
+        </div>
+    }
+</div>

@@ -1,0 +1,80 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+}
+
+<style>
+    .ct-detail-box {
+        max-width: 720px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+    }
+
+    .ct-detail-title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #0dcaf0;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .ct-detail-list dt {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .ct-detail-list dd {
+        margin-bottom: 14px;
+    }
+
+    .ct-btn-box {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .ct-btn-edit {
+        background: #ffc107;
+        padding: 8px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .ct-btn-back {
+        background: #6c757d;
+        padding: 8px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+    }
+</style>
+
+<div class="ct-detail-box">
+    <div class="ct-detail-title">👁️ Chi tiết đơn hàng</div>
+
+    <dl class="dl-horizontal ct-detail-list">
+        <dt>Số lượng</dt>
+        <dd>@Html.DisplayFor(m => m.SoLuong)</dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@Html.DisplayFor(m => m.DonGia)</dd>
+
+        <dt>Thành tiền</dt>
+        <dd>@Html.DisplayFor(m => m.ThanhTien)</dd>
+
+        <dt>Trạng thái đơn hàng</dt>
+        <dd>@Html.DisplayFor(m => m.DonHang.TrangThai)</dd>
+
+        <dt>Sản phẩm</dt>
+        <dd>@Html.DisplayFor(m => m.SanPham.TenSP)</dd>
+    </dl>
+
+    <div class="ct-btn-box">
+        @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.ID_CTDonHang }, new { @class = "ct-btn-edit" })
+        @Html.ActionLink("⬅️ Quay lại", "Index", null, new { @class = "ct-btn-back" })
+    </div>
+</div>

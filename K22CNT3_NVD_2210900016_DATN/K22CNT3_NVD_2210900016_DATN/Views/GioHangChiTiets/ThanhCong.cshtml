@@ -1,0 +1,57 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.GioHang
+
+@{
+    ViewBag.Title = "Thanh toán thành công";
+    var khachHang = Model?.KhachHang;
+    decimal tongTien = Model?.GioHangChiTiets.Sum(x => x.ThanhTien ?? 0) ?? 0;
+}
+
+<style>
+    .success-card {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+
+        .success-card h2 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .success-card p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+    .btn-home {
+        margin-top: 20px;
+    }
+
+    .info-label {
+        font-weight: 600;
+    }
+</style>
+
+<div class="success-card">
+    <h2>🎉 Thanh toán thành công!</h2>
+    <p>Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi.</p>
+
+    @if (khachHang != null)
+    {
+        <hr />
+        <h4>Thông tin khách hàng</h4>
+        <p><span class="info-label">Tên:</span> @khachHang.TenKhach</p>
+        <p><span class="info-label">Điện thoại:</span> @khachHang.DienThoai</p>
+        <p><span class="info-label">Email:</span> @khachHang.Email</p>
+        <p><span class="info-label">Địa chỉ:</span> @khachHang.DiaChi</p>
+        <p class="mt-3 total">
+            <span class="info-label">Tổng tiền:</span> @String.Format("{0:N0} ₫", tongTien)
+        </p>
+    }
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-home">🏠 Quay lại trang chủ</a>
+</div>

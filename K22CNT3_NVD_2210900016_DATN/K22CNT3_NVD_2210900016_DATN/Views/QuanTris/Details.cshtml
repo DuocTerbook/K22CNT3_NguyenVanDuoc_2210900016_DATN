@@ -1,0 +1,79 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.QuanTri
+
+@{
+    ViewBag.Title = "Chi tiết quản trị";
+}
+<style>
+    /* ===== DETAILS VIEW ===== */
+    .details-wrapper {
+        max-width: 750px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.15);
+    }
+
+    .page-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #198754;
+    }
+
+    .details-box h4 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .details-list dt {
+        font-weight: 600;
+        color: #555;
+    }
+
+    .details-list dd {
+        margin-bottom: 12px;
+        padding-left: 10px;
+    }
+
+    .action-links {
+        text-align: right;
+        margin-top: 30px;
+    }
+
+        .action-links .btn {
+            margin-left: 10px;
+        }
+</style>
+
+
+<div class="details-wrapper">
+
+    <h2 class="page-title">CHI TIẾT QUẢN TRỊ</h2>
+
+    <div class="details-box">
+        <h4>Thông tin quản trị</h4>
+        <hr />
+
+        <dl class="row details-list">
+            <dt class="col-sm-4">Tài khoản</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TaiKhoan)</dd>
+
+            <dt class="col-sm-4">Mật khẩu</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.MatKhau)</dd>
+
+            <dt class="col-sm-4">Vai trò</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.VaiTro)</dd>
+
+            <dt class="col-sm-4">Trạng thái</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TrangThai)</dd>
+        </dl>
+    </div>
+
+    <div class="action-links">
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID_QT }, new { @class = "btn btn-primary px-4" })
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary px-4" })
+    </div>
+
+</div>
+

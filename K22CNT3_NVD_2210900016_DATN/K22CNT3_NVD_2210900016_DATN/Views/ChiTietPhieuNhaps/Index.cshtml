@@ -1,0 +1,94 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.ChiTietPhieuNhap>
+
+@{
+    ViewBag.Title = "Chi tiết phiếu nhập";
+}
+
+<style>
+    .ctp-container {
+        margin-top: 30px;
+    }
+
+    .ctp-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .ctp-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn {
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .btn-create {
+        margin-bottom: 15px;
+    }
+</style>
+
+<h2 class="ctp-title">Danh sách chi tiết phiếu nhập</h2>
+
+<div class="container ctp-container">
+    <div class="ctp-card">
+
+        <p>
+            @Html.ActionLink("➕ Thêm chi tiết", "Create", null,
+                new { @class = "btn btn-primary btn-create" })
+        </p>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Số lượng</th>
+                    <th>Đơn giá nhập</th>
+                    <th>Mã phiếu nhập</th>
+                    <th>Sản phẩm</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SoLuong</td>
+                        <td>@String.Format("{0:N0} đ", item.DonGiaNhap)</td>
+                        <td>@item.PhieuNhap.ID_PhieuNhap</td>
+                        <td>@item.SanPham.TenSP</td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit",
+                                new { id = item.ID_CTPhieuNhap },
+                                new { @class = "btn btn-warning btn-sm" })
+
+                            @Html.ActionLink("Xem", "Details",
+                                new { id = item.ID_CTPhieuNhap },
+                                new { @class = "btn btn-info btn-sm mx-1" })
+
+                            @Html.ActionLink("Xóa", "Delete",
+                                new { id = item.ID_CTPhieuNhap },
+                                new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

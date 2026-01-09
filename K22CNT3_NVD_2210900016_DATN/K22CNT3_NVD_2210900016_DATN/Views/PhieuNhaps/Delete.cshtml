@@ -1,0 +1,87 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.PhieuNhap
+
+@{
+    ViewBag.Title = "Xóa phiếu nhập";
+}
+
+<style>
+    .pn-delete-wrapper {
+        margin-top: 30px;
+    }
+
+    .pn-delete-card {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        border: 1px solid #dc3545;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .pn-delete-title {
+        text-align: center;
+        font-weight: 600;
+        color: #dc3545;
+        margin-bottom: 15px;
+    }
+
+    .pn-warning {
+        text-align: center;
+        font-weight: 500;
+        color: #dc3545;
+        margin-bottom: 20px;
+    }
+
+    dt {
+        font-weight: 600;
+    }
+
+    .btn {
+        min-width: 100px;
+        border-radius: 6px;
+    }
+</style>
+
+<h2 class="pn-delete-title">Xóa phiếu nhập</h2>
+
+<div class="row justify-content-center pn-delete-wrapper">
+    <div class="col-md-6">
+        <div class="pn-delete-card">
+
+            <p class="pn-warning">
+                Bạn có chắc chắn muốn xóa phiếu nhập này không?
+            </p>
+
+            <dl class="row">
+                <dt class="col-sm-4">Ngày nhập</dt>
+                <dd class="col-sm-8">
+                    @(Model.NgayNhap.HasValue
+                    ? Model.NgayNhap.Value.ToString("dd/MM/yyyy")
+                    : "")
+                </dd>
+
+
+                <dt class="col-sm-4">Tổng tiền</dt>
+                <dd class="col-sm-8">
+                    @String.Format("{0:N0} đ", Model.TongTien)
+                </dd>
+
+                <dt class="col-sm-4">Nhà cung cấp</dt>
+                <dd class="col-sm-8">
+                    @Model.NhaCungCap.TenNCC
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="text-center mt-4">
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                    @Html.ActionLink("Hủy", "Index", null,
+                        new { @class = "btn btn-secondary ms-2" })
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

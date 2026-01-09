@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img data-lazyloaded="1" src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        width="355" height="143" data-src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        class="header-logo-dark entered litespeed-loaded" alt="Thế Giới Cầu Lông" data-ll-status="loaded">
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="tintuc.html">Tin tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="products">
+    <div class="product-detail">
+        <img id="product-image" src="" alt="Ảnh sản phẩm">
+
+        <div class="product-info">
+            <h2 id="product-name"></h2>
+            <p><b>Giá:</b> <span id="product-price"></span></p>
+            <p><b>Thương hiệu:</b> <span id="product-brand"></span></p>
+            <p><b>Độ cứng:</b> <span id="product-flex"></span></p>
+            <p><b>Trọng lượng:</b> <span id="product-weight"></span></p>
+            <p><b>Lối đánh:</b> <span id="product-style"></span></p>
+            <p id="product-desc"></p>
+
+            <button onclick="location.href='sanpham.html'">Quay lại sản phẩm</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Badmin Store – Cửa hàng vợt cầu lông chính hãng</p>
+    <p>Email: nguyenvanduoc442@gmail.com | Hotline: 0966 536 276</p>
+</footer>
+
+<script>
+    const products = [
+        {
+            id: 1,
+            name: "Yonex Astrox 99",
+            price: "4.500.000 VND",
+            brand: "Yonex",
+            flex: "Cứng",
+            weight: "4U",
+            style: "Tấn công mạnh mẽ",
+            image: "anh/vot-cau-long-yonex-astrox-99-2-1.jpg",
+            desc: "Yonex Astrox 99 là mẫu vợt cao cấp dành cho người chơi có lực tay tốt, nổi bật với thiết kế nặng đầu, hỗ trợ những cú smash uy lực và chính xác."
+        },
+        {
+            id: 2,
+            name: "Victor DriveX 10",
+            price: "2.600.000 VND",
+            brand: "Victor",
+            flex: "Trung bình",
+            weight: "4U",
+            style: "Công thủ toàn diện",
+            image: "anh/vot-cau-long-victor-drivex-10-metallic-chinh-hang_1698088933.jpg",
+            desc: "Victor DriveX mang lại sự cân bằng giữa sức mạnh và khả năng kiểm soát cầu, phù hợp cho người chơi phong trào và bán chuyên."
+        },
+        {
+            id: 3,
+            name: "Yonex Astrox 88D",
+            price: "4.000.000 VND",
+            brand: "Yonex",
+            flex: "Cứng",
+            weight: "3U / 4U",
+            style: "Tấn công cầu sau",
+            image: "anh/vot-cau-long-yonex-astrox-88d-3.jpg",
+            desc: "Yonex Astrox 88D được thiết kế dành riêng cho người đánh cầu sau trong đánh đôi, cho lực đập mạnh và độ ổn định cao."
+        },
+        {
+            id: 4,
+            name: "Li-Ning Aeronaut 7000",
+            price: "3.200.000 VND",
+            brand: "Li-Ning",
+            flex: "Trung bình",
+            weight: "4U",
+            style: "Kiểm soát – phản tay",
+            image: "anh/vot-cau-long-lining-aeronaut-7000-4.jpg",
+            desc: "Li-Ning Aeronaut 7000 sở hữu thiết kế khung khí động học giúp tăng tốc độ vung vợt và khả năng kiểm soát cầu chính xác."
+        },
+        {
+            id: 5,
+            name: "Carbon Training 150g",
+            price: "1.500.000 VND",
+            brand: "VNB Sports",
+            flex: "Cứng",
+            weight: "150g (vợt tập lực)",
+            style: "Tăng sức cổ tay – tập luyện",
+            image: "anh/vot-cau-long-vnb-carbon-training-150g-5.jpg",
+            desc: "Carbon Training 150g là mẫu vợt chuyên dùng để tập luyện tăng sức mạnh cổ tay và cánh tay. Trọng lượng nặng giúp người chơi cải thiện lực đánh, rất phù hợp để khởi động và luyện tập trước khi thi đấu."
+        },
+        {
+            id: 6,
+            name: "V200 Đỏ",
+            price: "2.000.000 VND",
+            brand: "VNB Sports",
+            flex: "Trung bình",
+            weight: "4U",
+            style: "Công thủ toàn diện",
+            image: "anh/vot-cau-long-vnb-v200-do-2.jpg",
+            desc: "V200 Đỏ là mẫu vợt có thiết kế trẻ trung, dễ chơi, phù hợp cho người mới và người chơi phong trào. Vợt cho cảm giác đánh ổn định, kiểm soát cầu tốt và ít gây mỏi tay."
+        },
+        {
+            id: 7,
+            name: "Yonex NanoFlare 270 Speed - Purple",
+            price: "3.100.000 VND",
+            brand: "Yonex",
+            flex: "Dẻo",
+            weight: "4U",
+            style: "Phản tay nhanh – tốc độ",
+            image: "anh/vot-cau-long-yonex-nanoflare-270-speed-purple-chinh-hang_1762129635.jpg",
+            desc: "Yonex NanoFlare 270 Speed thuộc dòng vợt nhẹ đầu, nổi bật với tốc độ vung nhanh và khả năng phản tay linh hoạt. Phù hợp cho người chơi thiên về điều cầu, phòng thủ và đánh nhanh trên lưới."
+        },
+        {
+            id: 8,
+            name: "Yonex Astrox 22 Lite (BK/RD)",
+            price: "2.400.000 VND",
+            brand: "Yonex",
+            flex: "Trung bình",
+            weight: "5U (nhẹ)",
+            style: "Tấn công nhẹ – dễ chơi",
+            image: "anh/vot-cau-long-yonex-astrox-22-lite-bk-rd-chinh-hang_1761954974.jpg",
+            desc: "Yonex Astrox 22 Lite là phiên bản nhẹ, dễ sử dụng, hỗ trợ tấn công tốt nhưng vẫn đảm bảo độ linh hoạt. Phù hợp cho người mới chơi, học sinh – sinh viên hoặc người có lực tay trung bình."
+        }
+
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+    const product = products.find(p => p.id === id);
+
+    if (product) {
+        document.getElementById("product-image").src = product.image;
+        document.getElementById("product-name").innerText = product.name;
+        document.getElementById("product-price").innerText = product.price;
+        document.getElementById("product-brand").innerText = product.brand;
+        document.getElementById("product-flex").innerText = product.flex;
+        document.getElementById("product-weight").innerText = product.weight;
+        document.getElementById("product-style").innerText = product.style;
+        document.getElementById("product-desc").innerText = product.desc;
+    }
+</script>
+
+</body>
+</html>

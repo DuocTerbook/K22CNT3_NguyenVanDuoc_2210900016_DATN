@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img data-lazyloaded="1" src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        width="355" height="143" data-src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        class="header-logo-dark entered litespeed-loaded" alt="Thế Giới Cầu Lông" data-ll-status="loaded">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm vợt cầu lông..." id="search">
+        <button id="search-btn">Tìm kiếm</button>
+        <div id="search-result" style="display: none;">Không tìm thấy sản phẩm phù hợp.</div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="tintuc.html">Tin tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li id="customer-name"></li>
+            <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Slider Banner -->
+<section class="slider">
+    <div class="slides">
+        <div class="slide"><img src="anh/slide1.jpg" alt="Vợt cầu lông chính hãng"></div>
+        <div class="slide"><img src="anh/slide2.jpg" alt="Vợt cầu lông sale"></div>
+        <div class="slide"><img src="anh/slide3.jpg" alt="Vợt mới nhất 2025"></div>
+    </div>
+</section>
+
+<!-- Danh sách vợt -->
+<section class="products">
+    <h2>Vợt Cầu Lông Nổi Bật</h2>
+    <div class="product-list">
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-yonex-astrox-99-2-1.jpg" alt="Yonex Astrox 99">
+            <h3>Yonex Astrox 99</h3>
+            <p>Giá: 4.500.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-lining-calibar-900-chinh-hang-1.jpg" alt="Li-Ning Calibar 900">
+            <h3>Li-Ning Calibar 900</h3>
+            <p>Giá: 3.800.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-victor-thruster-ryuga-ii-pro-cps_1745893046.jpg" alt="Victor Thruster Ryuga II pro CPS">
+            <h3>Victor Thruster Ryuga II pro CPS</h3>
+            <p>Giá: 3.200.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-yonex-nanoflare-700-pro-chinh-hang_1727208783.jpg" alt="Yonex Nanoflare 700">
+            <h3>Yonex Nanoflare 700</h3>
+            <p>Giá: 3.000.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-lining-turbo-charging-50d-1.jpg" alt="Li-Ning Turbo Charging 50D">
+            <h3>Li-Ning Turbo Charging 50D</h3>
+            <p>Giá: 1.800.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-victor-drivex-10-metallic-chinh-hang_1698088933.jpg" alt="Victor DriveX 10">
+            <h3>Victor DriveX 10</h3>
+            <p>Giá: 2.600.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-vnb-carbon-training-150g-5.jpg" alt="Carbon Training 150g">
+            <h3>Carbon Training 150g</h3>
+            <p>Giá: 1.500.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-vnb-v200-do-2.jpg" alt="V200 Đỏ">
+            <h3>V200 Đỏ</h3>
+            <p>Giá: 2.000.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-yonex-nanoflare-270-speed-purple-chinh-hang_1762129635.jpg" alt="Yonex NanoFlare 270 Speed Purple">
+            <h3>Yonex NanoFlare 270 Speed - Purple</h3>
+            <p>Giá: 3.100.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-yonex-astrox-22-lite-bk-rd-chinh-hang_1761954974.jpg" alt="Yonex Astrox 22 Lite BK/RD">
+            <h3>Yonex Astrox 22 Lite (BK/RD)</h3>
+            <p>Giá: 2.400.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-tenway-hi-speed-s20-1.jpg" alt="Tenway HI-SPEED S20">
+            <h3>Tenway HI-SPEED S20</h3>
+            <p>Giá: 1.100.000 VND</p>
+        </div>
+        
+        <div class="product-item">
+            <img src="anh/vot-cau-long-flypower-komando-chinh-hang-1.jpg" alt="FlyPower Komando">
+            <h3>FlyPower Komando</h3>
+            <p>Giá: 1.200.000 VND</p>
+        </div>
+    </div>
+</section>
+
+<!-- Khuyến mãi -->
+<section class="products">
+    <h2>Khuyến Mãi Hot</h2>
+    <div class="product-list">
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-yonex-astrox-88d-3.jpg" alt="Yonex Astrox 88D">
+            <h3>Yonex Astrox 88D</h3>
+            <p>Giá cũ: 4.000.000 VND</p>
+            <p>Giá mới: 3.400.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-lining-aeronaut-7000-4.jpg" alt="Li-Ning Aeronaut 7000">
+            <h3>Li-Ning Aeronaut 7000</h3>
+            <p>Giá cũ: 3.200.000 VND</p>
+            <p>Giá mới: 2.700.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-tenway-woven-tech-880-1.jpg" alt="Tenway Woven Tech 880">
+            <h3>Tenway Woven Tech 880</h3>
+            <p>Giá cũ :2.043.000 VND</p>
+            <p>Giá mới :990.000 VND</p>
+        </div>
+
+        <div class="product-item">
+            <img src="anh/vot-cau-long-tenway-power-tec-1000-1.jpg" alt="Tenway Power Tec 1000">
+            <h3>Tenway Power Tec 1000</h3>
+            <p>Giá cũ :2.650.000 VND</p>
+            <p>Giá mới :1.180.000 VND</p>
+        </div>
+    </div>
+</section>
+<section class="products">
+    <h2>Giới Thiệu Cửa Hàng Badmin Store</h2>
+
+    <p>
+        Badmin Store là cửa hàng chuyên cung cấp các sản phẩm vợt cầu lông chính hãng,
+        được thành lập với mục tiêu mang đến cho người chơi cầu lông những sản phẩm
+        chất lượng cao, đáp ứng tốt nhu cầu tập luyện và thi đấu ở nhiều cấp độ khác nhau.
+        Cửa hàng tập trung phân phối các dòng vợt đến từ những thương hiệu nổi tiếng
+        và được ưa chuộng trên thị trường hiện nay như Yonex, Li-Ning, Victor
+        cùng nhiều hãng uy tín khác.
+    </p>
+
+    <p>
+        Với kinh nghiệm hoạt động trong lĩnh vực kinh doanh dụng cụ thể thao,
+        Badmin Store luôn đặt yếu tố chất lượng và sự hài lòng của khách hàng lên hàng đầu.
+        Tất cả các sản phẩm tại cửa hàng đều có nguồn gốc xuất xứ rõ ràng,
+        được kiểm tra kỹ lưỡng trước khi đến tay người tiêu dùng,
+        đồng thời áp dụng chính sách bảo hành minh bạch,
+        giúp khách hàng yên tâm trong quá trình sử dụng.
+    </p>
+
+    <p>
+        Không chỉ đơn thuần là nơi bán sản phẩm, Badmin Store còn đóng vai trò
+        là địa điểm tư vấn và hỗ trợ người chơi lựa chọn vợt cầu lông phù hợp
+        với thể lực, trình độ và phong cách thi đấu.
+        Đội ngũ nhân viên của cửa hàng luôn sẵn sàng lắng nghe,
+        tư vấn chi tiết và đưa ra những gợi ý phù hợp,
+        nhằm giúp khách hàng tối ưu hiệu quả khi tập luyện và thi đấu.
+    </p>
+
+    <p>
+        Bên cạnh hoạt động kinh doanh trực tiếp tại cửa hàng,
+        Badmin Store còn chú trọng phát triển hệ thống bán hàng trực tuyến
+        thông qua website.
+        Việc xây dựng website giúp khách hàng dễ dàng tìm kiếm thông tin sản phẩm,
+        tham khảo giá cả, chương trình khuyến mãi cũng như liên hệ tư vấn một cách nhanh chóng.
+        Điều này góp phần nâng cao trải nghiệm mua sắm
+        và phù hợp với xu hướng thương mại điện tử hiện nay.
+    </p>
+
+    <p>
+        Trong thời gian tới, Badmin Store hướng đến mục tiêu mở rộng danh mục sản phẩm,
+        nâng cao chất lượng dịch vụ và hoàn thiện hệ thống quản lý bán hàng.
+        Cửa hàng mong muốn trở thành địa chỉ tin cậy
+        đối với cộng đồng người yêu thích cầu lông,
+        đồng thời khẳng định vị thế của mình trên thị trường
+        kinh doanh dụng cụ thể thao tại Việt Nam.
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Badmin Store – Cửa hàng vợt cầu lông chính hãng</p>
+    <p>Email: nguyenvanduoc442@gmail.com | Hotline: 0966 536 276</p>
+</footer>
+<script>
+    if (localStorage.getItem("customerLogin") !== "true") {
+        window.location.href = "login.html";
+    }
+</script>
+
+
+<script src="js/script.js"></script>
+</body>
+</html>

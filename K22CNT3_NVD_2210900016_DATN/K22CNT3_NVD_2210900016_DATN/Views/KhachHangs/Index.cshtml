@@ -1,0 +1,79 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+}
+
+<style>
+    .page-title {
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .btn-create {
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    table {
+        background: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    thead {
+        background: #0d6efd;
+        color: white;
+    }
+
+    th, td {
+        vertical-align: middle !important;
+    }
+
+        td.actions a {
+            margin-right: 6px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            td.actions a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<h2 class="page-title">Danh sách khách hàng</h2>
+
+<p>
+    @Html.ActionLink("➕ Thêm khách hàng", "Create", null,
+        new { @class = "btn btn-success btn-create" })
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Tên khách</th>
+            <th>Điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th style="width:180px">Thao tác</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenKhach</td>
+                <td>@item.DienThoai</td>
+                <td>@item.Email</td>
+                <td>@item.DiaChi</td>
+                <td class="actions">
+                    @Html.ActionLink("✏ Sửa", "Edit", new { id = item.ID_KhachHang }) |
+                    @Html.ActionLink("👁 Xem", "Details", new { id = item.ID_KhachHang }) |
+                    @Html.ActionLink("🗑 Xóa", "Delete", new { id = item.ID_KhachHang })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

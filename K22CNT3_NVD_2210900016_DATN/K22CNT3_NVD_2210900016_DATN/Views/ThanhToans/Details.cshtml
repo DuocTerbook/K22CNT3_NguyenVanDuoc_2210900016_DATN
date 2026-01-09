@@ -1,0 +1,80 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ThanhToan
+
+@{
+    ViewBag.Title = "Chi tiết thanh toán";
+}
+
+<h2>🧾 Chi tiết thanh toán</h2>
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        Thông tin thanh toán
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Phương thức</dt>
+            <dd class="col-sm-9">@Model.PhuongThuc</dd>
+
+            <dt class="col-sm-3">Trạng thái thanh toán</dt>
+            <dd class="col-sm-9">
+                @if (Model.TrangThai == "Da thanh toan")
+                {
+                    <span class="badge bg-success">@Model.TrangThai</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning">@Model.TrangThai</span>
+                }
+            </dd>
+
+            <dt class="col-sm-3">Ngày thanh toán</dt>
+            <dd class="col-sm-9">@Model.NgayThanhToan?.ToString("dd/MM/yyyy HH:mm")</dd>
+
+            <dt class="col-sm-3">Trạng thái đơn hàng</dt>
+            <dd class="col-sm-9">@Model.DonHang?.TrangThai ?? "Chưa có đơn hàng"</dd>
+        </dl>
+    </div>
+</div>
+
+@if (Model.DonHang != null && Model.DonHang.ChiTietDonHangs.Any())
+{
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+            Chi tiết đơn hàng
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ct in Model.DonHang.ChiTietDonHangs)
+                    {
+                        <tr>
+                            <td>@ct.SanPham?.TenSP</td>
+                            <td>@ct.SoLuong</td>
+                            <td>@String.Format("{0:N0} ₫", ct.DonGia)</td>
+                            <td>@String.Format("{0:N0} ₫", ct.ThanhTien)</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3" class="text-end">Tổng tiền:</th>
+                        <th>@String.Format("{0:N0} ₫", Model.DonHang.ChiTietDonHangs.Sum(x => x.ThanhTien ?? 0))</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("✏ Sửa", "Edit", new { id = Model.ID_ThanhToan }, new { @class = "btn btn-warning me-2" })
+    @Html.ActionLink("⬅ Quay về danh sách", "Index", null, new { @class = "btn btn-secondary" })
+</p>

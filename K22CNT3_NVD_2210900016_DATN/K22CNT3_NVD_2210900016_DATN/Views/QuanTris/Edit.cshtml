@@ -1,0 +1,101 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.QuanTri
+
+@{
+    ViewBag.Title = "Chỉnh sửa quản trị";
+}
+<style>
+    /* ===== EDIT VIEW ===== */
+    .form-wrapper {
+        max-width: 750px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.15);
+    }
+
+    .page-title {
+        text-align: center;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 25px;
+    }
+
+    .form-box h4 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+</style>
+
+<div class="form-wrapper">
+
+    <h2 class="page-title">CHỈNH SỬA QUẢN TRỊ</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-box">
+            <h4>Thông tin quản trị</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_QT)
+
+            <!-- Tài khoản -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.TaiKhoan, new { @class = "col-md-3 col-form-label fw-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Mật khẩu -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.MatKhau, new { @class = "col-md-3 col-form-label fw-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Vai trò -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.VaiTro, new { @class = "col-md-3 col-form-label fw-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.VaiTro, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VaiTro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Trạng thái (GIỮ NGUYÊN EditorFor → không đỏ) -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.TrangThai, new { @class = "col-md-3 col-form-label fw-bold" })
+                <div class="col-md-9">
+                    <div class="form-check mt-2">
+                        @Html.EditorFor(model => model.TrangThai)
+                        @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-group text-end mt-4">
+                <input type="submit" value="Lưu" class="btn btn-success px-4" />
+                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary px-4" })
+            </div>
+
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

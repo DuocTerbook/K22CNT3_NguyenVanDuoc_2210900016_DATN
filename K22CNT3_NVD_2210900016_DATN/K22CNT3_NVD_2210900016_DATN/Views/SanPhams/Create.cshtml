@@ -1,0 +1,146 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.SanPham
+
+@{
+    ViewBag.Title = "Thêm sản phẩm";
+}
+
+<style>
+    body {
+        background-color: #f4f6f9;
+    }
+
+    .sp-frame {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 35px 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+        .sp-frame h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+    .control-label {
+        font-weight: 600;
+    }
+
+    .form-control {
+        border-radius: 8px;
+    }
+
+    .btn-primary {
+        border-radius: 8px;
+        padding: 10px 26px;
+    }
+
+    .btn-back {
+        margin-left: 10px;
+    }
+</style>
+
+<div class="sp-frame">
+    <h2>➕ Thêm sản phẩm mới</h2>
+
+    @using (Html.BeginForm("Create", "SanPhams", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+        <div class="form-horizontal">
+
+            <!-- TÊN SP -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.TenSP, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(m => m.TenSP, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <!-- THƯƠNG HIỆU -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.ThuongHieu, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(m => m.ThuongHieu, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <!-- ĐƠN GIÁ -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.DonGia, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(m => m.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <!-- SỐ LƯỢNG -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.SoLuong, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(m => m.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <!-- ĐƠN VỊ -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.DVT, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(m => m.DVT, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <!-- BẢO HÀNH -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.BaoHanhThang, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(m => m.BaoHanhThang, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <!-- HÌNH ẢNH -->
+            <div class="form-group row mb-3">
+                <label class="col-md-3 col-form-label">Hình ảnh</label>
+                <div class="col-md-9">
+                    <input type="file" name="HinhAnhFile" class="form-control" accept="image/*" />
+                </div>
+            </div>
+
+            <!-- MÔ TẢ -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(m => m.MoTa, new { @class = "col-md-3 col-form-label" })
+                <div class="col-md-9">
+                    @Html.TextAreaFor(m => m.MoTa, 4, 0, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <!-- TRẠNG THÁI -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.TrangThai)
+                        @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">💾 Thêm sản phẩm</button>
+                @Html.ActionLink("↩ Quay lại", "Index", null, new { @class = "btn btn-secondary btn-back" })
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

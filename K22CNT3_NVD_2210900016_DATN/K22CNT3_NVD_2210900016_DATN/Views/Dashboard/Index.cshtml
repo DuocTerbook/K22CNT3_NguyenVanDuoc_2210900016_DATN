@@ -1,0 +1,48 @@
+﻿@model List<K22CNT3_NVD_2210900016_DATN.Models.ViewModels.DashboardVM>
+@{
+    var summary = ViewBag.Summary as K22CNT3_NVD_2210900016_DATN.Models.ViewModels.DashboardSummaryVM;
+    ViewData["Title"] = "Dashboard";
+}
+<style>
+    .card-box {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+    }
+</style>
+<h2>DASHBOARD THỐNG KÊ</h2>
+
+<div class="row">
+    <div class="col-md-3 card-box">📦 Đơn hôm nay: <b>@summary.TongDonHomNay</b></div>
+    <div class="col-md-3 card-box">💰 Doanh thu: <b>@summary.DoanhThuHomNay.ToString("N0") đ</b></div>
+    <div class="col-md-3 card-box">👥 Khách mua: <b>@summary.SoKhachHomNay</b></div>
+    <div class="col-md-3 card-box">🏸 Sản phẩm: <b>@summary.TongSanPham</b></div>
+</div>
+
+<hr />
+
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Ngày</th>
+            <th>Tổng đơn</th>
+            <th>Tổng doanh thu</th>
+            <th>Số khách</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ngay.ToString("dd/MM/yyyy")</td>
+                <td>@item.TongDon</td>
+                <td>@item.TongDoanhThu.ToString("N0")</td>
+                <td>@item.SoKhach</td>
+            </tr>
+        }
+    </tbody>
+</table>

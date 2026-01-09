@@ -1,0 +1,43 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.GioHangChiTiet
+
+@{
+    ViewBag.Title = "Xóa sản phẩm khỏi giỏ";
+}
+
+<style>
+    .card {
+        max-width: 500px;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+</style>
+
+<h2 class="text-center mb-4 text-danger">🗑 Xóa sản phẩm</h2>
+
+<div class="card">
+    <div class="card-body">
+
+        <p class="fs-5">
+            Bạn có chắc chắn muốn <b>xóa sản phẩm</b> sau khỏi giỏ hàng?
+        </p>
+
+        <hr />
+
+        <p><b>Sản phẩm:</b> @Model.SanPham.TenSP</p>
+        <p><b>Số lượng:</b> @Model.SoLuong</p>
+        <p><b>Đơn giá:</b> @String.Format("{0:N0} ₫", Model.DonGia)</p>
+        <p><b>Thành tiền:</b> @String.Format("{0:N0} ₫", Model.ThanhTien)</p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ID_CTGH)
+
+            <div class="text-end mt-4">
+                <input type="submit" value="❌ Xóa khỏi giỏ" class="btn btn-danger" />
+                @Html.ActionLink("↩ Quay lại giỏ hàng", "Index", null, new { @class = "btn btn-secondary ms-2" })
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietPhieuNhap
+
+@{
+    ViewBag.Title = "Xóa chi tiết phiếu nhập";
+}
+
+<style>
+    .del-container {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .del-card {
+        width: 650px;
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .del-title {
+        text-align: center;
+        font-weight: 600;
+        color: #dc3545;
+        margin-bottom: 15px;
+    }
+
+    .del-warning {
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .del-list dt {
+        font-weight: 600;
+        width: 40%;
+    }
+
+    .del-list dd {
+        width: 60%;
+        margin-left: 0;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 8px 18px;
+    }
+
+    .btn-back {
+        margin-left: 10px;
+    }
+</style>
+
+<h2 class="del-title">Xóa chi tiết phiếu nhập</h2>
+<p class="del-warning">
+    Bạn có chắc chắn muốn xóa mục này không? Hành động này không thể hoàn tác.
+</p>
+
+<div class="del-container">
+    <div class="del-card">
+
+        <dl class="row del-list">
+            <dt class="col-sm-4">Số lượng</dt>
+            <dd class="col-sm-8">@Model.SoLuong</dd>
+
+            <dt class="col-sm-4">Đơn giá nhập</dt>
+            <dd class="col-sm-8">
+                @String.Format("{0:N0} VNĐ", Model.DonGiaNhap)
+            </dd>
+
+            <dt class="col-sm-4">Phiếu nhập</dt>
+            <dd class="col-sm-8">@Model.PhieuNhap.ID_PhieuNhap</dd>
+
+            <dt class="col-sm-4">Sản phẩm</dt>
+            <dd class="col-sm-8">@Model.SanPham.TenSP</dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="text-center mt-4">
+                <input type="submit" value="🗑 Xóa" class="btn btn-danger" />
+                @Html.ActionLink("↩ Quay lại", "Index", null,
+                    new { @class = "btn btn-secondary btn-back" })
+            </div>
+        }
+    </div>
+</div>

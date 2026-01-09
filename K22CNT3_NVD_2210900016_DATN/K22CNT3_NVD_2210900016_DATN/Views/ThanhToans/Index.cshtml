@@ -1,0 +1,150 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.ThanhToan>
+
+@{
+    ViewBag.Title = "Danh sách thanh toán";
+}
+
+<style>
+    .tt-box {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .tt-title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+
+    .tt-create {
+        display: inline-block;
+        margin-bottom: 15px;
+        padding: 8px 18px;
+        background: #198754;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .tt-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .tt-table th {
+            background: #f1f3f5;
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .tt-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .tt-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .tt-paid {
+        color: #198754;
+        font-weight: bold;
+    }
+
+    .tt-unpaid {
+        color: #fd7e14;
+        font-weight: bold;
+    }
+
+    .tt-action a {
+        margin: 0 4px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .tt-edit {
+        background: #ffc107;
+        color: #000;
+    }
+
+    .tt-detail {
+        background: #0dcaf0;
+        color: #000;
+    }
+
+    .tt-delete {
+        background: #dc3545;
+        color: #fff;
+    }
+</style>
+
+<div class="tt-box">
+    <div class="tt-title">💳 Danh sách thanh toán</div>
+
+    @Html.ActionLink("➕ Thêm thanh toán mới", "Create", null, new { @class = "tt-create" })
+
+    <table class="tt-table">
+        <tr>
+            <th>Phương thức</th>
+            <th>Trạng thái thanh toán</th>
+            <th>Ngày thanh toán</th>
+            <th>Trạng thái đơn hàng</th>
+            <th>Thao tác</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PhuongThuc</td>
+
+                <td>
+                    @if (item.TrangThai != null && item.TrangThai == "Da thanh toan")
+                    {
+                        <span class="tt-paid">Đã thanh toán</span>
+                    }
+                    else
+                    {
+                        <span class="tt-unpaid">Chưa thanh toán</span>
+                    }
+                </td>
+
+                <td>
+                    @(item.NgayThanhToan.HasValue
+                        ? item.NgayThanhToan.Value.ToString("dd/MM/yyyy HH:mm")
+                        : "")
+                </td>
+
+                <td>
+                    @(item.DonHang != null ? item.DonHang.TrangThai : "")
+                </td>
+
+                <td class="tt-action">
+                    @Html.ActionLink("Sửa", "Edit",
+                        new { id = item.ID_ThanhToan },
+                        new { @class = "tt-edit" })
+
+                    @Html.ActionLink("Xem", "Details",
+                        new { id = item.ID_ThanhToan },
+                        new { @class = "tt-detail" })
+
+                    @Html.ActionLink("Xóa", "Delete",
+                        new { id = item.ID_ThanhToan },
+                        new { @class = "tt-delete" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

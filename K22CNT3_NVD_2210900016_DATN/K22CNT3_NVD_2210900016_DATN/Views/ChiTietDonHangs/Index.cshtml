@@ -1,0 +1,114 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Danh sách chi tiết đơn hàng";
+}
+
+<style>
+    .ctdh-index-box {
+        max-width: 1200px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .ctdh-index-title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+
+    .ctdh-index-create {
+        display: inline-block;
+        margin-bottom: 15px;
+        padding: 8px 18px;
+        background: #198754;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .ctdh-index-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .ctdh-index-table th {
+            background: #f1f3f5;
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .ctdh-index-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .ctdh-index-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .ctdh-action a {
+        margin: 0 4px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .ctdh-edit {
+        background: #ffc107;
+        color: #000;
+    }
+
+    .ctdh-detail {
+        background: #0dcaf0;
+        color: #000;
+    }
+
+    .ctdh-delete {
+        background: #dc3545;
+        color: white;
+    }
+</style>
+
+<div class="ctdh-index-box">
+    <div class="ctdh-index-title">🧾 Danh sách chi tiết đơn hàng</div>
+
+    @Html.ActionLink("➕ Thêm chi tiết", "Create", null, new { @class = "ctdh-index-create" })
+
+    <table class="ctdh-index-table">
+        <tr>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+            <th>Trạng thái đơn</th>
+            <th>Sản phẩm</th>
+            <th>Thao tác</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SoLuong</td>
+                <td>@String.Format("{0:N0} đ", item.DonGia)</td>
+                <td>@String.Format("{0:N0} đ", item.ThanhTien)</td>
+                <td>@item.DonHang.TrangThai</td>
+                <td>@item.SanPham.TenSP</td>
+                <td class="ctdh-action">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.ID_CTDonHang }, new { @class = "ctdh-edit" })
+                    @Html.ActionLink("Xem", "Details", new { id = item.ID_CTDonHang }, new { @class = "ctdh-detail" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID_CTDonHang }, new { @class = "ctdh-delete" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

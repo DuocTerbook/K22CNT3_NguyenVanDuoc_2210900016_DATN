@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+</head>
+<body class="login-page">
+
+<div class="login-container">
+    <h2>Đăng nhập</h2>
+
+    <input type="text" id="username" placeholder="Số điện thoại hoặc Email">
+    <input type="password" id="password" placeholder="Mật khẩu">
+
+    <button onclick="login()">Đăng nhập</button>
+
+    <p class="note">Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+    <p id="login-error"></p>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

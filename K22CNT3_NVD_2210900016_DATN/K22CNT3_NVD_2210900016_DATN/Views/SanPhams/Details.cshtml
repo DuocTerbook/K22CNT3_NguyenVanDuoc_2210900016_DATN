@@ -1,0 +1,115 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.SanPham
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+}
+
+<style>
+    body {
+        background-color: #f4f6f9;
+    }
+
+    .sp-frame {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 35px 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+        .sp-frame h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+    .dl-horizontal dt {
+        font-weight: 600;
+        width: 220px;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 240px;
+        margin-bottom: 14px;
+    }
+
+    .sp-image {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+        .sp-image img {
+            max-width: 280px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+
+    .sp-actions {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 10px 26px;
+    }
+</style>
+
+<div class="sp-frame">
+    <h2>📦 Chi tiết sản phẩm</h2>
+
+    <!-- HÌNH ẢNH -->
+    <div class="sp-image">
+        @if (!string.IsNullOrEmpty(Model.HinhAnh))
+        {
+            <img src="~/Content/images/@Model.HinhAnh" alt="@Model.TenSP" />
+        }
+        else
+        {
+            <img src="~/Content/images/no-image.png" alt="No image" />
+        }
+    </div>
+
+    <!-- THÔNG TIN -->
+    <dl class="dl-horizontal">
+        <dt>Tên sản phẩm</dt>
+        <dd>@Model.TenSP</dd>
+
+        <dt>Thương hiệu</dt>
+        <dd>@Model.ThuongHieu</dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@String.Format("{0:N0} đ", Model.DonGia)</dd>
+
+        <dt>Số lượng</dt>
+        <dd>@Model.SoLuong</dd>
+
+        <dt>Đơn vị</dt>
+        <dd>@Model.DVT</dd>
+
+        <dt>Bảo hành</dt>
+        <dd>@Model.BaoHanhThang tháng</dd>
+
+        <dt>Mô tả</dt>
+        <dd>@Model.MoTa</dd>
+
+        <dt>Trạng thái</dt>
+        <dd>
+            @if (Model.TrangThai == true)
+            {
+                <span class="text-success">Đang bán</span>
+            }
+            else
+            {
+                <span class="text-danger">Ngừng bán</span>
+            }
+        </dd>
+    </dl>
+
+    <!-- BUTTON -->
+    <div class="sp-actions">
+        @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.ID_SP }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("↩ Quay lại", "Index", null, new { @class = "btn btn-secondary ms-2" })
+    </div>
+</div>

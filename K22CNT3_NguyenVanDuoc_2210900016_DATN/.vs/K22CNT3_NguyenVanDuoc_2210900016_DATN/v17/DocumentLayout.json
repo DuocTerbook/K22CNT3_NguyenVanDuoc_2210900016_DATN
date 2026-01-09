@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{51746D6D-4BF8-415C-A8F5-BE48246FE646}|K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN.csproj|d:\\k22cnt3_nguyenvanduoc_2210900016_datn\\k22cnt3_nguyenvanduoc_2210900016_datn\\k22cnt3_nguyenvanduoc_2210900016_datn\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{51746D6D-4BF8-415C-A8F5-BE48246FE646}|K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN.csproj|solutionrelative:k22cnt3_nguyenvanduoc_2210900016_datn\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\Models\\Model1.edmx",
+              "RelativeDocumentMoniker": "K22CNT3_NguyenVanDuoc_2210900016_DATN\\Models\\Model1.edmx",
+              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\Models\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "K22CNT3_NguyenVanDuoc_2210900016_DATN\\Models\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-12-26T04:35:29.141Z",
+              "EditorCaption": " [Diagram1]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

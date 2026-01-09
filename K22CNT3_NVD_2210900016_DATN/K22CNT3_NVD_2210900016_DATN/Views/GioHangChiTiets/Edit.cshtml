@@ -1,0 +1,65 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.GioHangChiTiet
+
+@{
+    ViewBag.Title = "Cập nhật giỏ hàng";
+}
+
+<style>
+    .card {
+        max-width: 600px;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+</style>
+
+<h2 class="text-center mb-4">✏ Cập nhật sản phẩm trong giỏ</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID_CTGH)
+    @Html.HiddenFor(model => model.ID_GioHang)
+    @Html.HiddenFor(model => model.ID_SP)
+    @Html.HiddenFor(model => model.DonGia)
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="mb-3">
+                <label class="form-label">Sản phẩm</label>
+                <input type="text" class="form-control" value="@Model.SanPham.TenSP" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Đơn giá</label>
+                <input type="text" class="form-control"
+                       value="@String.Format("{0:N0} ₫", Model.DonGia)" readonly />
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.SoLuong, "Số lượng", new { @class = "form-label" })
+                @Html.EditorFor(model => model.SoLuong,
+                    new { htmlAttributes = new { @class = "form-control", min = "1" } })
+                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Thành tiền</label>
+                <input type="text" class="form-control"
+                       value="@String.Format("{0:N0} ₫", Model.ThanhTien)" readonly />
+            </div>
+
+            <div class="text-end">
+                <input type="submit" value="💾 Lưu thay đổi" class="btn btn-primary" />
+                @Html.ActionLink("↩ Quay lại", "Index", null, new { @class = "btn btn-secondary ms-2" })
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
