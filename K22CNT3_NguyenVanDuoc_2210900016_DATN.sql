@@ -152,15 +152,3 @@ ADD TongTien DECIMAL(18,2) NULL;
 
 
 
-drop table ThanhToan
-drop table GioHangChiTiet
-drop table GioHang
-drop table ChiTietDonHang
-drop table DonHang
-drop table ChiTietPhieuNhap
-drop table PhieuNhap
-drop table NhaCungCap
-drop table SanPham
-drop table KhachHang
-drop table QuanTri
-

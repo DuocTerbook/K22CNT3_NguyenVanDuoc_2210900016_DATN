@@ -7,16 +7,16 @@
       <Diagram DiagramId="09c5a921354c4ea99763ace007f88cfd" Name="Diagram1" ZoomLevel="41">
         <EntityTypeShape EntityType="QuanLyVotModel.ChiTietDonHang" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.ChiTietPhieuNhap" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyVotModel.DonHang" Width="1.5" PointX="4" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyVotModel.DonHang" Width="1.5" PointX="4.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.GioHang" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.GioHangChiTiet" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.KhachHang" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyVotModel.NhaCungCap" Width="1.5" PointX="13.125" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyVotModel.PhieuNhap" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyVotModel.NhaCungCap" Width="1.5" PointX="10.375" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyVotModel.PhieuNhap" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.QuanTri" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.SanPham" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyVotModel.ThanhToan" Width="1.5" PointX="6.375" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyVotModel.ThanhToan" Width="1.5" PointX="7.375" PointY="8.875" IsExpanded="true" />
         <AssociationConnector Association="QuanLyVotModel.FK_CTDonHang_DonHang" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyVotModel.FK_CTDonHang_SanPham" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyVotModel.FK__ChiTietPh__ID_Ph__13F1F5EB" ManuallyRouted="false" />
