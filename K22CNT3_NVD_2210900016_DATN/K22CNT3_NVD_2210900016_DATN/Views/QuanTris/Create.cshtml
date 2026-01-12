@@ -75,15 +75,18 @@
         @Html.ValidationMessageFor(model => model.VaiTro, "", new { @class = "text-danger" })
     </div>
 
-    <!-- Trạng thái -->
-    <div class="form-group row">
-        <label class="col-md-3 col-form-label fw-bold">Trạng thái</label>
-        <div class="col-md-9">
-            <div class="form-check mt-2">
-                @Html.EditorFor(model => model.TrangThai)
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TrangThai, new { @class = "fw-bold" })
+        @Html.DropDownListFor(model => model.TrangThai,
+            new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Hoạt động", Value = "true" },
+                new SelectListItem { Text = "Khóa", Value = "false" }
+            },
+            "-- Chọn trạng thái --",
+            new { @class = "form-control" })
     </div>
+
 
 
 
