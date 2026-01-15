@@ -26,7 +26,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string TenNCC { get; set; }
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
-        [Display(Name = "Số điên thoại")]
+        [Display(Name = "Số điện thoại")]
         public string DienThoai { get; set; }
         [Display(Name = "Email")]
         public string Email { get; set; }

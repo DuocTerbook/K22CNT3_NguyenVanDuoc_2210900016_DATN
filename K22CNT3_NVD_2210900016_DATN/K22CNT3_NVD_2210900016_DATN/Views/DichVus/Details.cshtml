@@ -1,0 +1,185 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.DichVu
+@{
+    ViewBag.Title = "Chi tiết dịch vụ";
+    var dv = Model ?? new K22CNT3_NVD_2210900016_DATN.Models.DichVu();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .detail-wrapper {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .detail-card {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,.08);
+            background: #fff;
+        }
+
+        .detail-header {
+            background: linear-gradient(135deg,#5d9cec,#3b82f6);
+            padding: 30px;
+            color: #fff;
+        }
+
+            .detail-header h2 {
+                font-weight: 700;
+            }
+
+        .status-badge {
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .active {
+            background: #22c55e;
+        }
+
+        .inactive {
+            background: #ef4444;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg,#34d399,#60a5fa);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+            .price-box h1 {
+                font-size: 2.6rem;
+                font-weight: 700;
+            }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,.06);
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .action-btns a {
+            min-width: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4 detail-wrapper">
+
+        <!-- ACTION BAR -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+            <div class="action-btns">
+                <a href="@Url.Action("Edit", new { id = dv.ID_DichVu })" class="btn btn-warning me-2">
+                    <i class="fas fa-pen"></i> Sửa
+                </a>
+                <a href="@Url.Action("Delete", new { id = dv.ID_DichVu })"
+                   onclick="return confirm('Bạn chắc chắn muốn xóa dịch vụ này?')"
+                   class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Xóa
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD -->
+        <div class="detail-card">
+            <div class="detail-header d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="mb-1">@dv.TenDichVu</h2>
+                    <small>
+                        ID: @dv.ID_DichVu |
+                        Loại: @dv.LoaiDichVu?.TenLoaiDV
+                    </small>
+                </div>
+                <span class="status-badge @(dv.TrangThai == true ? "active" : "inactive")">
+                    @(dv.TrangThai == true ? "Hoạt động" : "Ngừng hoạt động")
+                </span>
+            </div>
+
+            <div class="p-4">
+                <div class="row g-4">
+                    <!-- LEFT -->
+                    <div class="col-md-8">
+                        <div class="info-box">
+                            <h5 class="mb-3">
+                                <i class="fas fa-circle-info text-primary"></i> Thông tin dịch vụ
+                            </h5>
+                            <p><strong>Loại dịch vụ:</strong> @dv.LoaiDichVu?.TenLoaiDV</p>
+                            <p>
+                                <strong>Thời gian thực hiện:</strong>
+                                @(dv.ThoiGianThucHien.HasValue ? dv.ThoiGianThucHien + " phút" : "Không xác định")
+                            </p>
+                        </div>
+
+                        <div class="price-box">
+                            <h6 class="mb-2">Đơn giá</h6>
+                            <h1>@dv.DonGia.ToString("N0") đ</h1>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="col-md-4">
+                        <div class="stat-card mb-3">
+                            <div class="stat-value">@dv.DonGia.ToString("N0")</div>
+                            <small>VNĐ</small>
+                        </div>
+
+                        <div class="stat-card mb-3">
+                            <div class="stat-value">
+                                @(dv.ThoiGianThucHien?.ToString() ?? "N/A")
+                            </div>
+                            <small>Phút</small>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-value">
+                                @(dv.TrangThai == true ? "Hoạt động" : "Ngừng")
+                            </div>
+                            <small>Trạng thái</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

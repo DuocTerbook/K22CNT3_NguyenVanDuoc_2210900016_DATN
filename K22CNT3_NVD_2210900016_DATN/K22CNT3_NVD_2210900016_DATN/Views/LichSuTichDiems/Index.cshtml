@@ -1,0 +1,69 @@
+﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.LichSuTichDiem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemCong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemTru)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LyDo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTichDiem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonDichVu.TenKhach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonHang.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoiVien.MaThe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiemCong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiemTru)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LyDo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTichDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonDichVu.TenKhach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonHang.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoiVien.MaThe)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_LichSu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_LichSu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_LichSu })
+        </td>
+    </tr>
+}
+
+</table>

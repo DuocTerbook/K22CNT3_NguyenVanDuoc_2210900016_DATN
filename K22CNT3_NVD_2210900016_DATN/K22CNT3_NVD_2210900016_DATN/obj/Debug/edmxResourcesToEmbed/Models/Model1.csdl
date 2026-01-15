@@ -37,6 +37,7 @@
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_CTDonHang_DonHang" FromRole="DonHang" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__DonHang__ID_Khac__1A9EF37A" FromRole="DonHang" ToRole="KhachHang" />
     <NavigationProperty Name="ThanhToans" Relationship="Self.FK__ThanhToan__ID_Do__2AD55B43" FromRole="DonHang" ToRole="ThanhToan" />
+    <NavigationProperty Name="LichSuTichDiems" Relationship="QuanLyVotModel.FK__LichSuTic__ID_Do__54CB950F" FromRole="DonHang" ToRole="LichSuTichDiem" />
   </EntityType>
   <EntityType Name="GioHang">
     <Key>
@@ -48,6 +49,7 @@
     <Property Name="TrangThai" Type="Boolean" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__GioHang__ID_Khac__2334397B" FromRole="GioHang" ToRole="KhachHang" />
     <NavigationProperty Name="GioHangChiTiets" Relationship="Self.FK__GioHangCh__ID_Gi__2704CA5F" FromRole="GioHang" ToRole="GioHangChiTiet" />
+    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="GioHangChiTiet">
     <Key>
@@ -73,6 +75,9 @@
     <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__ID_Khac__1A9EF37A" FromRole="KhachHang" ToRole="DonHang" />
     <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__ID_Khac__2334397B" FromRole="KhachHang" ToRole="GioHang" />
+    <NavigationProperty Name="DatSans" Relationship="QuanLyVotModel.FK__DatSan__ID_Khach__44952D46" FromRole="KhachHang" ToRole="DatSan" />
+    <NavigationProperty Name="DonDichVus" Relationship="QuanLyVotModel.FK__DonDichVu__ID_Kh__373B3228" FromRole="KhachHang" ToRole="DonDichVu" />
+    <NavigationProperty Name="HoiViens" Relationship="QuanLyVotModel.FK__HoiVien__ID_Khac__4E1E9780" FromRole="KhachHang" ToRole="HoiVien" />
   </EntityType>
   <EntityType Name="NhaCungCap">
     <Key>
@@ -123,6 +128,7 @@
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_CTDonHang_SanPham" FromRole="SanPham" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__ID_SP__14E61A24" FromRole="SanPham" ToRole="ChiTietPhieuNhap" />
     <NavigationProperty Name="GioHangChiTiets" Relationship="Self.FK__GioHangCh__ID_SP__27F8EE98" FromRole="SanPham" ToRole="GioHangChiTiet" />
+    <NavigationProperty Name="ChiTietDonDichVus" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_SP__3CF40B7E" FromRole="SanPham" ToRole="ChiTietDonDichVu" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -318,5 +324,305 @@
       <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
       <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
     </AssociationSet>
+    <EntitySet Name="ChiTietDonDichVus" EntityType="QuanLyVotModel.ChiTietDonDichVu" />
+    <EntitySet Name="DatSans" EntityType="QuanLyVotModel.DatSan" />
+    <EntitySet Name="DichVus" EntityType="QuanLyVotModel.DichVu" />
+    <EntitySet Name="DonDichVus" EntityType="QuanLyVotModel.DonDichVu" />
+    <EntitySet Name="HoiViens" EntityType="QuanLyVotModel.HoiVien" />
+    <EntitySet Name="LichSuTichDiems" EntityType="QuanLyVotModel.LichSuTichDiem" />
+    <EntitySet Name="LoaiDichVus" EntityType="QuanLyVotModel.LoaiDichVu" />
+    <EntitySet Name="SanCauLongs" EntityType="QuanLyVotModel.SanCauLong" />
+    <AssociationSet Name="FK__ChiTietDo__ID_Di__3BFFE745" Association="QuanLyVotModel.FK__ChiTietDo__ID_Di__3BFFE745">
+      <End Role="DichVu" EntitySet="DichVus" />
+      <End Role="ChiTietDonDichVu" EntitySet="ChiTietDonDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDo__ID_Do__3B0BC30C" Association="QuanLyVotModel.FK__ChiTietDo__ID_Do__3B0BC30C">
+      <End Role="DonDichVu" EntitySet="DonDichVus" />
+      <End Role="ChiTietDonDichVu" EntitySet="ChiTietDonDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDo__ID_SP__3CF40B7E" Association="QuanLyVotModel.FK__ChiTietDo__ID_SP__3CF40B7E">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietDonDichVu" EntitySet="ChiTietDonDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DatSan__ID_Khach__44952D46" Association="QuanLyVotModel.FK__DatSan__ID_Khach__44952D46">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="DatSan" EntitySet="DatSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DatSan__ID_San__4589517F" Association="QuanLyVotModel.FK__DatSan__ID_San__4589517F">
+      <End Role="SanCauLong" EntitySet="SanCauLongs" />
+      <End Role="DatSan" EntitySet="DatSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DichVu__ID_LoaiD__318258D2" Association="QuanLyVotModel.FK__DichVu__ID_LoaiD__318258D2">
+      <End Role="LoaiDichVu" EntitySet="LoaiDichVus" />
+      <End Role="DichVu" EntitySet="DichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonDichVu__ID_Kh__373B3228" Association="QuanLyVotModel.FK__DonDichVu__ID_Kh__373B3228">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="DonDichVu" EntitySet="DonDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuTic__ID_Do__55BFB948" Association="QuanLyVotModel.FK__LichSuTic__ID_Do__55BFB948">
+      <End Role="DonDichVu" EntitySet="DonDichVus" />
+      <End Role="LichSuTichDiem" EntitySet="LichSuTichDiems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuTic__ID_Do__54CB950F" Association="QuanLyVotModel.FK__LichSuTic__ID_Do__54CB950F">
+      <End Role="DonHang" EntitySet="DonHangs" />
+      <End Role="LichSuTichDiem" EntitySet="LichSuTichDiems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoiVien__ID_Khac__4E1E9780" Association="QuanLyVotModel.FK__HoiVien__ID_Khac__4E1E9780">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HoiVien" EntitySet="HoiViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuTic__ID_Ho__53D770D6" Association="QuanLyVotModel.FK__LichSuTic__ID_Ho__53D770D6">
+      <End Role="HoiVien" EntitySet="HoiViens" />
+      <End Role="LichSuTichDiem" EntitySet="LichSuTichDiems" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ChiTietDonDichVu">
+    <Key>
+      <PropertyRef Name="ID_CTDonDV" />
+    </Key>
+    <Property Name="ID_CTDonDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DonDV" Type="Int32" Nullable="false" />
+    <Property Name="ID_DichVu" Type="Int32" Nullable="false" />
+    <Property Name="ID_SP" Type="Int32" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="26" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="ThongSoKyThuat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DichVu" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_Di__3BFFE745" FromRole="ChiTietDonDichVu" ToRole="DichVu" />
+    <NavigationProperty Name="DonDichVu" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_Do__3B0BC30C" FromRole="ChiTietDonDichVu" ToRole="DonDichVu" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_SP__3CF40B7E" FromRole="ChiTietDonDichVu" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DatSan">
+    <Key>
+      <PropertyRef Name="ID_DatSan" />
+    </Key>
+    <Property Name="ID_DatSan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_KhachHang" Type="Int32" />
+    <Property Name="ID_San" Type="Int32" Nullable="false" />
+    <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GioBatDau" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="GioKetThuc" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="SoGio" Type="Int32" />
+    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TienCoc" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KhachHang" Relationship="QuanLyVotModel.FK__DatSan__ID_Khach__44952D46" FromRole="DatSan" ToRole="KhachHang" />
+    <NavigationProperty Name="SanCauLong" Relationship="QuanLyVotModel.FK__DatSan__ID_San__4589517F" FromRole="DatSan" ToRole="SanCauLong" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="ID_DichVu" />
+    </Key>
+    <Property Name="ID_DichVu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDichVu" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ID_LoaiDV" Type="Int32" Nullable="false" />
+    <Property Name="DonGia" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="ThoiGianThucHien" Type="Int32" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <NavigationProperty Name="ChiTietDonDichVus" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_Di__3BFFE745" FromRole="DichVu" ToRole="ChiTietDonDichVu" />
+    <NavigationProperty Name="LoaiDichVu" Relationship="QuanLyVotModel.FK__DichVu__ID_LoaiD__318258D2" FromRole="DichVu" ToRole="LoaiDichVu" />
+  </EntityType>
+  <EntityType Name="DonDichVu">
+    <Key>
+      <PropertyRef Name="ID_DonDV" />
+    </Key>
+    <Property Name="ID_DonDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_KhachHang" Type="Int32" />
+    <Property Name="TenKhach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NgayNhan" Type="DateTime" Precision="3" />
+    <Property Name="NgayTra" Type="DateTime" Precision="0" />
+    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietDonDichVus" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_Do__3B0BC30C" FromRole="DonDichVu" ToRole="ChiTietDonDichVu" />
+    <NavigationProperty Name="KhachHang" Relationship="QuanLyVotModel.FK__DonDichVu__ID_Kh__373B3228" FromRole="DonDichVu" ToRole="KhachHang" />
+    <NavigationProperty Name="LichSuTichDiems" Relationship="QuanLyVotModel.FK__LichSuTic__ID_Do__55BFB948" FromRole="DonDichVu" ToRole="LichSuTichDiem" />
+  </EntityType>
+  <EntityType Name="HoiVien">
+    <Key>
+      <PropertyRef Name="ID_HoiVien" />
+    </Key>
+    <Property Name="ID_HoiVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_KhachHang" Type="Int32" Nullable="false" />
+    <Property Name="MaThe" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+    <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+    <Property Name="CapDo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiemTichLuy" Type="Int32" />
+    <Property Name="UuDai" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="KhachHang" Relationship="QuanLyVotModel.FK__HoiVien__ID_Khac__4E1E9780" FromRole="HoiVien" ToRole="KhachHang" />
+    <NavigationProperty Name="LichSuTichDiems" Relationship="QuanLyVotModel.FK__LichSuTic__ID_Ho__53D770D6" FromRole="HoiVien" ToRole="LichSuTichDiem" />
+  </EntityType>
+  <EntityType Name="LichSuTichDiem">
+    <Key>
+      <PropertyRef Name="ID_LichSu" />
+    </Key>
+    <Property Name="ID_LichSu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_HoiVien" Type="Int32" Nullable="false" />
+    <Property Name="ID_DonHang" Type="Int32" />
+    <Property Name="ID_DonDV" Type="Int32" />
+    <Property Name="DiemCong" Type="Int32" />
+    <Property Name="DiemTru" Type="Int32" />
+    <Property Name="LyDo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTichDiem" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DonDichVu" Relationship="QuanLyVotModel.FK__LichSuTic__ID_Do__55BFB948" FromRole="LichSuTichDiem" ToRole="DonDichVu" />
+    <NavigationProperty Name="DonHang" Relationship="QuanLyVotModel.FK__LichSuTic__ID_Do__54CB950F" FromRole="LichSuTichDiem" ToRole="DonHang" />
+    <NavigationProperty Name="HoiVien" Relationship="QuanLyVotModel.FK__LichSuTic__ID_Ho__53D770D6" FromRole="LichSuTichDiem" ToRole="HoiVien" />
+  </EntityType>
+  <EntityType Name="LoaiDichVu">
+    <Key>
+      <PropertyRef Name="ID_LoaiDV" />
+    </Key>
+    <Property Name="ID_LoaiDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiDV" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DichVus" Relationship="QuanLyVotModel.FK__DichVu__ID_LoaiD__318258D2" FromRole="LoaiDichVu" ToRole="DichVu" />
+  </EntityType>
+  <EntityType Name="SanCauLong">
+    <Key>
+      <PropertyRef Name="ID_San" />
+    </Key>
+    <Property Name="ID_San" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSan" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LoaiSan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GiaThueTheoGio" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DatSans" Relationship="QuanLyVotModel.FK__DatSan__ID_San__4589517F" FromRole="SanCauLong" ToRole="DatSan" />
+  </EntityType>
+  <Association Name="FK__ChiTietDo__ID_Di__3BFFE745">
+    <End Type="QuanLyVotModel.DichVu" Role="DichVu" Multiplicity="1" />
+    <End Type="QuanLyVotModel.ChiTietDonDichVu" Role="ChiTietDonDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="ID_DichVu" />
+      </Principal>
+      <Dependent Role="ChiTietDonDichVu">
+        <PropertyRef Name="ID_DichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietDo__ID_Do__3B0BC30C">
+    <End Type="QuanLyVotModel.DonDichVu" Role="DonDichVu" Multiplicity="1" />
+    <End Type="QuanLyVotModel.ChiTietDonDichVu" Role="ChiTietDonDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonDichVu">
+        <PropertyRef Name="ID_DonDV" />
+      </Principal>
+      <Dependent Role="ChiTietDonDichVu">
+        <PropertyRef Name="ID_DonDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietDo__ID_SP__3CF40B7E">
+    <End Type="QuanLyVotModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QuanLyVotModel.ChiTietDonDichVu" Role="ChiTietDonDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SP" />
+      </Principal>
+      <Dependent Role="ChiTietDonDichVu">
+        <PropertyRef Name="ID_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DatSan__ID_Khach__44952D46">
+    <End Type="QuanLyVotModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+    <End Type="QuanLyVotModel.DatSan" Role="DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID_KhachHang" />
+      </Principal>
+      <Dependent Role="DatSan">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DatSan__ID_San__4589517F">
+    <End Type="QuanLyVotModel.SanCauLong" Role="SanCauLong" Multiplicity="1" />
+    <End Type="QuanLyVotModel.DatSan" Role="DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanCauLong">
+        <PropertyRef Name="ID_San" />
+      </Principal>
+      <Dependent Role="DatSan">
+        <PropertyRef Name="ID_San" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DichVu__ID_LoaiD__318258D2">
+    <End Type="QuanLyVotModel.LoaiDichVu" Role="LoaiDichVu" Multiplicity="1" />
+    <End Type="QuanLyVotModel.DichVu" Role="DichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiDichVu">
+        <PropertyRef Name="ID_LoaiDV" />
+      </Principal>
+      <Dependent Role="DichVu">
+        <PropertyRef Name="ID_LoaiDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonDichVu__ID_Kh__373B3228">
+    <End Type="QuanLyVotModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+    <End Type="QuanLyVotModel.DonDichVu" Role="DonDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID_KhachHang" />
+      </Principal>
+      <Dependent Role="DonDichVu">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuTic__ID_Do__55BFB948">
+    <End Type="QuanLyVotModel.DonDichVu" Role="DonDichVu" Multiplicity="0..1" />
+    <End Type="QuanLyVotModel.LichSuTichDiem" Role="LichSuTichDiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonDichVu">
+        <PropertyRef Name="ID_DonDV" />
+      </Principal>
+      <Dependent Role="LichSuTichDiem">
+        <PropertyRef Name="ID_DonDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuTic__ID_Do__54CB950F">
+    <End Type="QuanLyVotModel.DonHang" Role="DonHang" Multiplicity="0..1" />
+    <End Type="QuanLyVotModel.LichSuTichDiem" Role="LichSuTichDiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="ID_DonHang" />
+      </Principal>
+      <Dependent Role="LichSuTichDiem">
+        <PropertyRef Name="ID_DonHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoiVien__ID_Khac__4E1E9780">
+    <End Type="QuanLyVotModel.KhachHang" Role="KhachHang" Multiplicity="1" />
+    <End Type="QuanLyVotModel.HoiVien" Role="HoiVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID_KhachHang" />
+      </Principal>
+      <Dependent Role="HoiVien">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuTic__ID_Ho__53D770D6">
+    <End Type="QuanLyVotModel.HoiVien" Role="HoiVien" Multiplicity="1" />
+    <End Type="QuanLyVotModel.LichSuTichDiem" Role="LichSuTichDiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoiVien">
+        <PropertyRef Name="ID_HoiVien" />
+      </Principal>
+      <Dependent Role="LichSuTichDiem">
+        <PropertyRef Name="ID_HoiVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -1,0 +1,58 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.SanCauLong
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SanCauLong</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaThueTheoGio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaThueTheoGio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_San }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

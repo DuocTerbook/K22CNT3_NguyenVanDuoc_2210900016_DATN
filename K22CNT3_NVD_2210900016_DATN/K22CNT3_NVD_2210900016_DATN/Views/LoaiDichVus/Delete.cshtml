@@ -1,0 +1,91 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.LoaiDichVu
+
+@{
+    ViewBag.Title = "Xóa loại dịch vụ";
+
+    int tongDichVu = Model.DichVus != null ? Model.DichVus.Count() : 0;
+}
+
+<style>
+    .delete-card {
+        max-width: 650px;
+        margin: auto;
+        border-radius: 14px;
+        border: none;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .danger-header {
+        background: #dc3545;
+        color: white;
+        padding: 20px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .info-row {
+        margin-bottom: 10px;
+    }
+
+    .btn-rounded {
+        border-radius: 8px;
+        padding: 8px 20px;
+    }
+</style>
+
+<div class="container py-5">
+
+    <div class="card delete-card">
+        <div class="danger-header text-center">
+            <h4 class="mb-0">⚠️ Xác nhận xóa loại dịch vụ</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="info-row">
+                <strong>ID:</strong> @Model.ID_LoaiDV
+            </div>
+            <div class="info-row">
+                <strong>Tên loại:</strong> @Model.TenLoaiDV
+            </div>
+            <div class="info-row">
+                <strong>Mô tả:</strong>
+                @(string.IsNullOrEmpty(Model.MoTa) ? "Không có mô tả" : Model.MoTa)
+            </div>
+
+            <hr />
+
+            @if (tongDichVu > 0)
+            {
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-1"></i>
+                    Loại dịch vụ này đang có <strong>@tongDichVu</strong> dịch vụ liên quan.
+                    <br />
+                    <small class="text-muted">Xóa có thể gây ảnh hưởng dữ liệu.</small>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-1"></i>
+                    Không có dịch vụ liên quan. Có thể xóa an toàn.
+                </div>
+            }
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.ID_LoaiDV)
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-rounded">
+                        ← Quay lại
+                    </a>
+
+                    <button type="submit" class="btn btn-danger btn-rounded">
+                        🗑️ Xóa loại dịch vụ
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

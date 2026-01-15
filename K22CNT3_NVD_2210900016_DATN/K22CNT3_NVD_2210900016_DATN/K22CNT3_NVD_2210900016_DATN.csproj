@@ -136,10 +136,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietDonDichVu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietPhieuNhap.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatSan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DichVu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonDichVu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonHang.cs">
@@ -151,7 +163,16 @@
     <Compile Include="Models\GioHangChiTiet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HoiVien.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LichSuTichDiem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiDichVu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -178,6 +199,9 @@
     <Compile Include="Models\QuanTri.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SanCauLong.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -201,6 +225,14 @@
     <Compile Include="Controllers\GioHangChiTietsController.cs" />
     <Compile Include="Controllers\GioHangsController.cs" />
     <Compile Include="Controllers\ThanhToansController.cs" />
+    <Compile Include="Controllers\LoaiDichVusController.cs" />
+    <Compile Include="Controllers\ChiTietDonDichVusController.cs" />
+    <Compile Include="Controllers\DatSansController.cs" />
+    <Compile Include="Controllers\DichVusController.cs" />
+    <Compile Include="Controllers\DonDichVusController.cs" />
+    <Compile Include="Controllers\HoiViensController.cs" />
+    <Compile Include="Controllers\LichSuTichDiemsController.cs" />
+    <Compile Include="Controllers\SanCauLongsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -326,6 +358,46 @@
     <Content Include="Views\AdminAuth\Login.cshtml" />
     <Content Include="Views\GioHangChiTiets\ThanhCong.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\LoaiDichVus\Create.cshtml" />
+    <Content Include="Views\LoaiDichVus\Delete.cshtml" />
+    <Content Include="Views\LoaiDichVus\Details.cshtml" />
+    <Content Include="Views\LoaiDichVus\Edit.cshtml" />
+    <Content Include="Views\LoaiDichVus\Index.cshtml" />
+    <Content Include="Views\DichVus\Create.cshtml" />
+    <Content Include="Views\DichVus\Delete.cshtml" />
+    <Content Include="Views\DichVus\Details.cshtml" />
+    <Content Include="Views\DichVus\Edit.cshtml" />
+    <Content Include="Views\DichVus\Index.cshtml" />
+    <Content Include="Views\DonDichVus\Create.cshtml" />
+    <Content Include="Views\DonDichVus\Delete.cshtml" />
+    <Content Include="Views\DonDichVus\Details.cshtml" />
+    <Content Include="Views\DonDichVus\Edit.cshtml" />
+    <Content Include="Views\DonDichVus\Index.cshtml" />
+    <Content Include="Views\ChiTietDonDichVus\Create.cshtml" />
+    <Content Include="Views\ChiTietDonDichVus\Delete.cshtml" />
+    <Content Include="Views\ChiTietDonDichVus\Details.cshtml" />
+    <Content Include="Views\ChiTietDonDichVus\Edit.cshtml" />
+    <Content Include="Views\ChiTietDonDichVus\Index.cshtml" />
+    <Content Include="Views\DatSans\Create.cshtml" />
+    <Content Include="Views\DatSans\Delete.cshtml" />
+    <Content Include="Views\DatSans\Details.cshtml" />
+    <Content Include="Views\DatSans\Edit.cshtml" />
+    <Content Include="Views\DatSans\Index.cshtml" />
+    <Content Include="Views\SanCauLongs\Create.cshtml" />
+    <Content Include="Views\SanCauLongs\Delete.cshtml" />
+    <Content Include="Views\SanCauLongs\Details.cshtml" />
+    <Content Include="Views\SanCauLongs\Edit.cshtml" />
+    <Content Include="Views\SanCauLongs\Index.cshtml" />
+    <Content Include="Views\HoiViens\Create.cshtml" />
+    <Content Include="Views\HoiViens\Delete.cshtml" />
+    <Content Include="Views\HoiViens\Details.cshtml" />
+    <Content Include="Views\HoiViens\Edit.cshtml" />
+    <Content Include="Views\HoiViens\Index.cshtml" />
+    <Content Include="Views\LichSuTichDiems\Create.cshtml" />
+    <Content Include="Views\LichSuTichDiems\Delete.cshtml" />
+    <Content Include="Views\LichSuTichDiems\Details.cshtml" />
+    <Content Include="Views\LichSuTichDiems\Edit.cshtml" />
+    <Content Include="Views\LichSuTichDiems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

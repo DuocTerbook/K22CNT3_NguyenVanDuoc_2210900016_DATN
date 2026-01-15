@@ -1,0 +1,195 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.DichVu
+
+@{
+    ViewBag.Title = "Thêm dịch vụ";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        background: #f4f6f9;
+    }
+
+    .card-create {
+        max-width: 900px;
+        margin: auto;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg,#2563eb,#3b82f6);
+        color: white;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .form-control, .form-select {
+        border-radius: 12px;
+        padding: 12px;
+    }
+
+    .preview-box {
+        background: #f8fafc;
+        border: 2px dashed #93c5fd;
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .status-active {
+        color: #16a34a;
+        font-weight: 600;
+    }
+
+    .status-inactive {
+        color: #dc2626;
+        font-weight: 600;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="card card-create">
+        <div class="card-header text-center py-4">
+            <h4 class="mb-0">
+                <i class="fas fa-plus-circle me-2"></i>Thêm dịch vụ mới
+            </h4>
+        </div>
+
+        <div class="card-body p-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- TÊN + LOẠI -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Tên dịch vụ *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                            @Html.TextBoxFor(m => m.TenDichVu, new
+                            {
+                                @class = "form-control",
+                                id = "TenDichVu",
+                                placeholder = "Nhập tên dịch vụ"
+                            })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.TenDichVu, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Loại dịch vụ *</label>
+                        @Html.DropDownListFor(
+                            m => m.ID_LoaiDV,
+                            (SelectList)ViewBag.ID_LoaiDV,
+                            "-- Chọn loại dịch vụ --",
+                            new { @class = "form-select" }
+                        )
+                        @Html.ValidationMessageFor(m => m.ID_LoaiDV, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- GIÁ + THỜI GIAN -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Đơn giá (VNĐ) *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
+                            @Html.TextBoxFor(m => m.DonGia, new
+                            {
+                                @class = "form-control",
+                                id = "DonGia",
+                                type = "number",
+                                min = "0"
+                            })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Thời gian thực hiện (phút)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                            @Html.TextBoxFor(m => m.ThoiGianThucHien, new
+                            {
+                                @class = "form-control",
+                                type = "number",
+                                min = "1"
+                            })
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRẠNG THÁI (FIX LỖI) -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Trạng thái</label>
+
+                    <!-- hidden để MVC bind đúng -->
+                    <input type="hidden" name="TrangThai" value="false" />
+
+                    <div class="form-check form-switch">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="TrangThai"
+                               name="TrangThai"
+                               value="true"
+                               checked />
+
+                        <label class="form-check-label fw-semibold" for="TrangThai">
+                            Kích hoạt dịch vụ
+                        </label>
+                    </div>
+                </div>
+
+                <!-- PREVIEW -->
+                <div class="preview-box mb-4">
+                    <h6 class="text-primary mb-3">
+                        <i class="fas fa-eye me-2"></i>Xem trước
+                    </h6>
+                    <p><strong>Tên:</strong> <span id="previewTen">---</span></p>
+                    <p><strong>Giá:</strong> <span id="previewGia">0 VNĐ</span></p>
+                    <p>
+                        <strong>Trạng thái:</strong>
+                        <span id="previewTrangThai" class="status-active">Hoạt động</span>
+                    </p>
+                </div>
+
+                <!-- BUTTON -->
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary px-4">
+                        <i class="fas fa-arrow-left me-1"></i>Quay lại
+                    </a>
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-save me-1"></i>Lưu dịch vụ
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updatePreview() {
+            $('#previewTen').text($('#TenDichVu').val() || '---');
+
+            let gia = $('#DonGia').val();
+            $('#previewGia').text(
+                gia ? parseInt(gia).toLocaleString('vi-VN') + ' VNĐ' : '0 VNĐ'
+            );
+
+            if ($('#TrangThai').is(':checked')) {
+                $('#previewTrangThai').text('Hoạt động')
+                    .removeClass('status-inactive')
+                    .addClass('status-active');
+            } else {
+                $('#previewTrangThai').text('Ngừng')
+                    .removeClass('status-active')
+                    .addClass('status-inactive');
+            }
+        }
+
+        $('#TenDichVu, #DonGia').on('input', updatePreview);
+        $('#TrangThai').on('change', updatePreview);
+        updatePreview();
+    </script>
+}

@@ -37,5 +37,13 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThanhToan> ThanhToans { get; set; }
+        public virtual DbSet<ChiTietDonDichVu> ChiTietDonDichVus { get; set; }
+        public virtual DbSet<DatSan> DatSans { get; set; }
+        public virtual DbSet<DichVu> DichVus { get; set; }
+        public virtual DbSet<DonDichVu> DonDichVus { get; set; }
+        public virtual DbSet<HoiVien> HoiViens { get; set; }
+        public virtual DbSet<LichSuTichDiem> LichSuTichDiems { get; set; }
+        public virtual DbSet<LoaiDichVu> LoaiDichVus { get; set; }
+        public virtual DbSet<SanCauLong> SanCauLongs { get; set; }
     }
 }

@@ -143,8 +143,127 @@ CREATE TABLE ThanhToan (
     FOREIGN KEY (ID_DonHang) REFERENCES DonHang(ID_DonHang)
 );
 
-select * from KhachHang
+/* ===========================
+   12. LOẠI DỊCH VỤ
+   ============================ */
+CREATE TABLE LoaiDichVu (
+    ID_LoaiDV INT IDENTITY PRIMARY KEY,
+    TenLoaiDV NVARCHAR(100) NOT NULL, -- Đóng cầu, Thay cước, Vệ sinh vợt, Bảo dưỡng
+    MoTa NVARCHAR(500)
+)
 
+/* ===========================
+   13. DỊCH VỤ
+   ============================ */
+CREATE TABLE DichVu (
+    ID_DichVu INT IDENTITY PRIMARY KEY,
+    TenDichVu NVARCHAR(200) NOT NULL, -- 'Đóng cầu Yonex BG65', 'Thay cước Victor VBS66N'
+    ID_LoaiDV INT NOT NULL,
+    DonGia DECIMAL(15,2) NOT NULL,
+    ThoiGianThucHien INT, -- Số phút ước tính
+    TrangThai BIT DEFAULT 1,
+    
+    FOREIGN KEY (ID_LoaiDV) REFERENCES LoaiDichVu(ID_LoaiDV)
+)
+
+/* ===========================
+   14. ĐƠN DỊCH VỤ
+   ============================ */
+CREATE TABLE DonDichVu (
+    ID_DonDV INT IDENTITY PRIMARY KEY,
+    ID_KhachHang INT,
+    TenKhach NVARCHAR(100), -- Khách vãng lai không cần đăng ký
+    SDT VARCHAR(15),
+    NgayNhan DATETIME DEFAULT GETDATE(),
+    NgayTra DATE,
+    TongTien DECIMAL(18,2) DEFAULT 0,
+    TrangThai NVARCHAR(50) DEFAULT 'Chờ xử lý', -- Chờ xử lý, Đang làm, Hoàn thành, Đã trả
+    GhiChu NVARCHAR(500),
+    
+    FOREIGN KEY (ID_KhachHang) REFERENCES KhachHang(ID_KhachHang)
+)
+
+/* ===========================
+   15. CHI TIẾT ĐƠN DỊCH VỤ
+   ============================ */
+CREATE TABLE ChiTietDonDichVu (
+    ID_CTDonDV INT IDENTITY PRIMARY KEY,
+    ID_DonDV INT NOT NULL,
+    ID_DichVu INT NOT NULL,
+    ID_SP INT, -- Vợt cần làm dịch vụ
+    SoLuong INT DEFAULT 1,
+    DonGia DECIMAL(15,2),
+    ThanhTien AS (SoLuong * DonGia),
+    ThongSoKyThuat NVARCHAR(500), -- Lực căng: 28lbs, Màu cước: Xanh...
+    
+    FOREIGN KEY (ID_DonDV) REFERENCES DonDichVu(ID_DonDV),
+    FOREIGN KEY (ID_DichVu) REFERENCES DichVu(ID_DichVu),
+    FOREIGN KEY (ID_SP) REFERENCES SanPham(ID_SP)
+)
+/* ===========================
+   16. SÂN CẦU LÔNG
+   ============================ */
+CREATE TABLE SanCauLong (
+    ID_San INT IDENTITY PRIMARY KEY,
+    TenSan NVARCHAR(100) NOT NULL, -- Sân 1, Sân VIP, Sân thi đấu
+    LoaiSan NVARCHAR(50), -- Tiêu chuẩn, VIP
+    GiaThueTheoGio DECIMAL(15,2) NOT NULL,
+    TrangThai NVARCHAR(50) DEFAULT 'Trống', -- Trống, Đang thuê, Bảo trì
+    MoTa NVARCHAR(500)
+)
+
+/* ===========================
+   17. ĐẶT SÂN
+   ============================ */
+CREATE TABLE DatSan (
+    ID_DatSan INT IDENTITY PRIMARY KEY,
+    ID_KhachHang INT,
+    ID_San INT NOT NULL,
+    NgayDat DATE NOT NULL,
+    GioBatDau TIME NOT NULL,
+    GioKetThuc TIME NOT NULL,
+    SoGio INT,
+    TongTien DECIMAL(18,2),
+    TrangThai NVARCHAR(50) DEFAULT 'Đã đặt', -- Đã đặt, Đang chơi, Hoàn thành, Hủy
+    TienCoc DECIMAL(15,2) DEFAULT 0,
+    GhiChu NVARCHAR(500),
+    
+    FOREIGN KEY (ID_KhachHang) REFERENCES KhachHang(ID_KhachHang),
+    FOREIGN KEY (ID_San) REFERENCES SanCauLong(ID_San)
+)
+/* ===========================
+   18. HỘI VIÊN
+   ============================ */
+CREATE TABLE HoiVien (
+    ID_HoiVien INT IDENTITY PRIMARY KEY,
+    ID_KhachHang INT UNIQUE NOT NULL,
+    MaThe VARCHAR(20) UNIQUE NOT NULL, -- CARD001
+    NgayDangKy DATE DEFAULT GETDATE(),
+    NgayHetHan DATE,
+    CapDo NVARCHAR(50) DEFAULT 'Đồng', -- Đồng, Bạc, Vàng, Kim cương
+    DiemTichLuy INT DEFAULT 0,
+    UuDai DECIMAL(5,2) DEFAULT 0, -- % giảm giá
+    
+    FOREIGN KEY (ID_KhachHang) REFERENCES KhachHang(ID_KhachHang)
+)
+
+/* ===========================
+   19. LỊCH SỬ TÍCH ĐIỂM
+   ============================ */
+CREATE TABLE LichSuTichDiem (
+    ID_LichSu INT IDENTITY PRIMARY KEY,
+    ID_HoiVien INT NOT NULL,
+    ID_DonHang INT,
+    ID_DonDV INT,
+    DiemCong INT DEFAULT 0,
+    DiemTru INT DEFAULT 0,
+    LyDo NVARCHAR(200),
+    NgayTichDiem DATETIME DEFAULT GETDATE(),
+    
+    FOREIGN KEY (ID_HoiVien) REFERENCES HoiVien(ID_HoiVien),
+    FOREIGN KEY (ID_DonHang) REFERENCES DonHang(ID_DonHang),
+    FOREIGN KEY (ID_DonDV) REFERENCES DonDichVu(ID_DonDV)
+)
 ALTER TABLE GioHang
 ADD TongTien DECIMAL(18,2) NULL;
 

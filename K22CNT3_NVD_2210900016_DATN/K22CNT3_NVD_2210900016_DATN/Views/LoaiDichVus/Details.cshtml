@@ -1,0 +1,106 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.LoaiDichVu
+@using System.Linq
+@using K22CNT3_NVD_2210900016_DATN.Models
+
+@{
+    ViewBag.Title = "Chi tiết loại dịch vụ";
+
+    List<DichVu> dsDichVu = Model.DichVus != null
+        ? Model.DichVus.ToList()
+        : new List<DichVu>();
+
+    int tongDichVu = dsDichVu.Count;
+    int dangHoatDong = dsDichVu.Count(d => d.TrangThai == true);
+}
+
+<style>
+    .info-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        border: none;
+    }
+
+    .stat-box {
+        border-radius: 10px;
+        padding: 15px;
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .service-item {
+        border-radius: 8px;
+        background: #f9fafb;
+    }
+</style>
+
+<div class="container py-4">
+
+    <a href="@Url.Action("Index")" class="btn btn-light mb-3">
+        ← Quay lại danh sách
+    </a>
+
+    <!-- Thông tin loại dịch vụ -->
+    <div class="card info-card mb-4">
+        <div class="card-body">
+            <h4 class="fw-bold mb-2">📋 @Model.TenLoaiDV</h4>
+            <p class="text-muted mb-1">ID: @Model.ID_LoaiDV</p>
+
+            <p>
+                <strong>Mô tả:</strong>
+                @(string.IsNullOrEmpty(Model.MoTa) ? "Chưa có mô tả" : Model.MoTa)
+            </p>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="stat-box">
+                        <h6 class="text-muted">Tổng dịch vụ</h6>
+                        <h4 class="fw-bold">@tongDichVu</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="stat-box">
+                        <h6 class="text-muted">Đang hoạt động</h6>
+                        <h4 class="fw-bold text-success">@dangHoatDong</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Danh sách dịch vụ -->
+    <div class="card info-card">
+        <div class="card-body">
+            <h5 class="fw-bold mb-3">🛠 Danh sách dịch vụ</h5>
+
+            @if (tongDichVu > 0)
+            {
+                foreach (DichVu dv in dsDichVu.Take(5))
+                {
+                    <div class="service-item p-3 mb-2">
+                        <strong>@dv.TenDichVu</strong><br />
+                        Giá: <span class="text-primary">@dv.DonGia.ToString("N0") đ</span><br />
+                        Trạng thái:
+                        <span class="badge @(dv.TrangThai == true ? "bg-success" : "bg-secondary")">
+                            @(dv.TrangThai == true ? "Hoạt động" : "Ngừng")
+                        </span>
+                    </div>
+                }
+
+                if (tongDichVu > 5)
+                {
+                    <a href="@Url.Action("Index", "DichVu", new { loaiDV = Model.ID_LoaiDV })"
+                       class="btn btn-outline-primary mt-3">
+                        Xem thêm @(tongDichVu - 5) dịch vụ khác
+                    </a>
+                }
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    Chưa có dịch vụ nào.
+                    <a href="@Url.Action("Create", "DichVu")" class="alert-link">Thêm dịch vụ</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

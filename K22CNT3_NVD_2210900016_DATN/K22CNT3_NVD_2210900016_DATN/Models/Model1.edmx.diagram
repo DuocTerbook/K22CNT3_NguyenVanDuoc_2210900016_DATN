@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09c5a921354c4ea99763ace007f88cfd" Name="Diagram1" ZoomLevel="62">
+      <Diagram DiagramId="09c5a921354c4ea99763ace007f88cfd" Name="Diagram1" ZoomLevel="36">
         <EntityTypeShape EntityType="QuanLyVotModel.ChiTietDonHang" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.ChiTietPhieuNhap" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyVotModel.DonHang" Width="1.5" PointX="4.75" PointY="8.625" IsExpanded="true" />
@@ -27,6 +27,25 @@
         <AssociationConnector Association="QuanLyVotModel.FK__GioHangCh__ID_Gi__2704CA5F" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyVotModel.FK__GioHangCh__ID_SP__27F8EE98" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyVotModel.FK__PhieuNhap__ID_NC__11158940" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyVotModel.ChiTietDonDichVu" Width="1.5" PointX="14" PointY="4.375" />
+        <EntityTypeShape EntityType="QuanLyVotModel.DatSan" Width="1.5" PointX="11.75" PointY="7.875" />
+        <EntityTypeShape EntityType="QuanLyVotModel.DichVu" Width="1.5" PointX="17" PointY="5.25" />
+        <EntityTypeShape EntityType="QuanLyVotModel.DonDichVu" Width="1.5" PointX="5.875" PointY="11.25" />
+        <EntityTypeShape EntityType="QuanLyVotModel.HoiVien" Width="1.5" PointX="2.5" PointY="12.875" />
+        <EntityTypeShape EntityType="QuanLyVotModel.LichSuTichDiem" Width="1.5" PointX="9.5" PointY="11.375" />
+        <EntityTypeShape EntityType="QuanLyVotModel.LoaiDichVu" Width="1.5" PointX="17.25" PointY="9.375" />
+        <EntityTypeShape EntityType="QuanLyVotModel.SanCauLong" Width="1.5" PointX="12" PointY="12.375" />
+        <AssociationConnector Association="QuanLyVotModel.FK__ChiTietDo__ID_Di__3BFFE745" />
+        <AssociationConnector Association="QuanLyVotModel.FK__ChiTietDo__ID_Do__3B0BC30C" />
+        <AssociationConnector Association="QuanLyVotModel.FK__ChiTietDo__ID_SP__3CF40B7E" />
+        <AssociationConnector Association="QuanLyVotModel.FK__DatSan__ID_Khach__44952D46" />
+        <AssociationConnector Association="QuanLyVotModel.FK__DatSan__ID_San__4589517F" />
+        <AssociationConnector Association="QuanLyVotModel.FK__DichVu__ID_LoaiD__318258D2" />
+        <AssociationConnector Association="QuanLyVotModel.FK__DonDichVu__ID_Kh__373B3228" />
+        <AssociationConnector Association="QuanLyVotModel.FK__LichSuTic__ID_Do__55BFB948" />
+        <AssociationConnector Association="QuanLyVotModel.FK__LichSuTic__ID_Do__54CB950F" />
+        <AssociationConnector Association="QuanLyVotModel.FK__HoiVien__ID_Khac__4E1E9780" />
+        <AssociationConnector Association="QuanLyVotModel.FK__LichSuTic__ID_Ho__53D770D6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

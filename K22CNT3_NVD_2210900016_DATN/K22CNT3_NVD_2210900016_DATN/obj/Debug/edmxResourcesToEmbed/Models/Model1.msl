@@ -38,6 +38,7 @@
     <EntitySetMapping Name="GioHangs">
       <EntityTypeMapping TypeName="QuanLyVotModel.GioHang">
         <MappingFragment StoreEntitySet="GioHang">
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="ID_GioHang" ColumnName="ID_GioHang" />
           <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
@@ -135,6 +136,113 @@
           <ScalarProperty Name="PhuongThuc" ColumnName="PhuongThuc" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDonDichVus">
+      <EntityTypeMapping TypeName="QuanLyVotModel.ChiTietDonDichVu">
+        <MappingFragment StoreEntitySet="ChiTietDonDichVu">
+          <ScalarProperty Name="ThongSoKyThuat" ColumnName="ThongSoKyThuat" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="ID_SP" ColumnName="ID_SP" />
+          <ScalarProperty Name="ID_DichVu" ColumnName="ID_DichVu" />
+          <ScalarProperty Name="ID_DonDV" ColumnName="ID_DonDV" />
+          <ScalarProperty Name="ID_CTDonDV" ColumnName="ID_CTDonDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatSans">
+      <EntityTypeMapping TypeName="QuanLyVotModel.DatSan">
+        <MappingFragment StoreEntitySet="DatSan">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TienCoc" ColumnName="TienCoc" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="SoGio" ColumnName="SoGio" />
+          <ScalarProperty Name="GioKetThuc" ColumnName="GioKetThuc" />
+          <ScalarProperty Name="GioBatDau" ColumnName="GioBatDau" />
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="ID_San" ColumnName="ID_San" />
+          <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
+          <ScalarProperty Name="ID_DatSan" ColumnName="ID_DatSan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DichVus">
+      <EntityTypeMapping TypeName="QuanLyVotModel.DichVu">
+        <MappingFragment StoreEntitySet="DichVu">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="ThoiGianThucHien" ColumnName="ThoiGianThucHien" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="ID_LoaiDV" ColumnName="ID_LoaiDV" />
+          <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
+          <ScalarProperty Name="ID_DichVu" ColumnName="ID_DichVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonDichVus">
+      <EntityTypeMapping TypeName="QuanLyVotModel.DonDichVu">
+        <MappingFragment StoreEntitySet="DonDichVu">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="NgayTra" ColumnName="NgayTra" />
+          <ScalarProperty Name="NgayNhan" ColumnName="NgayNhan" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="TenKhach" ColumnName="TenKhach" />
+          <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
+          <ScalarProperty Name="ID_DonDV" ColumnName="ID_DonDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoiViens">
+      <EntityTypeMapping TypeName="QuanLyVotModel.HoiVien">
+        <MappingFragment StoreEntitySet="HoiVien">
+          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
+          <ScalarProperty Name="DiemTichLuy" ColumnName="DiemTichLuy" />
+          <ScalarProperty Name="CapDo" ColumnName="CapDo" />
+          <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+          <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+          <ScalarProperty Name="MaThe" ColumnName="MaThe" />
+          <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
+          <ScalarProperty Name="ID_HoiVien" ColumnName="ID_HoiVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LichSuTichDiems">
+      <EntityTypeMapping TypeName="QuanLyVotModel.LichSuTichDiem">
+        <MappingFragment StoreEntitySet="LichSuTichDiem">
+          <ScalarProperty Name="NgayTichDiem" ColumnName="NgayTichDiem" />
+          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+          <ScalarProperty Name="DiemTru" ColumnName="DiemTru" />
+          <ScalarProperty Name="DiemCong" ColumnName="DiemCong" />
+          <ScalarProperty Name="ID_DonDV" ColumnName="ID_DonDV" />
+          <ScalarProperty Name="ID_DonHang" ColumnName="ID_DonHang" />
+          <ScalarProperty Name="ID_HoiVien" ColumnName="ID_HoiVien" />
+          <ScalarProperty Name="ID_LichSu" ColumnName="ID_LichSu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiDichVus">
+      <EntityTypeMapping TypeName="QuanLyVotModel.LoaiDichVu">
+        <MappingFragment StoreEntitySet="LoaiDichVu">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TenLoaiDV" ColumnName="TenLoaiDV" />
+          <ScalarProperty Name="ID_LoaiDV" ColumnName="ID_LoaiDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanCauLongs">
+      <EntityTypeMapping TypeName="QuanLyVotModel.SanCauLong">
+        <MappingFragment StoreEntitySet="SanCauLong">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="GiaThueTheoGio" ColumnName="GiaThueTheoGio" />
+          <ScalarProperty Name="LoaiSan" ColumnName="LoaiSan" />
+          <ScalarProperty Name="TenSan" ColumnName="TenSan" />
+          <ScalarProperty Name="ID_San" ColumnName="ID_San" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

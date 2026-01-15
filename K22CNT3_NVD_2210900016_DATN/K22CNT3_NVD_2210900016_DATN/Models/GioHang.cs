@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.GioHangChiTiets = new HashSet<GioHangChiTiet>();
         }
-        [Display(Name ="Mã giỏ hàng")]
+        [Display(Name ="Mã giỏ hàng")]    
         public int ID_GioHang { get; set; }
         [Display(Name = "Mã khách hàng")]
         public Nullable<int> ID_KhachHang { get; set; }
@@ -28,9 +28,8 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<System.DateTime> NgayTao { get; set; }
         [Display(Name = "Trạng thái")]
         public Nullable<bool> TrangThai { get; set; }
-        [Display(Name ="Tổng tiền")]
-        public decimal? TongTien { get; set; }
-
+        [Display(Name = "Tổng tiền")]
+        public Nullable<decimal> TongTien { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHangChiTiet> GioHangChiTiets { get; set; }

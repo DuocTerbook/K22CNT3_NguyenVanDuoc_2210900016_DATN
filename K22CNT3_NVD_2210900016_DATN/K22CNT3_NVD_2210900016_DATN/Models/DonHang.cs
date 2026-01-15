@@ -20,6 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ThanhToans = new HashSet<ThanhToan>();
+            this.LichSuTichDiems = new HashSet<LichSuTichDiem>();
         }
         [Display(Name ="Mã đơn hàng")]
         public int ID_DonHang { get; set; }
@@ -27,7 +28,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public int ID_KhachHang { get; set; }
         [Display(Name = "Ngày đặt")]
         public Nullable<System.DateTime> NgayDat { get; set; }
-        [Display(Name = "Tổng tiền")]
+        [Display(Name = "Tổng tiên")]
         public Nullable<decimal> TongTien { get; set; }
         [Display(Name = "Trạng thái")]
         public string TrangThai { get; set; }
@@ -37,5 +38,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LichSuTichDiem> LichSuTichDiems { get; set; }
     }
 }

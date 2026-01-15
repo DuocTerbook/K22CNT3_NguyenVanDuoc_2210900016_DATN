@@ -1,0 +1,74 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.HoiVien
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoiVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaThe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaThe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayHetHan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayHetHan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapDo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiemTichLuy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiemTichLuy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UuDai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UuDai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKhach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.TenKhach)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HoiVien }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

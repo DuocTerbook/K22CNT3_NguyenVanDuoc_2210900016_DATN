@@ -29,6 +29,18 @@
                 <li class="nav-item mb-2">
                     @Html.ActionLink("🛒 Giỏ Hàng", "Index", "GioHangChiTiets", null, new { @class = "nav-link text-white" })
                 </li>
+                <li class="nav-item mb-2 ">
+                    @Html.ActionLink("📋 Loại Dịch Vụ", "Index", "LoaiDichVus", null, new { @class = "nav-link text-white" })
+                </li>
+                <li class="nav-item mb-2">
+                    @Html.ActionLink("🏸 Quản Lý Sân", "Index", "SanCauLongs", null, new { @class = "nav-link text-white" })
+                </li>
+                <li class="nav-item mb-2">
+                    @Html.ActionLink("👑 Hội Viên", "Index", "HoiViens", null, new { @class = "nav-link text-white" })
+                </li>
+                <li class="nav-item mb-2">
+                    @Html.ActionLink("⭐ Lịch Sử Tích Điểm", "Index", "LichSuTichDiems", null, new { @class = "nav-link text-white" })
+                </li>
 
                 @if (Session["Admin"] != null)
                 {
@@ -37,6 +49,13 @@
                             new { @class = "nav-link text-warning" })
                     </li>
                 }
+                <li class="nav-item mb-2">
+                    <a href="http://127.0.0.1:5500/login.html"
+                       class="nav-link text-info"
+                       target="_blank">
+                        🔐 Trang Đăng Nhập Khách Hàng
+                    </a>
+                </li>
             </ul>
         </nav>
 

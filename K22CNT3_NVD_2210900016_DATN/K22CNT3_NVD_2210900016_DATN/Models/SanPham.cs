@@ -22,6 +22,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ChiTietPhieuNhaps = new HashSet<ChiTietPhieuNhap>();
             this.GioHangChiTiets = new HashSet<GioHangChiTiet>();
+            this.ChiTietDonDichVus = new HashSet<ChiTietDonDichVu>();
         }
         [Display(Name ="Mã sản phẩm")]
         public int ID_SP { get; set; }
@@ -37,9 +38,9 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string DVT { get; set; }
         [Display(Name = "Bảo hành tháng")]
         public Nullable<int> BaoHanhThang { get; set; }
-        public HttpPostedFileBase HinhAnhFile { get; set; }
         [Display(Name = "Hình ảnh")]
         public string HinhAnh { get; set; }
+        public HttpPostedFileBase HinhAnhFile { get; set; }
         [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
         [Display(Name = "Trạng thái")]
@@ -51,5 +52,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHangChiTiet> GioHangChiTiets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDonDichVu> ChiTietDonDichVus { get; set; }
     }
 }

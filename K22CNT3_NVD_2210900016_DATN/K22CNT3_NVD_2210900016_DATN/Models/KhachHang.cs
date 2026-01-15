@@ -20,6 +20,9 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.DonHangs = new HashSet<DonHang>();
             this.GioHangs = new HashSet<GioHang>();
+            this.DatSans = new HashSet<DatSan>();
+            this.DonDichVus = new HashSet<DonDichVu>();
+            this.HoiViens = new HashSet<HoiVien>();
         }
 
         [Display(Name ="Mã khách hàng")]
@@ -37,5 +40,11 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public virtual ICollection<DonHang> DonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DatSan> DatSans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonDichVu> DonDichVus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoiVien> HoiViens { get; set; }
     }
 }

@@ -1,0 +1,65 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.LoaiDichVu
+
+@{
+    ViewBag.Title = "Chỉnh sửa loại dịch vụ";
+}
+
+<style>
+    .form-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        border: none;
+    }
+
+    .form-title {
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    .btn-custom {
+        border-radius: 8px;
+        padding: 6px 18px;
+    }
+</style>
+
+<div class="container py-4">
+
+    <a href="@Url.Action("Index")" class="btn btn-light mb-3">
+        ← Quay lại danh sách
+    </a>
+
+    <div class="card form-card">
+        <div class="card-body">
+
+            <h4 class="form-title mb-3">✏️ Chỉnh sửa loại dịch vụ</h4>
+            <hr />
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID_LoaiDV)
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.TenLoaiDV, new { @class = "form-label fw-semibold" })
+                    @Html.EditorFor(model => model.TenLoaiDV,
+                        new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên loại dịch vụ" } })
+                    @Html.ValidationMessageFor(model => model.TenLoaiDV, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.MoTa, new { @class = "form-label fw-semibold" })
+                    @Html.TextAreaFor(model => model.MoTa,
+                        new { @class = "form-control", rows = 3, placeholder = "Nhập mô tả (nếu có)" })
+                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success btn-custom">
+                        💾 Lưu thay đổi
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
