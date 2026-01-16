@@ -13,60 +13,89 @@
 <div class="card shadow-sm">
     <div class="card-body">
         <table class="table table-bordered table-hover align-middle">
-            <thead class="thead-dark">
-                <tr class="text-center">
-                    <th>Điểm cộng</th>
-                    <th>Điểm trừ</th>
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Điểm +</th>
+                    <th>Điểm -</th>
                     <th>Lý do</th>
-                    <th>Ngày tích điểm</th>
-                    <th>Đơn dịch vụ</th>
+                    <th>Ngày</th>
+                    <th>Đơn DV</th>
                     <th>Đơn hàng</th>
                     <th>Mã thẻ</th>
                     <th width="180">Chức năng</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @if (!Model.Any())
                 {
                     <tr>
-                        <td class="text-success fw-bold text-center">
-                            @(item.DiemCong > 0 ? "+" + item.DiemCong : "")
-                        </td>
-                        <td class="text-danger fw-bold text-center">
-                            @(item.DiemTru > 0 ? "-" + item.DiemTru : "")
-                        </td>
-                        <td>
-                            @item.LyDo
-                        </td>
-                        <td class="text-center">
-                            @(item.NgayTichDiem.HasValue
-                            ? item.NgayTichDiem.Value.ToString("dd/MM/yyyy HH:mm")
-                            : "-")
-                        </td>
-                        <td class="text-center">
-                            @(item.DonDichVu != null ? item.DonDichVu.ID_DonDV.ToString() : "-")
-                        </td>
-                        <td class="text-center">
-                            @(item.DonHang != null ? item.DonHang.ID_DonHang.ToString() : "-")
-                        </td>
-                        <td class="text-center">
-                            @item.HoiVien.MaThe
-                        </td>
-                        <td class="text-center">
-                            @Html.ActionLink("✏️", "Edit", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-warning", title = "Sửa" })
-                            @Html.ActionLink("👁️", "Details", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-info text-white", title = "Chi tiết" })
-                            @Html.ActionLink("🗑️", "Delete", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-danger", title = "Xóa" })
+                        <td colspan="8" class="text-center text-muted">
+                            Chưa có lịch sử tích điểm
                         </td>
                     </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <!-- Điểm cộng -->
+                            <td class="text-success fw-bold">
+                                @(item.DiemCong.HasValue && item.DiemCong > 0
+                                    ? "+" + item.DiemCong
+                                    : "-")
+                            </td>
+
+                            <!-- Điểm trừ -->
+                            <td class="text-danger fw-bold">
+                                @(item.DiemTru.HasValue && item.DiemTru > 0
+                                    ? "-" + item.DiemTru
+                                    : "-")
+                            </td>
+
+                            <!-- Lý do -->
+                            <td class="text-start">
+                                @item.LyDo
+                            </td>
+
+                            <!-- Ngày tích điểm -->
+                            <td>
+                                @(item.NgayTichDiem.HasValue
+                                    ? item.NgayTichDiem.Value.ToString("dd/MM/yyyy HH:mm")
+                                    : "-")
+                            </td>
+
+                            <!-- Đơn dịch vụ -->
+                            <td>
+                                @(item.ID_DonDV.HasValue
+                                    ? item.ID_DonDV.ToString()
+                                    : "-")
+                            </td>
+
+                            <!-- Đơn hàng -->
+                            <td>
+                                @(item.ID_DonHang.HasValue
+                                    ? item.ID_DonHang.ToString()
+                                    : "-")
+                            </td>
+
+                            <!-- Mã thẻ hội viên -->
+                            <td>
+                                @(item.HoiVien != null
+                                ? item.HoiVien.MaThe
+                                : "-")
+                            </td>
+
+                            <!-- Chức năng -->
+                            <td>
+                                @Html.ActionLink("✏️", "Edit", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-warning me-1" })
+                                @Html.ActionLink("👁️", "Details", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-info text-white me-1" })
+                                @Html.ActionLink("🗑️", "Delete", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-danger" })
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
     </div>
 </div>
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success mt-3">
-        @TempData["SuccessMessage"]
-    </div>
-}

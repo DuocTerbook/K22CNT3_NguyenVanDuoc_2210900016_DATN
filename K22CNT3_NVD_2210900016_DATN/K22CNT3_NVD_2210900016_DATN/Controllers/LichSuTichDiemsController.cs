@@ -33,7 +33,10 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         public ActionResult Create()
         {
             LoadDropDowns();
-            return View();
+            return View(new LichSuTichDiem
+            {
+                NgayTichDiem = DateTime.Now
+            });
         }
 
         [HttpPost]
@@ -52,7 +55,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
 
             if (!ModelState.IsValid)
             {
-                LoadDropDowns();
+                LoadDropDowns(model.ID_HoiVien, model.ID_DonHang, model.ID_DonDV);
                 return View(model);
             }
 
@@ -79,25 +82,18 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("Index", new { hoiVienId = model.ID_HoiVien });
+            return RedirectToAction("Index");
         }
 
         // ================= EDIT =================
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var lichSu = db.LichSuTichDiems.Find(id);
-            if (lichSu == null)
-                return HttpNotFound();
+            if (lichSu == null) return HttpNotFound();
 
-            LoadDropDowns(
-                lichSu.ID_HoiVien,
-                lichSu.ID_DonHang,
-                lichSu.ID_DonDV
-            );
-
+            LoadDropDowns(lichSu.ID_HoiVien, lichSu.ID_DonHang, lichSu.ID_DonDV);
             return View(lichSu);
         }
 
@@ -107,11 +103,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         {
             if (!ModelState.IsValid)
             {
-                LoadDropDowns(
-                    model.ID_HoiVien,
-                    model.ID_DonHang,
-                    model.ID_DonDV
-                );
+                LoadDropDowns(model.ID_HoiVien, model.ID_DonHang, model.ID_DonDV);
                 return View(model);
             }
 
@@ -119,11 +111,8 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
                 .FirstOrDefault(x => x.ID_LichSu == model.ID_LichSu);
 
             var hv = db.HoiViens.Find(model.ID_HoiVien);
-
-            // hoàn điểm cũ
             hv.DiemTichLuy -= old.DiemCong ?? 0;
 
-            // tính lại điểm mới
             if (model.ID_DonHang.HasValue)
             {
                 var dh = db.DonHangs.Find(model.ID_DonHang);
@@ -143,14 +132,13 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             db.Entry(model).State = EntityState.Modified;
             db.SaveChanges();
 
-            return RedirectToAction("Index", new { hoiVienId = model.ID_HoiVien });
+            return RedirectToAction("Index");
         }
 
         // ================= DETAILS =================
         public ActionResult Details(int? id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var lichSu = db.LichSuTichDiems
                 .Include(l => l.HoiVien.KhachHang)
@@ -158,8 +146,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
                 .Include(l => l.DonDichVu)
                 .FirstOrDefault(l => l.ID_LichSu == id);
 
-            if (lichSu == null)
-                return HttpNotFound();
+            if (lichSu == null) return HttpNotFound();
 
             return View(lichSu);
         }
@@ -167,15 +154,13 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         // ================= DELETE =================
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var lichSu = db.LichSuTichDiems
                 .Include(l => l.HoiVien)
                 .FirstOrDefault(l => l.ID_LichSu == id);
 
-            if (lichSu == null)
-                return HttpNotFound();
+            if (lichSu == null) return HttpNotFound();
 
             return View(lichSu);
         }
@@ -193,15 +178,16 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             db.LichSuTichDiems.Remove(lichSu);
             db.SaveChanges();
 
-            return RedirectToAction("Index", new { hoiVienId = hv.ID_HoiVien });
+            return RedirectToAction("Index");
         }
 
         // ================= DROPDOWN =================
         private void LoadDropDowns(
-            int? hoiVienId = null,
-            int? donHangId = null,
-            int? donDvId = null)
+    int? hoiVienId = null,
+    int? donHangId = null,
+    int? donDvId = null)
         {
+            // Hội viên
             ViewBag.ID_HoiVien = new SelectList(
                 db.HoiViens.Include(h => h.KhachHang),
                 "ID_HoiVien",
@@ -209,20 +195,25 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
                 hoiVienId
             );
 
+            // Đơn hàng - chỉ lấy đơn HOÀN THÀNH
             ViewBag.ID_DonHang = new SelectList(
-                db.DonHangs.Where(x => x.TrangThai == "HoanThanh"),
+                db.DonHangs
+                  .Where(x => x.TrangThai == "HoanThanh"),
                 "ID_DonHang",
                 "ID_DonHang",
                 donHangId
             );
 
+            // Đơn dịch vụ - chỉ lấy đơn HOÀN THÀNH
             ViewBag.ID_DonDV = new SelectList(
-                db.DonDichVus.Where(x => x.TrangThai == "HoanThanh"),
+                db.DonDichVus
+                  .Where(x => x.TrangThai == "HoanThanh"),
                 "ID_DonDV",
                 "ID_DonDV",
                 donDvId
             );
         }
+
 
         // ================= CẤP ĐỘ =================
         private void UpdateCapDo(HoiVien hv)
@@ -247,12 +238,6 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
                 hv.CapDo = "Đồng";
                 hv.UuDai = 0;
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing) db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

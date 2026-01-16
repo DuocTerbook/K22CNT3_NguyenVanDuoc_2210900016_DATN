@@ -1,0 +1,54 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.HoiVien
+
+@{
+    ViewBag.Title = "Tich diem";
+}
+
+<h3 class="text-success">
+    <i class="fa-solid fa-plus"></i> Tich diem hoi vien
+</h3>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+
+        <p><b>Ma the:</b> @Model.MaThe</p>
+        <p><b>Khach hang:</b> @Model.KhachHang.TenKhach</p>
+        <p>
+            <b>Diem hien tai:</b>
+            <span class="fw-bold text-success">@Model.DiemTichLuy</span>
+        </p>
+
+        @using (Html.BeginForm("TichDiem", "HoiViens", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.Hidden("id", Model.ID_HoiVien)
+
+            <!-- BẮT BUỘC name="diem" -->
+            <div class="mb-3">
+                <label class="form-label">So diem can tich</label>
+                <input type="number"
+                       name="diem"
+                       class="form-control"
+                       min="1"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ly do</label>
+                <input type="text"
+                       name="lyDo"
+                       class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                <i class="fa-solid fa-check"></i> Xác nhận
+            </button>
+
+            <a href="@Url.Action("Details", new { id = Model.ID_HoiVien })"
+               class="btn btn-secondary ms-2">
+                Hủy
+            </a>
+        }
+    </div>
+</div>

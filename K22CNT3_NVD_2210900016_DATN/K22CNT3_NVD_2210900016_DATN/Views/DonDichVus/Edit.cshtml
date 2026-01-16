@@ -107,10 +107,12 @@
                             new SelectList(
                                 new[]
                                 {
-                                    "Chưa xử lý",
-                                    "Đang xử lý",
-                                    "Hoàn thành"
+                                    new { Value = "ChuaXuLy", Text = "Chưa xử lý" },
+                                    new { Value = "DangXuLy", Text = "Đang xử lý" },
+                                    new { Value = "HoanThanh", Text = "Hoàn thành" }
                                 },
+                                "Value",
+                                "Text",
                                 Model.TrangThai
                             ),
                             new { @class = "form-control" }
