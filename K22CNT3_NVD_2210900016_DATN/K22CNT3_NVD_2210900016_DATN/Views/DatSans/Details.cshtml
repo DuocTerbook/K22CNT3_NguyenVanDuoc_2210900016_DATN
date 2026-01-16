@@ -1,98 +1,150 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.DatSan
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết đặt sân";
 }
 
-<h2>Details</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<div>
-    <h4>DatSan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayDat)
-        </dt>
+<style>
+    .card-custom {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayDat)
-        </dd>
+    .page-title {
+        font-weight: 700;
+        color: #0d6efd;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GioBatDau)
-        </dt>
+    .info-label {
+        font-weight: 600;
+        color: #6c757d;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.GioBatDau)
-        </dd>
+    .info-value {
+        font-size: 1.05rem;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GioKetThuc)
-        </dt>
+    .badge-status {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        border-radius: 20px;
+    }
+</style>
 
-        <dd>
-            @Html.DisplayFor(model => model.GioKetThuc)
-        </dd>
+<div class="container py-4">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoGio)
-        </dt>
+    <!-- HEADER -->
+    <div class="mb-3">
+        <h3 class="page-title">
+            <i class="fas fa-circle-info me-1"></i> Chi tiết đặt sân
+        </h3>
+        <small class="text-muted">Thông tin chi tiết phiếu đặt sân cầu lông</small>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoGio)
-        </dd>
+    <div class="card card-custom">
+        <div class="card-body">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
+            <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
+                <!-- KHÁCH HÀNG -->
+                <div class="col-md-6 mb-3">
+                    <div class="info-label">Khách hàng</div>
+                    <div class="info-value">
+                        <i class="fas fa-user me-1"></i>
+                        @Model.KhachHang.TenKhach
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
+                <!-- SÂN -->
+                <div class="col-md-6 mb-3">
+                    <div class="info-label">Sân cầu lông</div>
+                    <div class="info-value">
+                        <i class="fas fa-table-tennis-paddle-ball me-1"></i>
+                        @Model.SanCauLong.TenSan
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
+                <!-- NGÀY ĐẶT -->
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Ngày đặt</div>
+                    <div class="info-value">
+                        @Model.NgayDat.ToString("dd/MM/yyyy")
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TienCoc)
-        </dt>
+                <!-- GIỜ BẮT ĐẦU -->
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Giờ bắt đầu</div>
+                    <div class="info-value">
+                        @Model.GioBatDau
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TienCoc)
-        </dd>
+                <!-- GIỜ KẾT THÚC -->
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Giờ kết thúc</div>
+                    <div class="info-value">
+                        @Model.GioKetThuc
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
+                <!-- SỐ GIỜ -->
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Số giờ thuê</div>
+                    <div class="info-value">
+                        @Model.SoGio giờ
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
-        </dd>
+                <!-- TIỀN CỌC -->
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Tiền cọc</div>
+                    <div class="info-value">
+                        @String.Format("{0:N0} đ", Model.TienCoc)
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhachHang.TenKhach)
-        </dt>
+                <!-- TỔNG TIỀN -->
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Tổng tiền</div>
+                    <div class="info-value text-danger fw-bold">
+                        @String.Format("{0:N0} đ", Model.TongTien)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.KhachHang.TenKhach)
-        </dd>
+                <!-- TRẠNG THÁI -->
+                <div class="col-md-6 mb-3">
+                    <div class="info-label">Trạng thái</div>
+                    <span class="badge badge-status
+                        @(Model.TrangThai == "Hoàn thành" ? "bg-success" : "bg-warning text-dark")">
+                        @Model.TrangThai
+                    </span>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SanCauLong.TenSan)
-        </dt>
+                <!-- GHI CHÚ -->
+                <div class="col-md-6 mb-3">
+                    <div class="info-label">Ghi chú</div>
+                    <div class="info-value">
+                        @(string.IsNullOrWhiteSpace(Model.GhiChu)
+                            ? "Không có ghi chú"
+                            : Model.GhiChu)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SanCauLong.TenSan)
-        </dd>
+            </div>
 
-    </dl>
+            <!-- BUTTON -->
+            <div class="text-end mt-3">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </a>
+                <a href="@Url.Action("Edit", new { id = Model.ID_DatSan })" class="btn btn-primary ms-2">
+                    <i class="fas fa-edit"></i> Chỉnh sửa
+                </a>
+            </div>
+
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_DatSan }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.ChiTietDonDichVus = new HashSet<ChiTietDonDichVu>();
         }
-        [Display(Name ="Mã dịch vụ")]
+        [Display(Name = "Mã dịch vụ")]
         public int ID_DichVu { get; set; }
         [Display(Name = "Tên dịch vụ")]
         public string TenDichVu { get; set; }
@@ -32,7 +32,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<int> ThoiGianThucHien { get; set; }
         [Display(Name = "Trạng thái")]
         public Nullable<bool> TrangThai { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDichVu> ChiTietDonDichVus { get; set; }
         public virtual LoaiDichVu LoaiDichVu { get; set; }

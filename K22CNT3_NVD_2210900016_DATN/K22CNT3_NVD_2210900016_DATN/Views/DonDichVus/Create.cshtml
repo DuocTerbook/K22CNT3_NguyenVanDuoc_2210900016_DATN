@@ -1,91 +1,124 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.DonDichVu
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Tạo đơn dịch vụ";
 }
 
-<h2>Create</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>DonDichVu</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ID_KhachHang, "ID_KhachHang", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ID_KhachHang", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_KhachHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #1f2937;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenKhach, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenKhach, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenKhach, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .main-card {
+        border-radius: 18px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .form-label {
+        font-weight: 600;
+        color: #374151;
+    }
+</style>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayNhan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayNhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayNhan, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="container-fluid py-4">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayTra, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayTra, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayTra, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <!-- HEADER -->
+    <div class="mb-4">
+        <h3 class="page-title">
+            ➕ Tạo đơn dịch vụ mới
+        </h3>
+        <small class="text-muted">Nhập đầy đủ thông tin để tạo đơn</small>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TongTien, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TongTien, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TongTien, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="card main-card">
+        <div class="card-body">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="row g-3">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                    <!-- KHÁCH HÀNG -->
+                    <div class="col-md-6">
+                        <label class="form-label">Khách hàng hệ thống</label>
+                        @Html.DropDownList(
+                            "ID_KhachHang",
+                            null,
+                            "-- Chọn khách hàng --",
+                            new { @class = "form-select" }
+                        )
+                        @Html.ValidationMessageFor(m => m.ID_KhachHang, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Tên khách hàng</label>
+                        @Html.TextBoxFor(m => m.TenKhach, new { @class = "form-control", placeholder = "Nhập tên khách" })
+                        @Html.ValidationMessageFor(m => m.TenKhach, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Số điện thoại</label>
+                        @Html.TextBoxFor(m => m.SDT, new { @class = "form-control", placeholder = "0xxx xxx xxx" })
+                        @Html.ValidationMessageFor(m => m.SDT, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- NGÀY -->
+                    <div class="col-md-6">
+                        <label class="form-label">Ngày nhận</label>
+                        @Html.TextBoxFor(m => m.NgayNhan, "{0:dd-MM-yyyy}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.NgayNhan, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Ngày trả</label>
+                        @Html.TextBoxFor(m => m.NgayTra, "{0:dd-MM-yyyy}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.NgayTra, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- TIỀN & TRẠNG THÁI -->
+                    <div class="col-md-6">
+                        <label class="form-label">Tổng tiền (VNĐ)</label>
+                        @Html.TextBoxFor(m => m.TongTien, new { @class = "form-control", type = "number", min = "0" })
+                        @Html.ValidationMessageFor(m => m.TongTien, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.TrangThai, "Trạng thái")
+                        @Html.DropDownListFor(
+                            m => m.TrangThai,
+                            (SelectList)ViewBag.TrangThai,
+                            "-- Chọn trạng thái --",
+                            new { @class = "form-select" }
+                        )
+                    </div>
+
+                    <!-- GHI CHÚ -->
+                    <div class="col-12">
+                        <label class="form-label">Ghi chú</label>
+                        @Html.TextAreaFor(m => m.GhiChu, 3, 0, new { @class = "form-control", placeholder = "Ghi chú thêm nếu có..." })
+                        @Html.ValidationMessageFor(m => m.GhiChu, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="mt-4 d-flex justify-content-end gap-2">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Quay lại
+                    </a>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save me-1"></i> Lưu đơn
+                    </button>
+                </div>
+            }
+
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

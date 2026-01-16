@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.PhieuNhaps = new HashSet<PhieuNhap>();
         }
-        [Display(Name ="Mã nhà cung cấp")]
+        [Display(Name = "Mã nhà cung cấp")]
         public int ID_NCC { get; set; }
         [Display(Name = "Tên nhà cung cấp")]
         public string TenNCC { get; set; }
@@ -30,7 +30,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string DienThoai { get; set; }
         [Display(Name = "Email")]
         public string Email { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhap> PhieuNhaps { get; set; }
     }

@@ -15,7 +15,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
 
     public partial class ChiTietPhieuNhap
     {
-        [Display(Name ="Mã chi tiết phiếu nhập")]
+        [Display(Name = "Mã chi tiết phiếu nhập")]
         public int ID_CTPhieuNhap { get; set; }
         [Display(Name = "Mã phiếu nhập")]
         public Nullable<int> ID_PhieuNhap { get; set; }
@@ -25,7 +25,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<int> SoLuong { get; set; }
         [Display(Name = "Đơn giá nhập")]
         public Nullable<decimal> DonGiaNhap { get; set; }
-    
+
         public virtual PhieuNhap PhieuNhap { get; set; }
         public virtual SanPham SanPham { get; set; }
     }

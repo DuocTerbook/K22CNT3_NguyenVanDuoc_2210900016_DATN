@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.ChiTietPhieuNhaps = new HashSet<ChiTietPhieuNhap>();
         }
-        [Display(Name ="Mã phiếu nhập")]
+        [Display(Name = "Mã phiếu nhập")]
         public int ID_PhieuNhap { get; set; }
         [Display(Name = "Ngày nhập")]
         public Nullable<System.DateTime> NgayNhap { get; set; }
@@ -28,7 +28,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<int> ID_NCC { get; set; }
         [Display(Name = "Tổng tiền")]
         public Nullable<decimal> TongTien { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }

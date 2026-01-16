@@ -15,17 +15,17 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
 
     public partial class ThanhToan
     {
-        [Display(Name ="Mã thanh toán")]
+        [Display(Name = "Mã thanh toán")]
         public int ID_ThanhToan { get; set; }
-        [Display(Name ="Mã đơn hàng")]
+        [Display(Name = "Mã đơn hàng")]
         public Nullable<int> ID_DonHang { get; set; }
-        [Display(Name ="Phương thức")]
+        [Display(Name = "Phương thức")]
         public string PhuongThuc { get; set; }
-        [Display(Name ="Trạng thái")]
+        [Display(Name = "Trạng thái")]
         public string TrangThai { get; set; }
         [Display(Name = "Ngày thanh toán")]
         public Nullable<System.DateTime> NgayThanhToan { get; set; }
-    
+
         public virtual DonHang DonHang { get; set; }
     }
 }

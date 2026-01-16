@@ -15,7 +15,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
 
     public partial class DatSan
     {
-        [Display(Name ="Mã đặt sân")]
+        [Display(Name = "Mã đặt sân")]
         public int ID_DatSan { get; set; }
         [Display(Name = "Mã khách hàng")]
         public Nullable<int> ID_KhachHang { get; set; }
@@ -37,7 +37,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<decimal> TienCoc { get; set; }
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
-    
+
         public virtual KhachHang KhachHang { get; set; }
         public virtual SanCauLong SanCauLong { get; set; }
     }

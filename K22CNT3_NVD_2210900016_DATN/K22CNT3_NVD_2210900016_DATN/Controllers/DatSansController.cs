@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using K22CNT3_NVD_2210900016_DATN.Models;
+using System.Data.Entity;
 
 namespace K22CNT3_NVD_2210900016_DATN.Controllers
 {
@@ -9,165 +10,225 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
     {
         private QuanLyVotEntities db = new QuanLyVotEntities();
 
-        // GET: DatSan
+        /* =========================
+           INDEX
+        ========================= */
         public ActionResult Index()
         {
-            var datSans = db.DatSans.Include("KhachHang").Include("SanCauLong").ToList();
+            var datSans = db.DatSans
+                .Include(d => d.KhachHang)
+                .Include(d => d.SanCauLong)
+                .OrderByDescending(d => d.NgayDat)
+                .ToList();
+
             return View(datSans);
         }
 
-        // GET: DatSan/Details/5
+        /* =========================
+           DETAILS
+        ========================= */
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            DatSan datSan = db.DatSans.Include("KhachHang").Include("SanCauLong").FirstOrDefault(d => d.ID_DatSan == id);
+
+            var datSan = db.DatSans
+                .Include(d => d.KhachHang)
+                .Include(d => d.SanCauLong)
+                .FirstOrDefault(d => d.ID_DatSan == id);
+
             if (datSan == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(datSan);
         }
 
-        // GET: DatSan/Create
+        /* =========================
+           CREATE - GET
+        ========================= */
         public ActionResult Create()
         {
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach");
-            ViewBag.ID_San = new SelectList(db.SanCauLongs.Where(s => s.TrangThai == "Trống"), "ID_San", "TenSan");
+            LoadDropdowns();
             return View();
         }
 
-        // POST: DatSan/Create
+        /* =========================
+           CREATE - POST
+        ========================= */
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_KhachHang,ID_San,NgayDat,GioBatDau,GioKetThuc,TienCoc,GhiChu")] DatSan datSan)
+        public ActionResult Create(DatSan datSan)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                goto LOAD;
+
+            if (datSan.GioKetThuc <= datSan.GioBatDau)
             {
-                // Tính số giờ và tổng tiền
-                var san = db.SanCauLongs.Find(datSan.ID_San);
-                if (san != null)
-                {
-                    TimeSpan gioBatDau = datSan.GioBatDau;
-                    TimeSpan gioKetThuc = datSan.GioKetThuc;
-                    datSan.SoGio = (int)(gioKetThuc - gioBatDau).TotalHours;
-                    datSan.TongTien = datSan.SoGio * san.GiaThueTheoGio;
-                }
-
-                // Cập nhật trạng thái sân
-                san.TrangThai = "Đang thuê";
-                db.Entry(san).State = System.Data.Entity.EntityState.Modified;
-
-                db.DatSans.Add(datSan);
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Đặt sân thành công!";
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Giờ kết thúc phải lớn hơn giờ bắt đầu");
+                goto LOAD;
             }
 
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach", datSan.ID_KhachHang);
-            ViewBag.ID_San = new SelectList(db.SanCauLongs, "ID_San", "TenSan", datSan.ID_San);
+            var san = db.SanCauLongs.Find(datSan.ID_San);
+            if (san == null)
+            {
+                ModelState.AddModelError("", "Sân không tồn tại");
+                goto LOAD;
+            }
+
+            // Tính số giờ
+            datSan.SoGio = (int)(datSan.GioKetThuc - datSan.GioBatDau).TotalHours;
+            if (datSan.SoGio <= 0)
+            {
+                ModelState.AddModelError("", "Số giờ không hợp lệ");
+                goto LOAD;
+            }
+
+            // Tính tiền
+            datSan.TongTien = datSan.SoGio * san.GiaThueTheoGio;
+            datSan.TrangThai = "Đang thuê";
+
+            // Cập nhật trạng thái sân
+            san.TrangThai = "Đang thuê";
+            db.Entry(san).State = EntityState.Modified;
+
+            db.DatSans.Add(datSan);
+            db.SaveChanges();
+
+            TempData["SuccessMessage"] = "Đặt sân thành công!";
+            return RedirectToAction("Index");
+
+LOAD:
+            LoadDropdowns(datSan.ID_KhachHang, datSan.ID_San);
             return View(datSan);
         }
 
-        // GET: DatSan/Edit/5
+        /* =========================
+           EDIT - GET
+        ========================= */
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            DatSan datSan = db.DatSans.Find(id);
+
+            var datSan = db.DatSans.Find(id);
             if (datSan == null)
-            {
                 return HttpNotFound();
-            }
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach", datSan.ID_KhachHang);
-            ViewBag.ID_San = new SelectList(db.SanCauLongs, "ID_San", "TenSan", datSan.ID_San);
+
+            LoadDropdowns(datSan.ID_KhachHang, datSan.ID_San);
             return View(datSan);
         }
 
-        // POST: DatSan/Edit/5
+        /* =========================
+           EDIT - POST
+        ========================= */
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_DatSan,ID_KhachHang,ID_San,NgayDat,GioBatDau,GioKetThuc,SoGio,TongTien,TrangThai,TienCoc,GhiChu")] DatSan datSan)
+        public ActionResult Edit(DatSan datSan)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Entry(datSan).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Cập nhật đặt sân thành công!";
-                return RedirectToAction("Index");
+                LoadDropdowns(datSan.ID_KhachHang, datSan.ID_San);
+                return View(datSan);
             }
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach", datSan.ID_KhachHang);
-            ViewBag.ID_San = new SelectList(db.SanCauLongs, "ID_San", "TenSan", datSan.ID_San);
-            return View(datSan);
+
+            db.Entry(datSan).State = EntityState.Modified;
+            db.SaveChanges();
+
+            TempData["SuccessMessage"] = "Cập nhật đặt sân thành công!";
+            return RedirectToAction("Index");
         }
 
-        // GET: DatSan/Delete/5
+        /* =========================
+           DELETE - GET
+        ========================= */
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            DatSan datSan = db.DatSans.Include("KhachHang").Include("SanCauLong").FirstOrDefault(d => d.ID_DatSan == id);
+
+            var datSan = db.DatSans
+                .Include(d => d.KhachHang)
+                .Include(d => d.SanCauLong)
+                .FirstOrDefault(d => d.ID_DatSan == id);
+
             if (datSan == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(datSan);
         }
 
-        // POST: DatSan/Delete/5
+        /* =========================
+           DELETE - POST
+        ========================= */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DatSan datSan = db.DatSans.Find(id);
+            var datSan = db.DatSans.Find(id);
+            if (datSan == null)
+                return HttpNotFound();
 
-            // Cập nhật trạng thái sân về trống
             var san = db.SanCauLongs.Find(datSan.ID_San);
-            if (san != null && san.TrangThai == "Đang thuê")
+            if (san != null)
             {
                 san.TrangThai = "Trống";
-                db.Entry(san).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(san).State = EntityState.Modified;
             }
 
             db.DatSans.Remove(datSan);
             db.SaveChanges();
+
             TempData["SuccessMessage"] = "Xóa đặt sân thành công!";
             return RedirectToAction("Index");
         }
 
+        /* =========================
+           HOÀN THÀNH
+        ========================= */
         public ActionResult HoanThanh(int id)
         {
             var datSan = db.DatSans.Find(id);
-            if (datSan != null)
+            if (datSan == null)
+                return HttpNotFound();
+
+            datSan.TrangThai = "Hoàn thành";
+
+            var san = db.SanCauLongs.Find(datSan.ID_San);
+            if (san != null)
             {
-                datSan.TrangThai = "Hoàn thành";
-
-                // Cập nhật trạng thái sân về trống
-                var san = db.SanCauLongs.Find(datSan.ID_San);
-                if (san != null)
-                {
-                    san.TrangThai = "Trống";
-                    db.Entry(san).State = System.Data.Entity.EntityState.Modified;
-                }
-
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Cập nhật trạng thái đặt sân thành công!";
+                san.TrangThai = "Trống";
+                db.Entry(san).State = EntityState.Modified;
             }
+
+            db.SaveChanges();
+            TempData["SuccessMessage"] = "Hoàn thành đặt sân!";
             return RedirectToAction("Index");
+        }
+
+        /* =========================
+           LOAD DROPDOWNS
+        ========================= */
+        private void LoadDropdowns(int? khachHangId = null, int? sanId = null)
+        {
+            ViewBag.ID_KhachHang = new SelectList(
+                db.KhachHangs,
+                "ID_KhachHang",
+                "TenKhach",
+                khachHangId
+            );
+
+            ViewBag.ID_San = new SelectList(
+                db.SanCauLongs.Where(s => s.TrangThai != "Đang thuê"),
+                "ID_San",
+                "TenSan",
+                sanId
+            );
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
                 db.Dispose();
-            }
             base.Dispose(disposing);
         }
     }

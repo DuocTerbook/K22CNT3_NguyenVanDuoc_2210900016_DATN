@@ -1,104 +1,137 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.DatSan
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa đặt sân";
 }
 
-<h2>Delete</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>DatSan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayDat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayDat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GioBatDau)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GioBatDau)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GioKetThuc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GioKetThuc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SoGio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoGio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TienCoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TienCoc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KhachHang.TenKhach)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KhachHang.TenKhach)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SanCauLong.TenSan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SanCauLong.TenSan)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<style>
+    .card-danger {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+        border-left: 6px solid #dc3545;
     }
+
+    .page-title {
+        font-weight: 700;
+        color: #dc3545;
+    }
+
+    .info-label {
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+    .info-value {
+        font-size: 1.05rem;
+    }
+</style>
+
+<div class="container py-4">
+
+    <!-- HEADER -->
+    <div class="mb-3">
+        <h3 class="page-title">
+            <i class="fas fa-triangle-exclamation me-1"></i> Xác nhận xóa đặt sân
+        </h3>
+        <small class="text-muted">
+            Hành động này không thể hoàn tác. Vui lòng kiểm tra kỹ thông tin trước khi xóa.
+        </small>
+    </div>
+
+    <div class="card card-danger">
+        <div class="card-body">
+
+            <div class="alert alert-danger">
+                <i class="fas fa-trash-can"></i>
+                Bạn có chắc chắn muốn <strong>xóa phiếu đặt sân</strong> này không?
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <div class="info-label">Khách hàng</div>
+                    <div class="info-value">
+                        @Model.KhachHang.TenKhach
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="info-label">Sân cầu lông</div>
+                    <div class="info-value">
+                        @Model.SanCauLong.TenSan
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Ngày đặt</div>
+                    <div class="info-value">
+                        @Model.NgayDat.ToString("dd/MM/yyyy")
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Giờ bắt đầu</div>
+                    <div class="info-value">
+                        @Model.GioBatDau
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Giờ kết thúc</div>
+                    <div class="info-value">
+                        @Model.GioKetThuc
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Số giờ</div>
+                    <div class="info-value">
+                        @Model.SoGio giờ
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Tiền cọc</div>
+                    <div class="info-value">
+                        @String.Format("{0:N0} đ", Model.TienCoc)
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="info-label">Tổng tiền</div>
+                    <div class="info-value text-danger fw-bold">
+                        @String.Format("{0:N0} đ", Model.TongTien)
+                    </div>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <div class="info-label">Ghi chú</div>
+                    <div class="info-value">
+                        @(string.IsNullOrWhiteSpace(Model.GhiChu)
+                            ? "Không có ghi chú"
+                            : Model.GhiChu)
+                    </div>
+                </div>
+
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="text-end mt-3">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Hủy
+                    </a>
+
+                    <button type="submit" class="btn btn-danger ms-2">
+                        <i class="fas fa-trash"></i> Xác nhận xóa
+                    </button>
+                </div>
+            }
+
+        </div>
+    </div>
 </div>

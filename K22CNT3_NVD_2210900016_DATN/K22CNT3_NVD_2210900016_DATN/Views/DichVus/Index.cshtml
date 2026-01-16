@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Danh sách dịch vụ";
-    int stt = 1;
 }
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
@@ -62,7 +61,7 @@
                     @if (!Model.Any())
                     {
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-4">
+                            <td colspan="6" class="text-center text-muted py-4">
                                 Không có dữ liệu dịch vụ
                             </td>
                         </tr>
@@ -72,13 +71,10 @@
                         foreach (var item in Model)
                         {
                             <tr>
-                                <td>@stt</td>
-
                                 <td class="fw-semibold">
                                     @item.TenDichVu
                                 </td>
 
-                                <!-- FIX LỖI LOẠI DỊCH VỤ -->
                                 <td>
                                     @if (item.LoaiDichVu != null)
                                     {
@@ -131,8 +127,6 @@
                                     </a>
                                 </td>
                             </tr>
-
-                            stt++;
                         }
                     }
                 </tbody>

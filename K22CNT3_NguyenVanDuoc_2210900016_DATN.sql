@@ -203,14 +203,15 @@ CREATE TABLE ChiTietDonDichVu (
 /* ===========================
    16. SÂN CẦU LÔNG
    ============================ */
-CREATE TABLE SanCauLong (
-    ID_San INT IDENTITY PRIMARY KEY,
+CREATE TABLE SanCauLong ( 
+	ID_San INT IDENTITY PRIMARY KEY,
     TenSan NVARCHAR(100) NOT NULL, -- Sân 1, Sân VIP, Sân thi đấu
     LoaiSan NVARCHAR(50), -- Tiêu chuẩn, VIP
     GiaThueTheoGio DECIMAL(15,2) NOT NULL,
     TrangThai NVARCHAR(50) DEFAULT 'Trống', -- Trống, Đang thuê, Bảo trì
     MoTa NVARCHAR(500)
 )
+
 
 /* ===========================
    17. ĐẶT SÂN

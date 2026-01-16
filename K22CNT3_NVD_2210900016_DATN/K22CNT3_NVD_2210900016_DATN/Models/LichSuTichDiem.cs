@@ -15,7 +15,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
 
     public partial class LichSuTichDiem
     {
-        [Display(Name ="Mã lịch sử tích điểm")]
+        [Display(Name = "Mã lịch sử tích điểm")]
         public int ID_LichSu { get; set; }
         [Display(Name = "Mã hội viên")]
         public int ID_HoiVien { get; set; }
@@ -31,7 +31,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string LyDo { get; set; }
         [Display(Name = "Ngày tích điểm")]
         public Nullable<System.DateTime> NgayTichDiem { get; set; }
-    
+
         public virtual DonDichVu DonDichVu { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual HoiVien HoiVien { get; set; }

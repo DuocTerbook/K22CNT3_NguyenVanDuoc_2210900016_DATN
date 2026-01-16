@@ -15,7 +15,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
 
     public partial class QuanTri
     {
-        [Display(Name ="Mã quản trị")]
+        [Display(Name = "Mã quản trị")]
         public int ID_QT { get; set; }
         [Display(Name = "Tài khoản")]
         public string TaiKhoan { get; set; }

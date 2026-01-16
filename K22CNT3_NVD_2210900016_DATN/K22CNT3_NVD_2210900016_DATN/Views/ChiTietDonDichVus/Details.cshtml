@@ -1,74 +1,126 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonDichVu
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết dịch vụ";
 }
 
-<h2>Details</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<div>
-    <h4>ChiTietDonDichVu</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </dt>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #1f2937;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.SoLuong)
-        </dd>
+    .detail-card {
+        border-radius: 18px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </dt>
+    .detail-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.DonGia)
-        </dd>
+    .detail-label {
+        font-weight: 600;
+        color: #374151;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ThanhTien)
-        </dt>
+    .detail-value {
+        font-size: 15px;
+        color: #111827;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.ThanhTien)
-        </dd>
+    .money {
+        font-weight: 700;
+        color: #dc2626;
+    }
+</style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ThongSoKyThuat)
-        </dt>
+<div class="container py-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.ThongSoKyThuat)
-        </dd>
+    <!-- HEADER -->
+    <div class="mb-3">
+        <h3 class="page-title">
+            📄 Chi tiết đơn dịch vụ
+        </h3>
+        <small class="text-muted">Thông tin chi tiết dịch vụ trong đơn</small>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DichVu.TenDichVu)
-        </dt>
+    <div class="card detail-card">
+        <div class="card-body px-4 py-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.DichVu.TenDichVu)
-        </dd>
+            <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DonDichVu.TenKhach)
-        </dt>
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Khách hàng</div>
+                    <div class="detail-value">
+                        @Model.DonDichVu.TenKhach
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DonDichVu.TenKhach)
-        </dd>
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Dịch vụ</div>
+                    <div class="detail-value">
+                        @Model.DichVu.TenDichVu
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SanPham.TenSP)
-        </dt>
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Sản phẩm</div>
+                    <div class="detail-value">
+                        @Model.SanPham.TenSP
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SanPham.TenSP)
-        </dd>
+                <div class="col-md-3 detail-item">
+                    <div class="detail-label">Số lượng</div>
+                    <div class="detail-value">
+                        @Model.SoLuong
+                    </div>
+                </div>
 
-    </dl>
+                <div class="col-md-3 detail-item">
+                    <div class="detail-label">Đơn giá</div>
+                    <div class="detail-value money">
+                        @String.Format("{0:N0} ₫", Model.DonGia)
+                    </div>
+                </div>
+
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Thành tiền</div>
+                    <div class="detail-value money">
+                        @String.Format("{0:N0} ₫", Model.ThanhTien)
+                    </div>
+                </div>
+
+                <div class="col-md-12 detail-item">
+                    <div class="detail-label">Thông số kỹ thuật</div>
+                    <div class="detail-value">
+                        @(string.IsNullOrEmpty(Model.ThongSoKyThuat)
+                            ? "Không có"
+                            : Model.ThongSoKyThuat)
+                    </div>
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between">
+                <a href="@Url.Action("Index", new { donDichVuId = Model.ID_DonDV })"
+                   class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-1"></i> Quay lại
+                </a>
+
+                <a href="@Url.Action("Edit", new { id = Model.ID_CTDonDV })"
+                   class="btn btn-warning">
+                    <i class="fas fa-edit me-1"></i> Chỉnh sửa
+                </a>
+            </div>
+
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_CTDonDV }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

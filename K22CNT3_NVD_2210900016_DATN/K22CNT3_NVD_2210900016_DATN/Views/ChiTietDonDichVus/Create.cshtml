@@ -1,75 +1,82 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonDichVu
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Thêm chi tiết dịch vụ";
 }
 
-<h2>Create</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ChiTietDonDichVu</h4>
-        <hr />
+<div class="container py-4">
+    <h3 class="fw-bold text-primary mb-3">
+        <i class="fas fa-plus-circle"></i> Thêm chi tiết dịch vụ
+    </h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ID_DonDV, "ID_DonDV", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ID_DonDV", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_DonDV, "", new { @class = "text-danger" })
+
+        <!-- GIỮ ID ĐƠN -->
+        @Html.HiddenFor(m => m.ID_DonDV)
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.ID_DichVu)
+                @Html.DropDownList("ID_DichVu", null, "-- Chọn dịch vụ --", new { @class = "form-select" })
             </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.ID_SP)
+                @Html.DropDownList("ID_SP", null, "-- Chọn sản phẩm --", new { @class = "form-select" })
+            </div>
+
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.SoLuong)
+                @Html.TextBoxFor(m => m.SoLuong, new { @class = "form-control", type = "number", min = "1", id = "SoLuong" })
+            </div>
+
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.DonGia)
+                @Html.TextBoxFor(m => m.DonGia, new { @class = "form-control", type = "number", min = "0", id = "DonGia" })
+            </div>
+
+            <div class="col-md-4">
+                <label class="fw-bold">Thành tiền</label>
+                <input type="text" id="ThanhTienView" class="form-control fw-bold text-success" readonly />
+            </div>
+
+            <div class="col-md-12">
+                @Html.LabelFor(m => m.ThongSoKyThuat)
+                @Html.TextAreaFor(m => m.ThongSoKyThuat, new { @class = "form-control", rows = 3 })
+            </div>
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ID_DichVu, "ID_DichVu", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ID_DichVu", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_DichVu, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ID_SP, "ID_SP", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ID_SP", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_SP, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="d-flex justify-content-between">
+            <a href="@Url.Action("Index", new { donDichVuId = Model.ID_DonDV })"
+               class="btn btn-secondary">
+                Quay lại
+            </a>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
-            </div>
+            <button type="submit" class="btn btn-primary">
+                Lưu
+            </button>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonGia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ThongSoKyThuat, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ThongSoKyThuat, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ThongSoKyThuat, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
 </div>
+
+<script>
+    function tinhTien() {
+        let sl = parseFloat(document.getElementById("SoLuong").value) || 0;
+        let dg = parseFloat(document.getElementById("DonGia").value) || 0;
+        let tt = sl * dg;
+        document.getElementById("ThanhTienView").value =
+            tt.toLocaleString("vi-VN") + " ₫";
+    }
+
+    document.getElementById("SoLuong").addEventListener("input", tinhTien);
+    document.getElementById("DonGia").addEventListener("input", tinhTien);
+</script>

@@ -1,67 +1,100 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.SanCauLong
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Thêm sân cầu lông";
 }
 
-<h2>Create</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>SanCauLong</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenSan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenSan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenSan, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #0d6efd;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LoaiSan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LoaiSan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LoaiSan, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .card-form {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GiaThueTheoGio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GiaThueTheoGio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GiaThueTheoGio, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    label {
+        font-weight: 600;
+    }
+</style>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="container py-4">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <!-- HEADER -->
+    <div class="mb-3">
+        <h3 class="page-title">
+            <i class="fas fa-plus-circle me-1"></i> Thêm sân cầu lông mới
+        </h3>
+        <small class="text-muted">Nhập đầy đủ thông tin sân</small>
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    <!-- FORM CARD -->
+    <div class="card card-form">
+        <div class="card-body px-4 py-4">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                <!-- TÊN SÂN -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.TenSan)
+                    @Html.TextBoxFor(model => model.TenSan, new { @class = "form-control", placeholder = "VD: Sân cầu lông số 1" })
+                    @Html.ValidationMessageFor(model => model.TenSan, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- LOẠI SÂN -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.LoaiSan)
+                    @Html.TextBoxFor(model => model.LoaiSan, new { @class = "form-control", placeholder = "VD: Trong nhà / Ngoài trời" })
+                    @Html.ValidationMessageFor(model => model.LoaiSan, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- GIÁ THUÊ -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.GiaThueTheoGio)
+                    @Html.TextBoxFor(model => model.GiaThueTheoGio, new { @class = "form-control", placeholder = "VD: 100000" })
+                    @Html.ValidationMessageFor(model => model.GiaThueTheoGio, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- TRẠNG THÁI -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.TrangThai)
+                    @Html.DropDownListFor(model => model.TrangThai,
+                        new SelectList(new[]
+                        {
+                            new { Value = "HoatDong", Text = "Hoạt động" },
+                            new { Value = "NgungHoatDong", Text = "Ngưng hoạt động" }
+                        }, "Value", "Text"),
+                        "-- Chọn trạng thái --",
+                        new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- MÔ TẢ -->
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.MoTa)
+                    @Html.TextAreaFor(model => model.MoTa, 4, 50, new { @class = "form-control", placeholder = "Mô tả thêm về sân (nếu có)" })
+                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- BUTTON -->
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </a>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Lưu sân
+                    </button>
+                </div>
+            }
+
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

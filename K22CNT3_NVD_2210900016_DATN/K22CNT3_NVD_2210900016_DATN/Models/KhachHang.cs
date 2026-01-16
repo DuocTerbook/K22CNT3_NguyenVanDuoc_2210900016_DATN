@@ -25,7 +25,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
             this.HoiViens = new HashSet<HoiVien>();
         }
 
-        [Display(Name ="Mã khách hàng")]
+        [Display(Name = "Mã khách hàng")]
         public int ID_KhachHang { get; set; }
         [Display(Name = "Tên khách hàng")]
         public string TenKhach { get; set; }
@@ -35,7 +35,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string Email { get; set; }
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

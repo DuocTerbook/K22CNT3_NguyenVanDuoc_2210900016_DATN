@@ -108,19 +108,16 @@
                             <th class="text-center" width="180">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @{ int stt = 1; }
 
+                    <tbody>
                         @foreach (var item in Model)
                         {
                             <tr data-search="@item.TenLoaiDV.ToLower() @(item.MoTa?.ToLower() ?? "")">
-                                <td class="text-center">@stt</td>
 
                                 <td>
-                                    <strong>@item.TenLoaiDV</strong><br />
+                                    <strong>@item.TenLoaiDV</strong>
                                 </td>
 
-                                <!-- MÔ TẢ – ĐÃ FIX LỖI RAZOR -->
                                 <td>
                                     @if (string.IsNullOrEmpty(item.MoTa))
                                     {
@@ -138,7 +135,6 @@
                                     </span>
                                 </td>
 
-                                <!-- THAO TÁC -->
                                 <td class="text-center">
                                     <a class="btn btn-info btn-sm btn-action"
                                        title="Xem chi tiết"
@@ -159,8 +155,6 @@
                                     </a>
                                 </td>
                             </tr>
-
-                            stt++;
                         }
                     </tbody>
                 </table>
@@ -182,7 +176,8 @@
         $('#searchInput').on('keyup', function () {
             let value = $(this).val().toLowerCase();
             $('#dataTable tbody tr').filter(function () {
-                $(this).toggle($(this).data('search').indexOf(value) > -1);
+                let search = $(this).data('search') || '';
+                $(this).toggle(search.indexOf(value) > -1);
             });
         });
     </script>

@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.GioHangChiTiets = new HashSet<GioHangChiTiet>();
         }
-        [Display(Name ="Mã giỏ hàng")]    
+        [Display(Name = "Mã giỏ hàng")]
         public int ID_GioHang { get; set; }
         [Display(Name = "Mã khách hàng")]
         public Nullable<int> ID_KhachHang { get; set; }

@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.DatSans = new HashSet<DatSan>();
         }
-        [Display(Name ="Mã sân cầu lông")]
+        [Display(Name = "Mã sân cầu lông")]
         public int ID_San { get; set; }
         [Display(Name = "Tên sân cầu lông")]
         public string TenSan { get; set; }
@@ -32,7 +32,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string TrangThai { get; set; }
         [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatSan> DatSans { get; set; }
     }

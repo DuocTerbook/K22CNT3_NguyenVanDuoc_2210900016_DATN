@@ -1,82 +1,148 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.DonDichVu
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết đơn dịch vụ";
 }
 
-<h2>Details</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<div>
-    <h4>DonDichVu</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenKhach)
-        </dt>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #1f2937;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TenKhach)
-        </dd>
+    .main-card {
+        border-radius: 18px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SDT)
-        </dt>
+    .info-row {
+        border-bottom: 1px dashed #e5e7eb;
+        padding: 10px 0;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.SDT)
-        </dd>
+    .info-label {
+        font-weight: 600;
+        color: #374151;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayNhan)
-        </dt>
+    .badge-status {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+    }
+</style>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayNhan)
-        </dd>
+<div class="container-fluid py-4">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTra)
-        </dt>
+    <div class="mb-4">
+        <h3 class="page-title">📄 Chi tiết đơn dịch vụ</h3>
+        <small class="text-muted">Thông tin đầy đủ của đơn dịch vụ</small>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayTra)
-        </dd>
+    <div class="card main-card">
+        <div class="card-body">
+            <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
+                <!-- CỘT TRÁI -->
+                <div class="col-md-6">
 
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
+                    <div class="info-row">
+                        <div class="info-label">Tên khách hàng</div>
+                        <div>@Model.TenKhach</div>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
+                    <div class="info-row">
+                        <div class="info-label">Số điện thoại</div>
+                        <div>@Model.SDT</div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
+                    <div class="info-row">
+                        <div class="info-label">Khách hàng hệ thống</div>
+                        <div>
+                            @if (Model.KhachHang != null)
+                            {
+                                @Model.KhachHang.TenKhach
+                            }
+                            else
+                            {
+                                <span class="text-muted fst-italic">Không có</span>
+                            }
+                        </div>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
+                    <div class="info-row">
+                        <div class="info-label">Ngày nhận</div>
+                        <div>
+                            @(Model.NgayNhan.HasValue
+                                ? Model.NgayNhan.Value.ToString("dd/MM/yyyy")
+                                : "Chưa có")
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
-        </dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhachHang.TenKhach)
-        </dt>
+                <!-- CỘT PHẢI -->
+                <div class="col-md-6">
 
-        <dd>
-            @Html.DisplayFor(model => model.KhachHang.TenKhach)
-        </dd>
+                    <div class="info-row">
+                        <div class="info-label">Ngày trả</div>
+                        <div>
+                            @(Model.NgayTra.HasValue
+                                ? Model.NgayTra.Value.ToString("dd/MM/yyyy")
+                                : "Chưa trả")
+                        </div>
+                    </div>
 
-    </dl>
+                    <div class="info-row">
+                        <div class="info-label">Tổng tiền</div>
+                        <div class="fw-bold text-primary">
+                            @String.Format("{0:N0} VNĐ", Model.TongTien)
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Trạng thái</div>
+                        <div>
+                            @if (Model.TrangThai == "HoanThanh")
+                            {
+                                <span class="badge bg-success badge-status">Hoàn thành</span>
+                            }
+                            else if (Model.TrangThai == "DangXuLy")
+                            {
+                                <span class="badge bg-warning text-dark badge-status">Đang xử lý</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary badge-status">Chưa xử lý</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Ghi chú</div>
+                        <div>
+                            @(string.IsNullOrEmpty(Model.GhiChu)
+                                ? "Không có ghi chú"
+                                : Model.GhiChu)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-end gap-2">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-1"></i> Quay lại
+                </a>
+
+                <a href="@Url.Action("Edit", new { id = Model.ID_DonDV })"
+                   class="btn btn-primary">
+                    <i class="fas fa-edit me-1"></i> Chỉnh sửa
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_DonDV }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

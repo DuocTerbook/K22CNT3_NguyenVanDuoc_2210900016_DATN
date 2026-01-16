@@ -1,87 +1,132 @@
 ﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.DatSan>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách đặt sân";
 }
 
-<h2>Index</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayDat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioBatDau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioKetThuc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoGio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TienCoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KhachHang.TenKhach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SanCauLong.TenSan)
-        </th>
-        <th></th>
-    </tr>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #0d6efd;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayDat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioBatDau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioKetThuc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoGio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TongTien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TienCoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GhiChu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhachHang.TenKhach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SanCauLong.TenSan)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_DatSan }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_DatSan }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_DatSan })
-        </td>
-    </tr>
-}
+    .card-custom {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
 
-</table>
+    .badge {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    table th {
+        white-space: nowrap;
+    }
+</style>
+
+<div class="container py-4">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h3 class="page-title">
+                <i class="fas fa-calendar-check me-1"></i> Danh sách đặt sân
+            </h3>
+            <small class="text-muted">Quản lý thông tin đặt sân cầu lông</small>
+        </div>
+
+        <a href="@Url.Action("Create")" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Đặt sân mới
+        </a>
+    </div>
+
+    <!-- SUCCESS MESSAGE -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <!-- TABLE -->
+    <div class="card card-custom">
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Ngày đặt</th>
+                        <th>Giờ bắt đầu</th>
+                        <th>Giờ kết thúc</th>
+                        <th>Số giờ</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Tiền cọc</th>
+                        <th>Khách hàng</th>
+                        <th>Sân</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NgayDat.ToString("dd/MM/yyyy")</td>
+                            <td>@item.GioBatDau</td>
+                            <td>@item.GioKetThuc</td>
+                            <td>@item.SoGio</td>
+                            <td class="fw-bold text-success">
+                                @String.Format("{0:N0} đ", item.TongTien)
+                            </td>
+                            <td>
+                                @if (item.TrangThai == "Hoàn thành")
+                                {
+                                    <span class="badge bg-success">Hoàn thành</span>
+                                }
+                                else if (item.TrangThai == "Đang thuê")
+                                {
+                                    <span class="badge bg-warning text-dark">Đang thuê</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">@item.TrangThai</span>
+                                }
+                            </td>
+                            <td>@String.Format("{0:N0} đ", item.TienCoc)</td>
+                            <td>@item.KhachHang.TenKhach</td>
+                            <td>@item.SanCauLong.TenSan</td>
+
+                            <td class="text-center">
+                                <a href="@Url.Action("Details", new { id = item.ID_DatSan })" class="btn btn-sm btn-info text-white">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+
+                                <a href="@Url.Action("Edit", new { id = item.ID_DatSan })" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <a href="@Url.Action("Delete", new { id = item.ID_DatSan })" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+
+                                @if (item.TrangThai != "Hoàn thành")
+                                {
+                                    <a href="@Url.Action("HoanThanh", new { id = item.ID_DatSan })"
+                                       class="btn btn-sm btn-success"
+                                       onclick="return confirm('Xác nhận hoàn thành đặt sân?');">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

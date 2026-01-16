@@ -1,80 +1,134 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonDichVu
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa chi tiết dịch vụ";
 }
 
-<h2>Delete</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ChiTietDonDichVu</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DonGia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThanhTien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThanhTien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThongSoKyThuat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThongSoKyThuat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DichVu.TenDichVu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DichVu.TenDichVu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DonDichVu.TenKhach)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DonDichVu.TenKhach)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SanPham.TenSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SanPham.TenSP)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #991b1b;
     }
+
+    .delete-card {
+        border-radius: 18px;
+        border: none;
+        box-shadow: 0 12px 30px rgba(0,0,0,.15);
+        background: #fff;
+    }
+
+    .alert-box {
+        background: #fee2e2;
+        border-left: 6px solid #dc2626;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .detail-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .detail-label {
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .money {
+        font-weight: 700;
+        color: #dc2626;
+    }
+</style>
+
+<div class="container py-4">
+
+    <!-- HEADER -->
+    <div class="mb-3">
+        <h3 class="page-title">
+            <i class="fas fa-trash me-1"></i> Xóa chi tiết dịch vụ
+        </h3>
+        <small class="text-muted">
+            Thao tác này <b>không thể hoàn tác</b>
+        </small>
+    </div>
+
+    <div class="card delete-card">
+        <div class="card-body px-4 py-4">
+
+            <!-- CẢNH BÁO -->
+            <div class="alert-box">
+                <i class="fas fa-triangle-exclamation me-1"></i>
+                Bạn có chắc chắn muốn xóa chi tiết dịch vụ này không?
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Khách hàng</div>
+                    <div>@Model.DonDichVu.TenKhach</div>
+                </div>
+
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Dịch vụ</div>
+                    <div>@Model.DichVu.TenDichVu</div>
+                </div>
+
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Sản phẩm</div>
+                    <div>@Model.SanPham.TenSP</div>
+                </div>
+
+                <div class="col-md-3 detail-item">
+                    <div class="detail-label">Số lượng</div>
+                    <div>@Model.SoLuong</div>
+                </div>
+
+                <div class="col-md-3 detail-item">
+                    <div class="detail-label">Đơn giá</div>
+                    <div class="money">
+                        @String.Format("{0:N0} ₫", Model.DonGia)
+                    </div>
+                </div>
+
+                <div class="col-md-6 detail-item">
+                    <div class="detail-label">Thành tiền</div>
+                    <div class="money">
+                        @String.Format("{0:N0} ₫", Model.ThanhTien)
+                    </div>
+                </div>
+
+                <div class="col-md-12 detail-item">
+                    <div class="detail-label">Thông số kỹ thuật</div>
+                    <div>
+                        @(string.IsNullOrEmpty(Model.ThongSoKyThuat)
+                            ? "Không có"
+                            : Model.ThongSoKyThuat)
+                    </div>
+                </div>
+
+            </div>
+
+            <hr />
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index", new { donDichVuId = Model.ID_DonDV })"
+                       class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Hủy
+                    </a>
+
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-1"></i> Xác nhận xóa
+                    </button>
+                </div>
+            }
+
+        </div>
+    </div>
 </div>

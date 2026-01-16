@@ -1,58 +1,111 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.SanCauLong
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết sân cầu lông";
 }
 
-<h2>Details</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
-<div>
-    <h4>SanCauLong</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSan)
-        </dt>
+<style>
+    .page-title {
+        font-weight: 700;
+        color: #1e40af;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSan)
-        </dd>
+    .card-custom {
+        border-radius: 16px;
+        box-shadow: 0 10px 28px rgba(0,0,0,.15);
+        border: none;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiSan)
-        </dt>
+    .info-label {
+        font-weight: 600;
+        color: #374151;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiSan)
-        </dd>
+    .badge-status {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        border-radius: 20px;
+    }
+</style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaThueTheoGio)
-        </dt>
+<div class="container py-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.GiaThueTheoGio)
-        </dd>
+    <!-- HEADER -->
+    <div class="mb-3">
+        <h3 class="page-title">
+            <i class="fas fa-circle-info me-1"></i> Chi tiết sân cầu lông
+        </h3>
+        <small class="text-muted">
+            Thông tin chi tiết của sân cầu lông
+        </small>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
+    <!-- CARD -->
+    <div class="card card-custom">
+        <div class="card-body px-4 py-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
+            <div class="row mb-3">
+                <div class="col-md-4 info-label">Tên sân</div>
+                <div class="col-md-8">@Model.TenSan</div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
+            <div class="row mb-3">
+                <div class="col-md-4 info-label">Loại sân</div>
+                <div class="col-md-8">@Model.LoaiSan</div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
+            <div class="row mb-3">
+                <div class="col-md-4 info-label">Giá thuê / giờ</div>
+                <div class="col-md-8 text-success fw-bold">
+                    @String.Format("{0:N0} đ", Model.GiaThueTheoGio)
+                </div>
+            </div>
 
-    </dl>
+            <div class="row mb-3">
+                <div class="col-md-4 info-label">Trạng thái</div>
+                <div class="col-md-8">
+                    @if (Model.TrangThai == "HoatDong")
+                    {
+                        <span class="badge bg-success badge-status">
+                            <i class="fas fa-circle-check"></i> Hoạt động
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary badge-status">
+                            <i class="fas fa-circle-xmark"></i> Ngưng hoạt động
+                        </span>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4 info-label">Mô tả</div>
+                <div class="col-md-8">
+                    @if (string.IsNullOrWhiteSpace(Model.MoTa))
+                    {
+                        <span class="text-muted fst-italic">Chưa có mô tả</span>
+                    }
+                    else
+                    {
+                        @Model.MoTa
+                    }
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="d-flex justify-content-between">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </a>
+
+                <a href="@Url.Action("Edit", new { id = Model.ID_San })" class="btn btn-warning text-white">
+                    <i class="fas fa-edit"></i> Chỉnh sửa
+                </a>
+            </div>
+
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_San }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

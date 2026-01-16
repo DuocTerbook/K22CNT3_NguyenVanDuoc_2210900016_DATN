@@ -24,7 +24,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
             this.GioHangChiTiets = new HashSet<GioHangChiTiet>();
             this.ChiTietDonDichVus = new HashSet<ChiTietDonDichVu>();
         }
-        [Display(Name ="Mã sản phẩm")]
+        [Display(Name = "Mã sản phẩm")]
         public int ID_SP { get; set; }
         [Display(Name = "Tên sản phẩm")]
         public string TenSP { get; set; }
@@ -45,7 +45,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string MoTa { get; set; }
         [Display(Name = "Trạng thái")]
         public Nullable<bool> TrangThai { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -20,7 +20,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.LichSuTichDiems = new HashSet<LichSuTichDiem>();
         }
-        [Display(Name ="Mã hội viên")]
+        [Display(Name = "Mã hội viên")]
         public int ID_HoiVien { get; set; }
         [Display(Name = "Mã khách hàng")]
         public int ID_KhachHang { get; set; }
@@ -36,7 +36,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<int> DiemTichLuy { get; set; }
         [Display(Name = "Ưu đãi")]
         public Nullable<decimal> UuDai { get; set; }
-    
+
         public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuTichDiem> LichSuTichDiems { get; set; }

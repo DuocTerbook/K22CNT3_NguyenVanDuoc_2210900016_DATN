@@ -30,7 +30,7 @@
         <EntityTypeShape EntityType="QuanLyVotModel.ChiTietDonDichVu" Width="1.5" PointX="14" PointY="4.375" />
         <EntityTypeShape EntityType="QuanLyVotModel.DatSan" Width="1.5" PointX="11.75" PointY="7.875" />
         <EntityTypeShape EntityType="QuanLyVotModel.DichVu" Width="1.5" PointX="17" PointY="5.25" />
-        <EntityTypeShape EntityType="QuanLyVotModel.DonDichVu" Width="1.5" PointX="5.875" PointY="11.25" />
+        <EntityTypeShape EntityType="QuanLyVotModel.DonDichVu" Width="1.5" PointX="5.875" PointY="11.875" />
         <EntityTypeShape EntityType="QuanLyVotModel.HoiVien" Width="1.5" PointX="2.5" PointY="12.875" />
         <EntityTypeShape EntityType="QuanLyVotModel.LichSuTichDiem" Width="1.5" PointX="9.5" PointY="11.375" />
         <EntityTypeShape EntityType="QuanLyVotModel.LoaiDichVu" Width="1.5" PointX="17.25" PointY="9.375" />

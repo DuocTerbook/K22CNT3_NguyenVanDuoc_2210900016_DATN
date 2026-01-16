@@ -15,7 +15,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
 
     public partial class ChiTietDonDichVu
     {
-        [Display(Name ="Mã chi tiết đơn dịch vụ")]
+        [Display(Name = "Mã chi tiết đơn dịch vụ")]
         public int ID_CTDonDV { get; set; }
         [Display(Name = "Mã đơn dịch vụ")]
         public int ID_DonDV { get; set; }
@@ -31,7 +31,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public Nullable<decimal> ThanhTien { get; set; }
         [Display(Name = "Thông số kỹ thuật")]
         public string ThongSoKyThuat { get; set; }
-    
+
         public virtual DichVu DichVu { get; set; }
         public virtual DonDichVu DonDichVu { get; set; }
         public virtual SanPham SanPham { get; set; }

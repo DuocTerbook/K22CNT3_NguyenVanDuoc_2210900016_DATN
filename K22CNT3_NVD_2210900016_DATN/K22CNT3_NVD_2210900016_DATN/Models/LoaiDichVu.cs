@@ -20,13 +20,13 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         {
             this.DichVus = new HashSet<DichVu>();
         }
-        [Display(Name ="Mã loại dịch vụ")]
+        [Display(Name = "Mã loại dịch vụ")]
         public int ID_LoaiDV { get; set; }
         [Display(Name = "Tên loại dịch vụ")]
         public string TenLoaiDV { get; set; }
         [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DichVu> DichVus { get; set; }
     }
