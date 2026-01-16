@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using K22CNT3_NVD_2210900016_DATN.Models;
 
@@ -9,25 +11,24 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
     {
         private QuanLyVotEntities db = new QuanLyVotEntities();
 
-        // GET: DonDichVu
+        // ================= INDEX =================
         public ActionResult Index()
         {
             var donDichVus = db.DonDichVus
-                .Include("KhachHang")
-                .OrderByDescending(d => d.NgayNhan)
-                .ToList();
+                .Include(d => d.KhachHang)
+                .OrderByDescending(d => d.NgayNhan);
 
-            return View(donDichVus);
+            return View(donDichVus.ToList());
         }
 
-        // GET: DonDichVu/Details/5
+        // ================= DETAILS =================
         public ActionResult Details(int? id)
         {
             if (id == null)
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var donDichVu = db.DonDichVus
-                .Include("KhachHang")
+                .Include(d => d.KhachHang)
                 .FirstOrDefault(d => d.ID_DonDV == id);
 
             if (donDichVu == null)
@@ -36,107 +37,96 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             return View(donDichVu);
         }
 
-        // GET: DonDichVu/Create
+        // ================= CREATE =================
         public ActionResult Create()
         {
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach");
+            ViewBag.ID_KhachHang = new SelectList(
+                db.KhachHangs,
+                "ID_KhachHang",
+                "TenKhach"
+            );
 
-            ViewBag.TrangThai = new SelectList(new[]
-            {
-                new { Value = "ChuaXuLy", Text = "Chưa xử lý" },
-                new { Value = "DangXuLy", Text = "Đang xử lý" },
-                new { Value = "HoanThanh", Text = "Hoàn thành" }
-            }, "Value", "Text");
+            ViewBag.TrangThai = new SelectList(
+                new[] { "ChuaXuLy", "DangXuLy", "HoanThanh" }
+            );
 
             return View();
         }
 
-        // POST: DonDichVu/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(
-            [Bind(Include = "ID_KhachHang,TenKhach,SDT,NgayTra,TongTien,TrangThai,GhiChu")]
-            DonDichVu donDichVu)
+        public ActionResult Create(DonDichVu donDichVu)
         {
             if (ModelState.IsValid)
             {
                 donDichVu.NgayNhan = DateTime.Now;
-
-                // Nếu không chọn trạng thái → mặc định
-                if (string.IsNullOrEmpty(donDichVu.TrangThai))
-                {
-                    donDichVu.TrangThai = "ChuaXuLy";
-                }
-
-                if (donDichVu.TongTien < 0)
-                    donDichVu.TongTien = 0;
-
                 db.DonDichVus.Add(donDichVu);
                 db.SaveChanges();
-
-                TempData["SuccessMessage"] = "Tạo đơn dịch vụ thành công!";
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach", donDichVu.ID_KhachHang);
-            ViewBag.TrangThai = new SelectList(new[]
-            {
-                new { Value = "ChuaXuLy", Text = "Chưa xử lý" },
-                new { Value = "DangXuLy", Text = "Đang xử lý" },
-                new { Value = "HoanThanh", Text = "Hoàn thành" }
-            }, "Value", "Text", donDichVu.TrangThai);
+            ViewBag.ID_KhachHang = new SelectList(
+                db.KhachHangs,
+                "ID_KhachHang",
+                "TenKhach",
+                donDichVu.ID_KhachHang
+            );
+
+            ViewBag.TrangThai = new SelectList(
+                new[] { "ChuaXuLy", "DangXuLy", "HoanThanh" },
+                donDichVu.TrangThai
+            );
 
             return View(donDichVu);
         }
 
-        // GET: DonDichVu/Edit/5
+        // ================= EDIT =================
         public ActionResult Edit(int? id)
         {
             if (id == null)
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var donDichVu = db.DonDichVus.Find(id);
             if (donDichVu == null)
                 return HttpNotFound();
 
-            ViewBag.ID_KhachHang = new SelectList(db.KhachHangs, "ID_KhachHang", "TenKhach", donDichVu.ID_KhachHang);
-            ViewBag.TrangThai = new SelectList(new[]
-            {
-                new { Value = "ChuaXuLy", Text = "Chưa xử lý" },
-                new { Value = "DangXuLy", Text = "Đang xử lý" },
-                new { Value = "HoanThanh", Text = "Hoàn thành" }
-            }, "Value", "Text", donDichVu.TrangThai);
+            ViewBag.ID_KhachHang = new SelectList(
+                db.KhachHangs,
+                "ID_KhachHang",
+                "TenKhach",
+                donDichVu.ID_KhachHang
+            );
+
+            ViewBag.TrangThai = new SelectList(
+                new[] { "ChuaXuLy", "DangXuLy", "HoanThanh" },
+                donDichVu.TrangThai
+            );
 
             return View(donDichVu);
         }
 
-        // POST: DonDichVu/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(
-            [Bind(Include = "ID_DonDV,ID_KhachHang,TenKhach,SDT,NgayNhan,NgayTra,TongTien,TrangThai,GhiChu")]
-            DonDichVu donDichVu)
+        public ActionResult Edit(DonDichVu donDichVu)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donDichVu).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(donDichVu).State = EntityState.Modified;
                 db.SaveChanges();
-
-                TempData["SuccessMessage"] = "Cập nhật đơn dịch vụ thành công!";
                 return RedirectToAction("Index");
             }
 
             return View(donDichVu);
         }
 
-        // GET: DonDichVu/Delete/5
+        // ================= DELETE =================
         public ActionResult Delete(int? id)
         {
             if (id == null)
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var donDichVu = db.DonDichVus
-                .Include("KhachHang")
+                .Include(d => d.KhachHang)
                 .FirstOrDefault(d => d.ID_DonDV == id);
 
             if (donDichVu == null)
@@ -145,7 +135,6 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             return View(donDichVu);
         }
 
-        // POST: DonDichVu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -153,15 +142,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             var donDichVu = db.DonDichVus.Find(id);
             db.DonDichVus.Remove(donDichVu);
             db.SaveChanges();
-
-            TempData["SuccessMessage"] = "Xóa đơn dịch vụ thành công!";
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing) db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

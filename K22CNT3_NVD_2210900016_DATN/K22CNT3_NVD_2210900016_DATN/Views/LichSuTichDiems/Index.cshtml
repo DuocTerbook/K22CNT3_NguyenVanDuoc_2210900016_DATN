@@ -1,69 +1,72 @@
 ﻿@model IEnumerable<K22CNT3_NVD_2210900016_DATN.Models.LichSuTichDiem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lịch sử tích điểm";
 }
 
-<h2>Index</h2>
+<h2 class="text-primary mb-3">📊 Lịch sử tích điểm</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DiemCong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiemTru)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LyDo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayTichDiem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DonDichVu.TenKhach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DonHang.TrangThai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoiVien.MaThe)
-        </th>
-        <th></th>
-    </tr>
+<div class="mb-3">
+    @Html.ActionLink("➕ Thêm lịch sử", "Create", null, new { @class = "btn btn-success" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiemCong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiemTru)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LyDo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayTichDiem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonDichVu.TenKhach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonHang.TrangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoiVien.MaThe)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_LichSu }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_LichSu }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_LichSu })
-        </td>
-    </tr>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th>Điểm cộng</th>
+                    <th>Điểm trừ</th>
+                    <th>Lý do</th>
+                    <th>Ngày tích điểm</th>
+                    <th>Đơn dịch vụ</th>
+                    <th>Đơn hàng</th>
+                    <th>Mã thẻ</th>
+                    <th width="180">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-success fw-bold text-center">
+                            @(item.DiemCong > 0 ? "+" + item.DiemCong : "")
+                        </td>
+                        <td class="text-danger fw-bold text-center">
+                            @(item.DiemTru > 0 ? "-" + item.DiemTru : "")
+                        </td>
+                        <td>
+                            @item.LyDo
+                        </td>
+                        <td class="text-center">
+                            @(item.NgayTichDiem.HasValue
+                            ? item.NgayTichDiem.Value.ToString("dd/MM/yyyy HH:mm")
+                            : "-")
+                        </td>
+                        <td class="text-center">
+                            @(item.DonDichVu != null ? item.DonDichVu.ID_DonDV.ToString() : "-")
+                        </td>
+                        <td class="text-center">
+                            @(item.DonHang != null ? item.DonHang.ID_DonHang.ToString() : "-")
+                        </td>
+                        <td class="text-center">
+                            @item.HoiVien.MaThe
+                        </td>
+                        <td class="text-center">
+                            @Html.ActionLink("✏️", "Edit", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-warning", title = "Sửa" })
+                            @Html.ActionLink("👁️", "Details", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-info text-white", title = "Chi tiết" })
+                            @Html.ActionLink("🗑️", "Delete", new { id = item.ID_LichSu }, new { @class = "btn btn-sm btn-danger", title = "Xóa" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success mt-3">
+        @TempData["SuccessMessage"]
+    </div>
 }
-
-</table>

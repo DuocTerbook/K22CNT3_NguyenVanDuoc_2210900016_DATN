@@ -1,80 +1,88 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.LichSuTichDiem
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa lịch sử tích điểm";
 }
 
-<h2>Delete</h2>
+<h2 class="text-danger mb-3">🗑️ Xác nhận xóa lịch sử tích điểm</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>LichSuTichDiem</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DiemCong)
-        </dt>
+<div class="alert alert-warning">
+    <strong>⚠ Cảnh báo:</strong> Thao tác này sẽ <b>trừ lại điểm</b> của hội viên và <b>không thể hoàn tác</b>.
+</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiemCong)
-        </dd>
+<div class="card shadow-sm border-danger">
+    <div class="card-body">
+        <dl class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiemTru)
-        </dt>
+            <!-- ĐIỂM CỘNG -->
+            <dt class="col-sm-4 fw-bold text-success">Điểm cộng</dt>
+            <dd class="col-sm-8">
+                @(Model.DiemCong.HasValue ? Model.DiemCong.ToString() : "0")
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiemTru)
-        </dd>
+            <!-- ĐIỂM TRỪ -->
+            <dt class="col-sm-4 fw-bold text-danger">Điểm trừ</dt>
+            <dd class="col-sm-8">
+                @(Model.DiemTru.HasValue ? Model.DiemTru.ToString() : "0")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LyDo)
-        </dt>
+            <!-- LÝ DO -->
+            <dt class="col-sm-4 fw-bold">Lý do</dt>
+            <dd class="col-sm-8">
+                @if (string.IsNullOrEmpty(Model.LyDo))
+                {
+                    <span class="text-muted fst-italic">Không có lý do</span>
+                }
+                else
+                {
+                    @Model.LyDo
+                }
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LyDo)
-        </dd>
+            <!-- NGÀY -->
+            <dt class="col-sm-4 fw-bold">Ngày tích điểm</dt>
+            <dd class="col-sm-8">
+                @(Model.NgayTichDiem.HasValue
+                ? Model.NgayTichDiem.Value.ToString("dd/MM/yyyy HH:mm")
+                : "—")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTichDiem)
-        </dt>
+            <!-- ĐƠN DỊCH VỤ -->
+            <dt class="col-sm-4 fw-bold">Đơn dịch vụ</dt>
+            <dd class="col-sm-8">
+                @(Model.DonDichVu != null
+                    ? $"#{Model.DonDichVu.ID_DonDV}"
+                    : "—")
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayTichDiem)
-        </dd>
+            <!-- ĐƠN HÀNG -->
+            <dt class="col-sm-4 fw-bold">Đơn hàng</dt>
+            <dd class="col-sm-8">
+                @(Model.DonHang != null
+                    ? $"#{Model.DonHang.ID_DonHang}"
+                    : "—")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DonDichVu.TenKhach)
-        </dt>
+            <!-- HỘI VIÊN -->
+            <dt class="col-sm-4 fw-bold">Mã thẻ hội viên</dt>
+            <dd class="col-sm-8">
+                @(Model.HoiVien != null
+                    ? Model.HoiVien.MaThe
+                    : "—")
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DonDichVu.TenKhach)
-        </dd>
+        </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DonHang.TrangThai)
-        </dt>
+        <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.DonHang.TrangThai)
-        </dd>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HoiVien.MaThe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HoiVien.MaThe)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="text-end">
+                <input type="submit" value="🗑️ Xóa" class="btn btn-danger" />
+                @Html.ActionLink("↩ Hủy", "Index", null, new { @class = "btn btn-secondary ms-2" })
+            </div>
+        }
+    </div>
 </div>

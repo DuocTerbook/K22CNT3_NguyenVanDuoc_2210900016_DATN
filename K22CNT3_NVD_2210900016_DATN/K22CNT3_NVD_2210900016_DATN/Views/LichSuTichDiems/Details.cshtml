@@ -1,74 +1,80 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.LichSuTichDiem
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết lịch sử tích điểm";
 }
 
-<h2>Details</h2>
+<h2 class="text-info mb-3">📄 Chi tiết lịch sử tích điểm</h2>
 
-<div>
-    <h4>LichSuTichDiem</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DiemCong)
-        </dt>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <dl class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.DiemCong)
-        </dd>
+            <!-- ĐIỂM CỘNG -->
+            <dt class="col-sm-4 fw-bold text-success">Điểm cộng</dt>
+            <dd class="col-sm-8">
+                @(Model.DiemCong.HasValue ? Model.DiemCong.ToString() : "0")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiemTru)
-        </dt>
+            <!-- ĐIỂM TRỪ -->
+            <dt class="col-sm-4 fw-bold text-danger">Điểm trừ</dt>
+            <dd class="col-sm-8">
+                @(Model.DiemTru.HasValue ? Model.DiemTru.ToString() : "0")
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiemTru)
-        </dd>
+            <!-- LÝ DO -->
+            <dt class="col-sm-4 fw-bold">Lý do</dt>
+            <dd class="col-sm-8">
+                @if (string.IsNullOrEmpty(Model.LyDo))
+                {
+                    <span class="text-muted fst-italic">Không có lý do</span>
+                }
+                else
+                {
+                    @Model.LyDo
+                }
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LyDo)
-        </dt>
+            <!-- NGÀY -->
+            <dt class="col-sm-4 fw-bold">Ngày tích điểm</dt>
+            <dd class="col-sm-8">
+                @(Model.NgayTichDiem.HasValue
+                ? Model.NgayTichDiem.Value.ToString("dd/MM/yyyy HH:mm")
+                : "—")
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LyDo)
-        </dd>
+            <!-- ĐƠN DỊCH VỤ -->
+            <dt class="col-sm-4 fw-bold">Đơn dịch vụ</dt>
+            <dd class="col-sm-8">
+                @(Model.DonDichVu != null
+                    ? Model.DonDichVu.ID_DonDV.ToString()
+                    : "—")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTichDiem)
-        </dt>
+            <!-- ĐƠN HÀNG -->
+            <dt class="col-sm-4 fw-bold">Đơn hàng</dt>
+            <dd class="col-sm-8">
+                @(Model.DonHang != null
+                    ? Model.DonHang.ID_DonHang.ToString()
+                    : "—")
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayTichDiem)
-        </dd>
+            <!-- HỘI VIÊN -->
+            <dt class="col-sm-4 fw-bold">Mã thẻ hội viên</dt>
+            <dd class="col-sm-8">
+                @(Model.HoiVien != null
+                    ? Model.HoiVien.MaThe
+                    : "—")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DonDichVu.TenKhach)
-        </dt>
+        </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.DonDichVu.TenKhach)
-        </dd>
+        <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DonHang.TrangThai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DonHang.TrangThai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HoiVien.MaThe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HoiVien.MaThe)
-        </dd>
-
-    </dl>
+        <!-- BUTTON -->
+        <div class="text-end">
+            @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.ID_LichSu }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("↩ Quay lại", "Index", null, new { @class = "btn btn-secondary ms-2" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_LichSu }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

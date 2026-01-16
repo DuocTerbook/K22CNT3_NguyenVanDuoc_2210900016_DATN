@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using K22CNT3_NVD_2210900016_DATN.Models;
 
@@ -9,283 +11,247 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
     {
         private QuanLyVotEntities db = new QuanLyVotEntities();
 
-        // GET: LichSuTichDiem
+        // ================= INDEX =================
         public ActionResult Index(int? hoiVienId)
         {
-            IQueryable<LichSuTichDiem> lichSuQuery = db.LichSuTichDiems
-                .Include("HoiVien")
-                .Include("DonHang")
-                .Include("DonDichVu");
+            var data = db.LichSuTichDiems
+                .Include(l => l.HoiVien.KhachHang)
+                .Include(l => l.DonHang)
+                .Include(l => l.DonDichVu)
+                .OrderByDescending(l => l.NgayTichDiem)
+                .AsQueryable();
 
             if (hoiVienId.HasValue)
             {
-                lichSuQuery = lichSuQuery.Where(l => l.ID_HoiVien == hoiVienId);
-                ViewBag.HoiVienId = hoiVienId;
-                ViewBag.HoiVien = db.HoiViens.Include("KhachHang").FirstOrDefault(h => h.ID_HoiVien == hoiVienId);
+                data = data.Where(l => l.ID_HoiVien == hoiVienId);
             }
 
-            var lichSu = lichSuQuery.OrderByDescending(l => l.NgayTichDiem).ToList();
-            return View(lichSu);
+            return View(data.ToList());
         }
 
-        // GET: LichSuTichDiem/Details/5
-        public ActionResult Details(int? id)
+        // ================= CREATE =================
+        public ActionResult Create()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            LichSuTichDiem lichSu = db.LichSuTichDiems
-                .Include("HoiVien")
-                .Include("DonHang")
-                .Include("DonDichVu")
-                .FirstOrDefault(l => l.ID_LichSu == id);
-            if (lichSu == null)
-            {
-                return HttpNotFound();
-            }
-            return View(lichSu);
-        }
-
-        // GET: LichSuTichDiem/Create
-        public ActionResult Create(int? hoiVienId)
-        {
-            ViewBag.ID_HoiVien = new SelectList(db.HoiViens.Include("KhachHang"), "ID_HoiVien", "KhachHang.TenKhach", hoiVienId);
-            ViewBag.ID_DonHang = new SelectList(db.DonHangs.Where(d => d.TrangThai == "HoanThanh"), "ID_DonHang", "ID_DonHang");
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus.Where(d => d.TrangThai == "Hoàn thành"), "ID_DonDV", "ID_DonDV");
-
-            if (hoiVienId.HasValue)
-            {
-                var hoiVien = db.HoiViens.Include("KhachHang").FirstOrDefault(h => h.ID_HoiVien == hoiVienId);
-                if (hoiVien != null)
-                {
-                    ViewBag.HoiVienTen = $"{hoiVien.KhachHang.TenKhach} - {hoiVien.MaThe}";
-                }
-            }
-
+            LoadDropDowns();
             return View();
         }
 
-        // POST: LichSuTichDiem/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_HoiVien,ID_DonHang,ID_DonDV,DiemCong,DiemTru,LyDo")] LichSuTichDiem lichSu)
+        public ActionResult Create(LichSuTichDiem model)
         {
-            if (ModelState.IsValid)
+            if (model.ID_DonHang.HasValue && model.ID_DonDV.HasValue)
             {
-                // Kiểm tra nếu có đơn hàng hoặc đơn dịch vụ, không cho nhập điểm thủ công
-                if ((lichSu.ID_DonHang.HasValue || lichSu.ID_DonDV.HasValue) && (lichSu.DiemCong > 0 || lichSu.DiemTru > 0))
-                {
-                    ModelState.AddModelError("", "Không được nhập điểm khi chọn đơn hàng hoặc đơn dịch vụ!");
-                    ViewBag.ID_HoiVien = new SelectList(db.HoiViens, "ID_HoiVien", "KhachHang.TenKhach", lichSu.ID_HoiVien);
-                    ViewBag.ID_DonHang = new SelectList(db.DonHangs, "ID_DonHang", "ID_DonHang", lichSu.ID_DonHang);
-                    ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "ID_DonDV", lichSu.ID_DonDV);
-                    return View(lichSu);
-                }
-
-                // Nếu chọn đơn hàng, tính điểm tự động
-                if (lichSu.ID_DonHang.HasValue)
-                {
-                    var donHang = db.DonHangs.Find(lichSu.ID_DonHang.Value);
-                    if (donHang != null)
-                    {
-                        // Tính điểm: 1 điểm cho mỗi 10,000đ
-                        lichSu.DiemCong = (int)(donHang.TongTien / 10000);
-                        lichSu.LyDo = $"Tích điểm từ đơn hàng #{donHang.ID_DonHang} - {donHang.TongTien:N0}đ";
-                    }
-                }
-
-                // Nếu chọn đơn dịch vụ, tính điểm tự động
-                if (lichSu.ID_DonDV.HasValue)
-                {
-                    var donDichVu = db.DonDichVus.Find(lichSu.ID_DonDV.Value);
-                    if (donDichVu != null)
-                    {
-                        // Tính điểm: 1 điểm cho mỗi 10,000đ
-                        lichSu.DiemCong = (int)(donDichVu.TongTien / 10000);
-                        lichSu.LyDo = $"Tích điểm từ dịch vụ #{donDichVu.ID_DonDV} - {donDichVu.TongTien:N0}đ";
-                    }
-                }
-
-                lichSu.NgayTichDiem = DateTime.Now;
-
-                db.LichSuTichDiems.Add(lichSu);
-
-                // Cập nhật điểm tích lũy cho hội viên
-                var hoiVien = db.HoiViens.Find(lichSu.ID_HoiVien);
-                if (hoiVien != null)
-                {
-                    hoiVien.DiemTichLuy += (lichSu.DiemCong - lichSu.DiemTru);
-
-                    // Cập nhật cấp độ
-                    UpdateCapDo(hoiVien);
-                }
-
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Thêm lịch sử tích điểm thành công!";
-                return RedirectToAction("Index", new { hoiVienId = lichSu.ID_HoiVien });
+                ModelState.AddModelError("", "Chỉ được chọn Đơn hàng hoặc Đơn dịch vụ.");
             }
 
-            ViewBag.ID_HoiVien = new SelectList(db.HoiViens, "ID_HoiVien", "KhachHang.TenKhach", lichSu.ID_HoiVien);
-            ViewBag.ID_DonHang = new SelectList(db.DonHangs, "ID_DonHang", "ID_DonHang", lichSu.ID_DonHang);
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "ID_DonDV", lichSu.ID_DonDV);
-            return View(lichSu);
+            if (!model.ID_DonHang.HasValue && !model.ID_DonDV.HasValue)
+            {
+                ModelState.AddModelError("", "Vui lòng chọn Đơn hàng hoặc Đơn dịch vụ.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                LoadDropDowns();
+                return View(model);
+            }
+
+            if (model.ID_DonHang.HasValue)
+            {
+                var dh = db.DonHangs.Find(model.ID_DonHang);
+                model.DiemCong = (int)(dh.TongTien / 10000);
+                model.LyDo = "Tích điểm từ đơn hàng #" + dh.ID_DonHang;
+            }
+            else
+            {
+                var dv = db.DonDichVus.Find(model.ID_DonDV);
+                model.DiemCong = (int)(dv.TongTien / 10000);
+                model.LyDo = "Tích điểm từ đơn dịch vụ #" + dv.ID_DonDV;
+            }
+
+            model.NgayTichDiem = DateTime.Now;
+
+            db.LichSuTichDiems.Add(model);
+
+            var hv = db.HoiViens.Find(model.ID_HoiVien);
+            hv.DiemTichLuy += model.DiemCong ?? 0;
+            UpdateCapDo(hv);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", new { hoiVienId = model.ID_HoiVien });
         }
 
-        // GET: LichSuTichDiem/Edit/5
+        // ================= EDIT =================
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            LichSuTichDiem lichSu = db.LichSuTichDiems.Find(id);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var lichSu = db.LichSuTichDiems.Find(id);
             if (lichSu == null)
-            {
                 return HttpNotFound();
-            }
-            ViewBag.ID_HoiVien = new SelectList(db.HoiViens, "ID_HoiVien", "KhachHang.TenKhach", lichSu.ID_HoiVien);
-            ViewBag.ID_DonHang = new SelectList(db.DonHangs, "ID_DonHang", "ID_DonHang", lichSu.ID_DonHang);
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "ID_DonDV", lichSu.ID_DonDV);
+
+            LoadDropDowns(
+                lichSu.ID_HoiVien,
+                lichSu.ID_DonHang,
+                lichSu.ID_DonDV
+            );
+
             return View(lichSu);
         }
 
-        // POST: LichSuTichDiem/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_LichSu,ID_HoiVien,ID_DonHang,ID_DonDV,DiemCong,DiemTru,LyDo,NgayTichDiem")] LichSuTichDiem lichSu)
+        public ActionResult Edit(LichSuTichDiem model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                // Lấy dữ liệu cũ để tính chênh lệch
-                var lichSuCu = db.LichSuTichDiems.AsNoTracking().FirstOrDefault(l => l.ID_LichSu == lichSu.ID_LichSu);
-                if (lichSuCu != null)
-                {
-                    // Tính chênh lệch điểm
-                    int chenhLechCong = (lichSu.DiemCong ?? 0) - (lichSuCu.DiemCong ?? 0);
-                    int chenhLechTru = (lichSu.DiemTru ?? 0) - (lichSuCu.DiemTru ?? 0);
-                    int tongChenhLech = chenhLechCong - chenhLechTru;
-
-
-                    // Cập nhật điểm tích lũy cho hội viên
-                    var hoiVien = db.HoiViens.Find(lichSu.ID_HoiVien);
-                    if (hoiVien != null)
-                    {
-                        hoiVien.DiemTichLuy += tongChenhLech;
-                        UpdateCapDo(hoiVien);
-                    }
-                }
-
-                db.Entry(lichSu).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Cập nhật lịch sử tích điểm thành công!";
-                return RedirectToAction("Index", new { hoiVienId = lichSu.ID_HoiVien });
+                LoadDropDowns(
+                    model.ID_HoiVien,
+                    model.ID_DonHang,
+                    model.ID_DonDV
+                );
+                return View(model);
             }
-            ViewBag.ID_HoiVien = new SelectList(db.HoiViens, "ID_HoiVien", "KhachHang.TenKhach", lichSu.ID_HoiVien);
-            ViewBag.ID_DonHang = new SelectList(db.DonHangs, "ID_DonHang", "ID_DonHang", lichSu.ID_DonHang);
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "ID_DonDV", lichSu.ID_DonDV);
+
+            var old = db.LichSuTichDiems.AsNoTracking()
+                .FirstOrDefault(x => x.ID_LichSu == model.ID_LichSu);
+
+            var hv = db.HoiViens.Find(model.ID_HoiVien);
+
+            // hoàn điểm cũ
+            hv.DiemTichLuy -= old.DiemCong ?? 0;
+
+            // tính lại điểm mới
+            if (model.ID_DonHang.HasValue)
+            {
+                var dh = db.DonHangs.Find(model.ID_DonHang);
+                model.DiemCong = (int)(dh.TongTien / 10000);
+                model.LyDo = "Tích điểm từ đơn hàng #" + dh.ID_DonHang;
+            }
+            else
+            {
+                var dv = db.DonDichVus.Find(model.ID_DonDV);
+                model.DiemCong = (int)(dv.TongTien / 10000);
+                model.LyDo = "Tích điểm từ đơn dịch vụ #" + dv.ID_DonDV;
+            }
+
+            hv.DiemTichLuy += model.DiemCong ?? 0;
+            UpdateCapDo(hv);
+
+            db.Entry(model).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", new { hoiVienId = model.ID_HoiVien });
+        }
+
+        // ================= DETAILS =================
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var lichSu = db.LichSuTichDiems
+                .Include(l => l.HoiVien.KhachHang)
+                .Include(l => l.DonHang)
+                .Include(l => l.DonDichVu)
+                .FirstOrDefault(l => l.ID_LichSu == id);
+
+            if (lichSu == null)
+                return HttpNotFound();
+
             return View(lichSu);
         }
 
-        // GET: LichSuTichDiem/Delete/5
+        // ================= DELETE =================
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            LichSuTichDiem lichSu = db.LichSuTichDiems
-                .Include("HoiVien")
-                .Include("DonHang")
-                .Include("DonDichVu")
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var lichSu = db.LichSuTichDiems
+                .Include(l => l.HoiVien)
                 .FirstOrDefault(l => l.ID_LichSu == id);
+
             if (lichSu == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(lichSu);
         }
 
-        // POST: LichSuTichDiem/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            LichSuTichDiem lichSu = db.LichSuTichDiems.Find(id);
-            int hoiVienId = lichSu.ID_HoiVien;
+            var lichSu = db.LichSuTichDiems.Find(id);
+            var hv = db.HoiViens.Find(lichSu.ID_HoiVien);
 
-            // Trừ điểm tích lũy cho hội viên
-            var hoiVien = db.HoiViens.Find(hoiVienId);
-            if (hoiVien != null)
-            {
-                hoiVien.DiemTichLuy -= (lichSu.DiemCong - lichSu.DiemTru);
-                UpdateCapDo(hoiVien);
-            }
+            hv.DiemTichLuy -= lichSu.DiemCong ?? 0;
+            UpdateCapDo(hv);
 
             db.LichSuTichDiems.Remove(lichSu);
             db.SaveChanges();
-            TempData["SuccessMessage"] = "Xóa lịch sử tích điểm thành công!";
-            return RedirectToAction("Index", new { hoiVienId = hoiVienId });
+
+            return RedirectToAction("Index", new { hoiVienId = hv.ID_HoiVien });
         }
 
-        // Báo cáo tích điểm
-        public ActionResult BaoCao()
+        // ================= DROPDOWN =================
+        private void LoadDropDowns(
+            int? hoiVienId = null,
+            int? donHangId = null,
+            int? donDvId = null)
         {
-            var baoCao = db.HoiViens
-                .Include("KhachHang")
-                .Select(h => new
-                {
-                    h.ID_HoiVien,
-                    h.KhachHang.TenKhach,
-                    h.MaThe,
-                    h.CapDo,
-                    h.DiemTichLuy,
-                    TongDiemCong = db.LichSuTichDiems
-                        .Where(l => l.ID_HoiVien == h.ID_HoiVien)
-                        .Sum(l => (int?)l.DiemCong) ?? 0,
-                    TongDiemTru = db.LichSuTichDiems
-                        .Where(l => l.ID_HoiVien == h.ID_HoiVien)
-                        .Sum(l => (int?)l.DiemTru) ?? 0,
-                    SoLanTichDiem = db.LichSuTichDiems
-                        .Count(l => l.ID_HoiVien == h.ID_HoiVien && l.DiemCong > 0)
-                })
-                .OrderByDescending(h => h.DiemTichLuy)
-                .ToList();
+            ViewBag.ID_HoiVien = new SelectList(
+                db.HoiViens.Include(h => h.KhachHang),
+                "ID_HoiVien",
+                "KhachHang.TenKhach",
+                hoiVienId
+            );
 
-            ViewBag.BaoCao = baoCao;
-            return View();
+            ViewBag.ID_DonHang = new SelectList(
+                db.DonHangs.Where(x => x.TrangThai == "HoanThanh"),
+                "ID_DonHang",
+                "ID_DonHang",
+                donHangId
+            );
+
+            ViewBag.ID_DonDV = new SelectList(
+                db.DonDichVus.Where(x => x.TrangThai == "HoanThanh"),
+                "ID_DonDV",
+                "ID_DonDV",
+                donDvId
+            );
         }
 
-        private void UpdateCapDo(HoiVien hoiVien)
+        // ================= CẤP ĐỘ =================
+        private void UpdateCapDo(HoiVien hv)
         {
-            if (hoiVien.DiemTichLuy >= 5000)
+            if (hv.DiemTichLuy >= 5000)
             {
-                hoiVien.CapDo = "Kim cương";
-                hoiVien.UuDai = 15;
+                hv.CapDo = "Kim cương";
+                hv.UuDai = 15;
             }
-            else if (hoiVien.DiemTichLuy >= 2000)
+            else if (hv.DiemTichLuy >= 2000)
             {
-                hoiVien.CapDo = "Vàng";
-                hoiVien.UuDai = 10;
+                hv.CapDo = "Vàng";
+                hv.UuDai = 10;
             }
-            else if (hoiVien.DiemTichLuy >= 500)
+            else if (hv.DiemTichLuy >= 500)
             {
-                hoiVien.CapDo = "Bạc";
-                hoiVien.UuDai = 5;
+                hv.CapDo = "Bạc";
+                hv.UuDai = 5;
             }
             else
             {
-                hoiVien.CapDo = "Đồng";
-                hoiVien.UuDai = 0;
+                hv.CapDo = "Đồng";
+                hv.UuDai = 0;
             }
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            if (disposing) db.Dispose();
             base.Dispose(disposing);
         }
     }
