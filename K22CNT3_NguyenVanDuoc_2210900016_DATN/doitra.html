@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chính Sách Đổi Trả</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+        h2 {
+            text-align: center;
+            color: #0d6efd;
+            margin-bottom: 30px;
+        }
+        .box {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        h4 {
+            margin-bottom: 12px;
+            color: #333;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img data-lazyloaded="1" src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        width="355" height="143" data-src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        class="header-logo-dark entered litespeed-loaded" alt="Thế Giới Cầu Lông" data-ll-status="loaded">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm vợt cầu lông..." id="search">
+        <button id="search-btn">Tìm kiếm</button>
+        <div id="search-result" style="display: none;">Không tìm thấy sản phẩm phù hợp.</div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="tintuc.html">Tin tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li id="customer-name"></li>
+            <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>CHÍNH SÁCH ĐỔI TRẢ SẢN PHẨM</h2>
+
+    <div class="box">
+        <h4>1. Mục đích áp dụng chính sách</h4>
+        <p>
+            Chính sách đổi trả được xây dựng nhằm đảm bảo quyền lợi tối đa cho khách hàng,
+            giúp khách hàng yên tâm khi mua sắm tại cửa hàng vợt cầu lông của chúng tôi.
+            Mọi trường hợp đổi trả đều được xử lý minh bạch, rõ ràng và đúng quy định.
+        </p>
+    </div>
+
+    <div class="box">
+        <h4>2. Thời gian áp dụng đổi trả</h4>
+        <ul>
+            <li>Thời gian đổi trả: <strong>07 ngày</strong> kể từ ngày khách hàng nhận sản phẩm.</li>
+            <li>Ngày nhận hàng được tính theo thời điểm giao hàng thành công.</li>
+            <li>Quá thời hạn trên, cửa hàng xin từ chối hỗ trợ đổi trả.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>3. Điều kiện đổi trả hợp lệ</h4>
+        <ul>
+            <li>Sản phẩm chưa qua sử dụng, không có dấu hiệu trầy xước, va đập.</li>
+            <li>Còn đầy đủ tem bảo hành, phụ kiện, hộp đựng ban đầu.</li>
+            <li>Có hóa đơn mua hàng hoặc thông tin đơn hàng hợp lệ.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>4. Các trường hợp được chấp nhận đổi trả</h4>
+        <ul>
+            <li>Sản phẩm bị lỗi kỹ thuật do nhà sản xuất.</li>
+            <li>Sản phẩm giao không đúng mẫu mã, kích thước, thông số kỹ thuật.</li>
+            <li>Sản phẩm bị hư hỏng trong quá trình vận chuyển.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>5. Các trường hợp không áp dụng đổi trả</h4>
+        <ul>
+            <li>Sản phẩm đã qua sử dụng hoặc có dấu hiệu can thiệp kỹ thuật.</li>
+            <li>Hư hỏng do người dùng gây ra (va đập, gãy khung, rơi vỡ).</li>
+            <li>Sản phẩm nằm trong chương trình thanh lý, giảm giá đặc biệt.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>6. Quy trình đổi trả sản phẩm</h4>
+        <ul>
+            <li>Bước 1: Liên hệ cửa hàng qua hotline hoặc fanpage.</li>
+            <li>Bước 2: Cung cấp hình ảnh, video chứng minh tình trạng sản phẩm.</li>
+            <li>Bước 3: Gửi sản phẩm về cửa hàng theo hướng dẫn.</li>
+            <li>Bước 4: Nhận sản phẩm đổi mới hoặc hoàn tiền theo thỏa thuận.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>7. Điều khoản áp dụng</h4>
+        <ul>
+            <li>Chính sách đổi trả chỉ áp dụng cho các sản phẩm được mua trực tiếp tại cửa hàng hoặc trên website chính thức.</li>
+            <li>Mỗi đơn hàng chỉ được hỗ trợ đổi trả tối đa 01 lần.</li>
+            <li>Cửa hàng có quyền từ chối đổi trả nếu phát hiện hành vi gian lận.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>8. Trách nhiệm của các bên</h4>
+        <p><strong>Trách nhiệm của cửa hàng:</strong></p>
+        <ul>
+            <li>Tiếp nhận và xử lý yêu cầu đổi trả theo đúng quy trình.</li>
+            <li>Đảm bảo minh bạch, công bằng trong việc đánh giá tình trạng sản phẩm.</li>
+        </ul>
+
+        <p><strong>Trách nhiệm của khách hàng:</strong></p>
+        <ul>
+            <li>Cung cấp đầy đủ hóa đơn, thông tin đơn hàng khi yêu cầu đổi trả.</li>
+            <li>Đóng gói và gửi sản phẩm đúng hướng dẫn của cửa hàng.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>9. Hiệu lực chính sách</h4>
+        <p>
+            Chính sách đổi trả này có hiệu lực kể từ ngày công bố trên website
+            và có thể được điều chỉnh, cập nhật mà không cần thông báo trước.
+            Mọi thay đổi sẽ được công khai trên hệ thống.
+        </p>
+    </div>
+
+</div>
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <img src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+                     alt="Thế Giới Cầu Lông">
+            </div>
+            <p>Badmin Store - Cửa hàng vợt cầu lông chính hãng hàng đầu Việt Nam. Cam kết chất lượng và dịch vụ tốt nhất cho khách hàng.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="sanpham.html">Sản phẩm</a></li>
+                <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Hỗ Trợ</h4>
+            <ul>
+                <li><a href="doitra.html">Chính sách đổi trả</a></li>
+                <li><a href="baohanh.html">Bảo hành</a></li>
+                <li><a href="cauhoi.html">Câu hỏi thường gặp</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p><i class="fas fa-map-marker-alt"></i> TP. Hà Nội</p>
+            <p><i class="fas fa-phone"></i> 0966 536 276</p>
+            <p><i class="fas fa-envelope"></i> nguyenvanduoc442@gmail.com</p>
+            <p><i class="far fa-clock"></i> Mở cửa: 8:00 - 22:00 hàng ngày</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2025 Badmin Store – Cửa hàng vợt cầu lông chính hãng. Mọi quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+</body>
+</html>

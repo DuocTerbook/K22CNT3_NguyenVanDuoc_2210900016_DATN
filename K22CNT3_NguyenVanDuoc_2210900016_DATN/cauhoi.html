@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu Hỏi Thường Gặp | Badmin Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* ===== FAQ ACCORDION ===== */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .faq-question {
+            padding: 18px 22px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #fff0ee;
+        }
+
+        .faq-question i {
+            color: #ff6f61;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 22px;
+            background: #ffffff;
+        }
+
+        .faq-answer p {
+            padding: 15px 0 20px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img data-lazyloaded="1" src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        width="355" height="143" data-src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        class="header-logo-dark entered litespeed-loaded" alt="Thế Giới Cầu Lông" data-ll-status="loaded">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm vợt cầu lông..." id="search">
+        <button id="search-btn">Tìm kiếm</button>
+        <div id="search-result" style="display: none;">Không tìm thấy sản phẩm phù hợp.</div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="tintuc.html">Tin tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li id="customer-name"></li>
+            <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="products">
+    <h2><i class="fas fa-question-circle"></i> Câu Hỏi Thường Gặp</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Sản phẩm tại Badmin Store có chính hãng không?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    ✔ Tất cả sản phẩm tại Badmin Store đều là hàng chính hãng 100%, 
+                    có tem chống giả, mã QR xác thực và hóa đơn đầy đủ từ nhà phân phối.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Thời gian giao hàng mất bao lâu?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    ✔ Thời gian giao hàng từ 1–3 ngày làm việc. 
+                    Khu vực nội thành có thể giao trong ngày.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Tôi có được kiểm tra hàng trước khi thanh toán không?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    ✔ Khách hàng được phép kiểm tra sản phẩm trước khi thanh toán 
+                    cho đơn vị vận chuyển.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Badmin Store có hỗ trợ tư vấn chọn vợt không?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    ✔ Có. Đội ngũ tư vấn viên hỗ trợ 24/7, giúp bạn chọn vợt phù hợp 
+                    với trình độ, lối đánh và ngân sách.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Cửa hàng có bán phụ kiện cầu lông không?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    ✔ Chúng tôi cung cấp đầy đủ phụ kiện như cước, bao vợt, giày, balo, 
+                    quấn cán… từ các thương hiệu uy tín.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <img src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+                     alt="Thế Giới Cầu Lông">
+            </div>
+            <p>Badmin Store - Cửa hàng vợt cầu lông chính hãng hàng đầu Việt Nam. Cam kết chất lượng và dịch vụ tốt nhất cho khách hàng.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="sanpham.html">Sản phẩm</a></li>
+                <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Hỗ Trợ</h4>
+            <ul>
+                <li><a href="doitra.html">Chính sách đổi trả</a></li>
+                <li><a href="baohanh.html">Bảo hành</a></li>
+                <li><a href="cauhoi.html">Câu hỏi thường gặp</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p><i class="fas fa-map-marker-alt"></i> TP. Hà Nội</p>
+            <p><i class="fas fa-phone"></i> 0966 536 276</p>
+            <p><i class="fas fa-envelope"></i> nguyenvanduoc442@gmail.com</p>
+            <p><i class="far fa-clock"></i> Mở cửa: 8:00 - 22:00 hàng ngày</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2025 Badmin Store – Cửa hàng vợt cầu lông chính hãng. Mọi quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+<script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            faqItems.forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chính Sách Bảo Hành</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            line-height: 1.9;
+        }
+        h2 {
+            text-align: center;
+            color: #198754;
+            margin-bottom: 30px;
+        }
+        .box {
+            background: #f1fdf6;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img data-lazyloaded="1" src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        width="355" height="143" data-src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+        class="header-logo-dark entered litespeed-loaded" alt="Thế Giới Cầu Lông" data-ll-status="loaded">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm vợt cầu lông..." id="search">
+        <button id="search-btn">Tìm kiếm</button>
+        <div id="search-result" style="display: none;">Không tìm thấy sản phẩm phù hợp.</div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="tintuc.html">Tin tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li id="customer-name"></li>
+            <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>CHÍNH SÁCH BẢO HÀNH SẢN PHẨM</h2>
+
+    <div class="box">
+        <h4>1. Phạm vi áp dụng</h4>
+        <p>
+            Chính sách bảo hành áp dụng cho tất cả sản phẩm vợt cầu lông và phụ kiện
+            chính hãng được phân phối tại cửa hàng.
+        </p>
+    </div>
+
+    <div class="box">
+        <h4>2. Thời gian bảo hành</h4>
+        <ul>
+            <li>Vợt cầu lông: từ <strong>06 – 12 tháng</strong>.</li>
+            <li>Phụ kiện đi kèm: từ <strong>01 – 03 tháng</strong>.</li>
+            <li>Áp dụng theo quy định của từng hãng sản xuất.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>3. Điều kiện bảo hành</h4>
+        <ul>
+            <li>Sản phẩm còn trong thời hạn bảo hành.</li>
+            <li>Lỗi kỹ thuật phát sinh từ nhà sản xuất.</li>
+            <li>Có hóa đơn hoặc mã đơn hàng hợp lệ.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>4. Trường hợp từ chối bảo hành</h4>
+        <ul>
+            <li>Gãy vợt do căng cước vượt mức khuyến nghị.</li>
+            <li>Nứt khung do va chạm hoặc sử dụng sai kỹ thuật.</li>
+            <li>Sản phẩm đã bị sửa chữa tại nơi không được ủy quyền.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>5. Quy trình tiếp nhận bảo hành</h4>
+        <ul>
+            <li>Khách hàng mang sản phẩm đến cửa hàng.</li>
+            <li>Nhân viên kiểm tra và lập biên bản tiếp nhận.</li>
+            <li>Gửi hãng xử lý (nếu cần).</li>
+            <li>Thông báo kết quả cho khách hàng.</li>
+        </ul>
+    </div>
+    <div class="box">
+    <h4>6. Điều khoản bảo hành</h4>
+    <ul>
+        <li>Chính sách bảo hành áp dụng theo tiêu chuẩn của nhà sản xuất.</li>
+        <li>Không áp dụng bảo hành cho các lỗi phát sinh do người sử dụng.</li>
+        <li>Cửa hàng đóng vai trò tiếp nhận và hỗ trợ gửi bảo hành.</li>
+    </ul>
+    </div>
+
+    <div class="box">
+        <h4>7. Trách nhiệm của các bên</h4>
+        <p><strong>Trách nhiệm của cửa hàng:</strong></p>
+        <ul>
+            <li>Tiếp nhận sản phẩm bảo hành đúng quy trình.</li>
+            <li>Thông báo tiến độ xử lý cho khách hàng.</li>
+        </ul>
+
+        <p><strong>Trách nhiệm của khách hàng:</strong></p>
+        <ul>
+            <li>Sử dụng sản phẩm đúng hướng dẫn của nhà sản xuất.</li>
+            <li>Bảo quản sản phẩm cẩn thận trong thời gian sử dụng.</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h4>8. Hiệu lực bảo hành</h4>
+        <p>
+            Chính sách bảo hành có hiệu lực kể từ ngày mua hàng được ghi trên hóa đơn.
+            Mọi trường hợp phát sinh ngoài phạm vi bảo hành sẽ được thỏa thuận riêng
+            giữa khách hàng và cửa hàng.
+        </p>
+    </div>
+
+</div>
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <img src="https://thegioicaulong.vn/wp-content/uploads/2024/09/The-gioi-cau-long-logo.png" 
+                     alt="Thế Giới Cầu Lông">
+            </div>
+            <p>Badmin Store - Cửa hàng vợt cầu lông chính hãng hàng đầu Việt Nam. Cam kết chất lượng và dịch vụ tốt nhất cho khách hàng.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="sanpham.html">Sản phẩm</a></li>
+                <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Hỗ Trợ</h4>
+            <ul>
+                <li><a href="doitra.html">Chính sách đổi trả</a></li>
+                <li><a href="baohanh.html">Bảo hành</a></li>
+                <li><a href="cauhoi.html">Câu hỏi thường gặp</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p><i class="fas fa-map-marker-alt"></i> TP. Hà Nội</p>
+            <p><i class="fas fa-phone"></i> 0966 536 276</p>
+            <p><i class="fas fa-envelope"></i> nguyenvanduoc442@gmail.com</p>
+            <p><i class="far fa-clock"></i> Mở cửa: 8:00 - 22:00 hàng ngày</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2025 Badmin Store – Cửa hàng vợt cầu lông chính hãng. Mọi quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+</body>
+</html>

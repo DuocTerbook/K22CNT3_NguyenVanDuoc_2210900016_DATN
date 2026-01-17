@@ -634,3 +634,205 @@ footer a:hover {
         font-size: 16px;
     }
 }
+/* ===== BOX CHÍNH SÁCH ===== */
+.box {
+    background: #f8f9fa;
+    padding: 30px 35px;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    border-left: 6px solid #0d6efd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== TIÊU ĐỀ TRONG BOX ===== */
+.box h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #0d6efd;
+    position: relative;
+    padding-left: 18px;
+}
+
+.box h4::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0d6efd;
+    font-size: 22px;
+    top: -2px;
+}
+
+/* ===== ĐOẠN VĂN ===== */
+.box p {
+    text-align: justify;
+    text-indent: 30px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* ===== DANH SÁCH ===== */
+.box ul {
+    padding-left: 22px;
+}
+
+.box ul li {
+    margin-bottom: 10px;
+    line-height: 1.8;
+    position: relative;
+}
+
+.box ul li::marker {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+/* ===== CHỮ IN ĐẬM ===== */
+.box strong {
+    color: #212529;
+}
+/* ====== SECTION TIN TỨC ====== */
+.products {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.products h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #0d6efd;
+}
+
+.products > p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #555;
+    font-size: 16px;
+}
+
+/* ====== CARD BÀI VIẾT ====== */
+.news-item {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* ====== ẢNH BÀI VIẾT (ĐỀU NHAU) ====== */
+.news-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ====== TIÊU ĐỀ BÀI VIẾT ====== */
+.news-item > h3 {
+    font-size: 22px;
+    padding: 20px 25px 10px;
+    color: #212529;
+}
+
+/* ====== NỘI DUNG BÀI VIẾT ====== */
+.article-text {
+    padding: 0 25px 25px;
+    line-height: 1.9;
+    font-size: 16px;
+    color: #333;
+}
+
+.article-text p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* ====== TIÊU ĐỀ PHỤ TRONG BÀI ====== */
+.article-text h3 {
+    margin: 25px 0 12px;
+    font-size: 18px;
+    color: #0d6efd;
+    border-left: 4px solid #0d6efd;
+    padding-left: 12px;
+}
+
+/* ====== HIGHLIGHT BOX ====== */
+.highlight-box {
+    background: #f1f7ff;
+    border-left: 5px solid #0d6efd;
+    padding: 18px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.highlight-box p {
+    margin: 0;
+    font-style: italic;
+    color: #0b3d91;
+}
+
+/* ====== LIST DẠNG DÒNG ====== */
+.article-text p strong {
+    color: #000;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .news-item img {
+        height: 220px;
+    }
+
+    .products h2 {
+        font-size: 26px;
+    }
+
+    .news-item > h3 {
+        font-size: 20px;
+    }
+}
+.product-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.product-actions button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.product-actions button:first-child {
+    background: #198754;
+    color: #fff;
+}
+
+.product-actions button:first-child:hover {
+    background: #157347;
+}
+
+.product-actions button:last-child {
+    background: #0d6efd;
+    color: #fff;
+}
+
+.product-actions button:last-child:hover {
+    background: #084298;
+}
