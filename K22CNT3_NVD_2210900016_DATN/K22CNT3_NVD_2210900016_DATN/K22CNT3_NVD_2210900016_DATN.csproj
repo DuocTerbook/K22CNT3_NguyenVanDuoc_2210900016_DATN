@@ -400,6 +400,7 @@
     <Content Include="Views\LichSuTichDiems\Index.cshtml" />
     <Content Include="Views\HoiViens\TichDiem.cshtml" />
     <Content Include="Views\HoiViens\DoiDiem.cshtml" />
+    <Content Include="Views\GioHangChiTiets\XacNhanThanhToan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

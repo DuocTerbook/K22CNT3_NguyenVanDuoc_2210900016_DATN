@@ -134,5 +134,17 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult HoanThanh(int id)
+        {
+            var donHang = db.DonHangs.Find(id);
+            if (donHang == null)
+                return HttpNotFound();
+
+            donHang.TrangThai = "Hoan thanh";
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

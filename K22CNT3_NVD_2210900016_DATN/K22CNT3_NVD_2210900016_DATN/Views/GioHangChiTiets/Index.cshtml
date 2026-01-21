@@ -110,15 +110,13 @@
 @if (Model.Any())
 {
     <div class="text-end mt-3">
-        @using (Html.BeginForm("ThanhToan", "GioHangChiTiets", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-success btn-lg">
-                💳 Thanh toán
-            </button>
-        }
+        <a href="@Url.Action("TienHanhThanhToan","GioHangChiTiets")"
+           class="btn btn-success btn-lg">
+            💳 Tiến hành thanh toán
+        </a>
     </div>
 }
+
 
 
 

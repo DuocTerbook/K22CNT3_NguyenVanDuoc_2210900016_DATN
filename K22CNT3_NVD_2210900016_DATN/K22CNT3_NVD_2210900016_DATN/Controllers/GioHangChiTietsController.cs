@@ -90,7 +90,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         // =======================
         // XÓA (POST)
         // =======================
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int ID_CTGH)
         {
@@ -225,5 +225,35 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         {
             return View();
         }
+        // =======================
+        // TIẾN HÀNH THANH TOÁN (GET)
+        // =======================
+        public ActionResult TienHanhThanhToan()
+        {
+            if (Session["CartId"] == null)
+                return RedirectToAction("Index");
+
+            int cartId = (int)Session["CartId"];
+
+            var gioHang = db.GioHangs
+                .Include(g => g.KhachHang)
+                .Include(g => g.GioHangChiTiets)
+                .FirstOrDefault(g => g.ID_GioHang == cartId);
+
+            // ❌ Không có giỏ hoặc giỏ rỗng
+            if (gioHang == null || !gioHang.GioHangChiTiets.Any())
+                return RedirectToAction("Index");
+
+            // ❌ Chưa nhập thông tin khách
+            if (gioHang.KhachHang == null)
+            {
+                TempData["Error"] = "Vui lòng nhập thông tin khách hàng trước khi thanh toán";
+                return RedirectToAction("Index");
+            }
+
+            // ✅ OK → chuyển sang POST ThanhToan
+            return View("XacNhanThanhToan", gioHang);
+        }
+
     }
 }

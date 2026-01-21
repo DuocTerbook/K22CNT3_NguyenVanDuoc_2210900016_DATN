@@ -209,6 +209,13 @@
           <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
           <Property Name="MoTa" Type="nvarchar(max)" />
           <Property Name="TrangThai" Type="bit" />
+          <Property Name="TrongLuong" Type="nvarchar" MaxLength="10" />
+          <Property Name="DoCung" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiemCanBang" Type="nvarchar" MaxLength="50" />
+          <Property Name="MucCangToiDa" Type="int" />
+          <Property Name="ChatLieuKhung" Type="nvarchar" MaxLength="100" />
+          <Property Name="DoiTuongSuDung" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhongCachDanh" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -721,6 +728,13 @@
           <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__ID_SP__14E61A24" FromRole="SanPham" ToRole="ChiTietPhieuNhap" />
           <NavigationProperty Name="GioHangChiTiets" Relationship="Self.FK__GioHangCh__ID_SP__27F8EE98" FromRole="SanPham" ToRole="GioHangChiTiet" />
           <NavigationProperty Name="ChiTietDonDichVus" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_SP__3CF40B7E" FromRole="SanPham" ToRole="ChiTietDonDichVu" />
+          <Property Name="TrongLuong" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DoCung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiemCanBang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MucCangToiDa" Type="Int32" />
+          <Property Name="ChatLieuKhung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DoiTuongSuDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhongCachDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1326,6 +1340,13 @@
           <EntitySetMapping Name="SanPhams">
             <EntityTypeMapping TypeName="QuanLyVotModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="PhongCachDanh" ColumnName="PhongCachDanh" />
+                <ScalarProperty Name="DoiTuongSuDung" ColumnName="DoiTuongSuDung" />
+                <ScalarProperty Name="ChatLieuKhung" ColumnName="ChatLieuKhung" />
+                <ScalarProperty Name="MucCangToiDa" ColumnName="MucCangToiDa" />
+                <ScalarProperty Name="DiemCanBang" ColumnName="DiemCanBang" />
+                <ScalarProperty Name="DoCung" ColumnName="DoCung" />
+                <ScalarProperty Name="TrongLuong" ColumnName="TrongLuong" />
                 <ScalarProperty Name="ID_SP" ColumnName="ID_SP" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
                 <ScalarProperty Name="ThuongHieu" ColumnName="ThuongHieu" />

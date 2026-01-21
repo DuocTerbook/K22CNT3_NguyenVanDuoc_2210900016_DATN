@@ -1,0 +1,49 @@
+﻿@model K22CNT3_NVD_2210900016_DATN.Models.GioHang
+
+@{
+    ViewBag.Title = "Xác nhận thanh toán";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">🧾 Xác nhận thanh toán</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-center">
+                        <strong>Khách hàng:</strong> @Model.KhachHang.TenKhach
+                    </p>
+
+                    <p class="text-center text-danger fw-bold fs-5">
+                        Tổng tiền: @String.Format("{0:N0} ₫", Model.TongTien)
+                    </p>
+
+                    @using (Html.BeginForm("ThanhToan", "GioHangChiTiets", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mb-3">
+                            <label class="fw-bold">Phương thức thanh toán</label>
+                            <select name="PhuongThuc" class="form-control">
+                                <option value="Tien mat">Tiền mặt</option>
+                                <option value="Chuyen khoan">Chuyển khoản</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-lg px-4">
+                                ✅ Xác nhận thanh toán
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

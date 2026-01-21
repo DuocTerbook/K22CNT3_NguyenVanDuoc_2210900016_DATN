@@ -61,17 +61,13 @@
 
     <!-- HÌNH ẢNH -->
     <div class="sp-image">
-        @if (!string.IsNullOrEmpty(Model.HinhAnh))
-        {
-            <img src="~/Content/images/@Model.HinhAnh" alt="@Model.TenSP" />
-        }
-        else
-        {
-            <img src="~/Content/images/no-image.png" alt="No image" />
-        }
+        <img src="@(string.IsNullOrEmpty(Model.HinhAnh)
+                    ? Url.Content("~/Content/Images/no-image.png")
+                    : Url.Content(Model.HinhAnh))"
+             alt="@Model.TenSP" />
     </div>
 
-    <!-- THÔNG TIN -->
+    <!-- THÔNG TIN CHUNG -->
     <dl class="dl-horizontal">
         <dt>Tên sản phẩm</dt>
         <dd>@Model.TenSP</dd>
@@ -80,16 +76,16 @@
         <dd>@Model.ThuongHieu</dd>
 
         <dt>Đơn giá</dt>
-        <dd>@String.Format("{0:N0} đ", Model.DonGia)</dd>
+        <dd>@Model.DonGia.ToString("N0") đ</dd>
 
         <dt>Số lượng</dt>
-        <dd>@Model.SoLuong</dd>
+        <dd>@(Model.SoLuong ?? 0)</dd>
 
         <dt>Đơn vị</dt>
         <dd>@Model.DVT</dd>
 
         <dt>Bảo hành</dt>
-        <dd>@Model.BaoHanhThang tháng</dd>
+        <dd>@(Model.BaoHanhThang ?? 0) tháng</dd>
 
         <dt>Mô tả</dt>
         <dd>@Model.MoTa</dd>
@@ -98,18 +94,51 @@
         <dd>
             @if (Model.TrangThai == true)
             {
-                <span class="text-success">Đang bán</span>
+                <span class="text-success fw-bold">Đang bán</span>
             }
             else
             {
-                <span class="text-danger">Ngừng bán</span>
+                <span class="text-danger fw-bold">Ngừng bán</span>
             }
         </dd>
     </dl>
 
+    <hr />
+
+    <!-- THÔNG SỐ KỸ THUẬT -->
+    <h5 class="mb-3">⚙️ Thông số kỹ thuật</h5>
+
+    <dl class="dl-horizontal">
+        <dt>Trọng lượng</dt>
+        <dd>@Model.TrongLuong</dd>
+
+        <dt>Độ cứng</dt>
+        <dd>@Model.DoCung</dd>
+
+        <dt>Điểm cân bằng</dt>
+        <dd>@Model.DiemCanBang</dd>
+
+        <dt>Mức căng tối đa</dt>
+        <dd>@(Model.MucCangToiDa ?? 0) lbs</dd>
+
+        <dt>Chất liệu khung</dt>
+        <dd>@Model.ChatLieuKhung</dd>
+
+        <dt>Đối tượng sử dụng</dt>
+        <dd>@Model.DoiTuongSuDung</dd>
+
+        <dt>Phong cách đánh</dt>
+        <dd>@Model.PhongCachDanh</dd>
+    </dl>
+
     <!-- BUTTON -->
     <div class="sp-actions">
-        @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.ID_SP }, new { @class = "btn btn-primary" })
-        @Html.ActionLink("↩ Quay lại", "Index", null, new { @class = "btn btn-secondary ms-2" })
+        @Html.ActionLink("✏️ Sửa", "Edit",
+            new { id = Model.ID_SP },
+            new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("↩ Quay lại", "Index",
+            null,
+            new { @class = "btn btn-secondary ms-2" })
     </div>
 </div>

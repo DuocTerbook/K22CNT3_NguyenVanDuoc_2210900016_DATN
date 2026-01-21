@@ -265,6 +265,14 @@ CREATE TABLE LichSuTichDiem (
     FOREIGN KEY (ID_DonHang) REFERENCES DonHang(ID_DonHang),
     FOREIGN KEY (ID_DonDV) REFERENCES DonDichVu(ID_DonDV)
 )
+ALTER TABLE SanPham
+ADD TrongLuong NVARCHAR(10),          -- 3U, 4U
+    DoCung NVARCHAR(50),              -- Mềm, Trung bình, Cứng
+    DiemCanBang NVARCHAR(50),         -- Nặng đầu, Cân bằng, Nhẹ đầu
+    MucCangToiDa INT,                 -- lbs
+    ChatLieuKhung NVARCHAR(100),      -- Carbon, HM Graphite
+    DoiTuongSuDung NVARCHAR(100),     -- Người mới, Bán chuyên, Chuyên nghiệp
+    PhongCachDanh NVARCHAR(100);      -- Công, Thủ, Toàn diện
 ALTER TABLE GioHang
 ADD TongTien DECIMAL(18,2) NULL;
 

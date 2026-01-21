@@ -129,6 +129,13 @@
     <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__ID_SP__14E61A24" FromRole="SanPham" ToRole="ChiTietPhieuNhap" />
     <NavigationProperty Name="GioHangChiTiets" Relationship="Self.FK__GioHangCh__ID_SP__27F8EE98" FromRole="SanPham" ToRole="GioHangChiTiet" />
     <NavigationProperty Name="ChiTietDonDichVus" Relationship="QuanLyVotModel.FK__ChiTietDo__ID_SP__3CF40B7E" FromRole="SanPham" ToRole="ChiTietDonDichVu" />
+    <Property Name="TrongLuong" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DoCung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiemCanBang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MucCangToiDa" Type="Int32" />
+    <Property Name="ChatLieuKhung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DoiTuongSuDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhongCachDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

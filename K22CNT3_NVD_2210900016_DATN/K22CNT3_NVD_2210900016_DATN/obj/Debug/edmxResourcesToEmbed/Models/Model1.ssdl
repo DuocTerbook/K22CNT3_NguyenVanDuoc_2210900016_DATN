@@ -204,6 +204,13 @@
     <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
     <Property Name="MoTa" Type="nvarchar(max)" />
     <Property Name="TrangThai" Type="bit" />
+    <Property Name="TrongLuong" Type="nvarchar" MaxLength="10" />
+    <Property Name="DoCung" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiemCanBang" Type="nvarchar" MaxLength="50" />
+    <Property Name="MucCangToiDa" Type="int" />
+    <Property Name="ChatLieuKhung" Type="nvarchar" MaxLength="100" />
+    <Property Name="DoiTuongSuDung" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhongCachDanh" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

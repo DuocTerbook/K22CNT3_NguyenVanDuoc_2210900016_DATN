@@ -45,7 +45,21 @@ namespace K22CNT3_NVD_2210900016_DATN.Models
         public string MoTa { get; set; }
         [Display(Name = "Trạng thái")]
         public Nullable<bool> TrangThai { get; set; }
-
+        [Display(Name ="Trọng lượng")]
+        public string TrongLuong { get; set; }
+        [Display(Name = "Độ cứng")]
+        public string DoCung { get; set; }
+        [Display(Name = "Điểm cân bằng")]
+        public string DiemCanBang { get; set; }
+        [Display(Name = "Mức căng tối đa")]
+        public Nullable<int> MucCangToiDa { get; set; }
+        [Display(Name = "Chất liệu khung")]
+        public string ChatLieuKhung { get; set; }
+        [Display(Name = "Đối tượng sử dụng")]
+        public string DoiTuongSuDung { get; set; }
+        [Display(Name = "Phong cách đánh")]
+        public string PhongCachDanh { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

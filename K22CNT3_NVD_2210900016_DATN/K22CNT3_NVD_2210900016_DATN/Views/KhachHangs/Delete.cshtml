@@ -103,9 +103,10 @@
         </tr>
     </table>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Delete", "KhachHangs", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ID_KhachHang)
 
         <div class="kh-btn-group">
             <input type="submit" value="❌ Xóa khách hàng" class="kh-btn kh-btn-delete" />

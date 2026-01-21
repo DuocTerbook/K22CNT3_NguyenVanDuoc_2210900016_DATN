@@ -4,70 +4,136 @@
     ViewBag.Title = "Xóa sản phẩm";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<h4>Bạn có chắc chắn muốn xóa sản phẩm này?</h4>
-<hr />
-
-<div class="row">
-    <div class="col-md-4">
-        @if (!string.IsNullOrEmpty(Model.HinhAnh))
-        {
-            <img src="@Model.HinhAnh" class="img-thumbnail" style="width:100%; height:auto;" alt="@Model.TenSP" />
-        }
-    </div>
-    <div class="col-md-8">
-        <dl class="dl-horizontal">
-            <dt>@Html.DisplayNameFor(m => m.TenSP)</dt>
-            <dd>@Html.DisplayFor(m => m.TenSP)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.ThuongHieu)</dt>
-            <dd>@Html.DisplayFor(m => m.ThuongHieu)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.DonGia)</dt>
-            <dd>@Html.DisplayFor(m => m.DonGia)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.SoLuong)</dt>
-            <dd>@Html.DisplayFor(m => m.SoLuong)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.DVT)</dt>
-            <dd>@Html.DisplayFor(m => m.DVT)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.BaoHanhThang)</dt>
-            <dd>@Html.DisplayFor(m => m.BaoHanhThang)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.MoTa)</dt>
-            <dd>@Html.DisplayFor(m => m.MoTa)</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.TrangThai)</dt>
-            <dd>@(Model.TrangThai == true ? "Đang bán" : "Ngừng bán")</dd>
-        </dl>
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <div class="form-actions">
-                <input type="submit" value="Xóa" class="btn btn-danger" />
-                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
-            </div>
-        }
-    </div>
-</div>
-
 <style>
+    body {
+        background-color: #f4f6f9;
+    }
+
+    .sp-frame {
+        max-width: 950px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 35px 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+        .sp-frame h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #dc3545;
+        }
+
+    .warning-text {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 25px;
+        color: #555;
+    }
+
+    .sp-image {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+        .sp-image img {
+            max-width: 260px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+
     .dl-horizontal dt {
-        width: 120px;
-        float: left;
-        clear: left;
-        font-weight: bold;
+        font-weight: 600;
+        width: 230px;
     }
 
     .dl-horizontal dd {
-        margin-left: 130px;
-        margin-bottom: 10px;
+        margin-left: 250px;
+        margin-bottom: 12px;
     }
 
-    .form-actions {
-        margin-top: 20px;
+    .sp-actions {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 10px 26px;
     }
 </style>
+
+<div class="sp-frame">
+    <h2>🗑 Xóa sản phẩm</h2>
+    <p class="warning-text">
+        ⚠ Bạn có chắc chắn muốn <strong>xóa vĩnh viễn</strong> sản phẩm này không?
+    </p>
+
+    <!-- HÌNH ẢNH (GIỐNG INDEX) -->
+    <div class="sp-image">
+        <img src="@(string.IsNullOrEmpty(Model.HinhAnh)
+                    ? Url.Content("~/Content/Images/no-image.png")
+                    : Model.HinhAnh)"
+             alt="@Model.TenSP" />
+    </div>
+
+    <!-- THÔNG TIN SẢN PHẨM -->
+    <dl class="dl-horizontal">
+        <dt>Tên sản phẩm</dt>
+        <dd>@Model.TenSP</dd>
+
+        <dt>Thương hiệu</dt>
+        <dd>@Model.ThuongHieu</dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@Model.DonGia.ToString("N0") đ</dd>
+
+        <dt>Số lượng</dt>
+        <dd>@(Model.SoLuong ?? 0)</dd>
+
+        <dt>Đơn vị tính</dt>
+        <dd>@Model.DVT</dd>
+
+        <dt>Bảo hành</dt>
+        <dd>@(Model.BaoHanhThang ?? 0) tháng</dd>
+
+        <dt>Trọng lượng</dt>
+        <dd>@Model.TrongLuong</dd>
+
+        <dt>Độ cứng</dt>
+        <dd>@Model.DoCung</dd>
+
+        <dt>Điểm cân bằng</dt>
+        <dd>@Model.DiemCanBang</dd>
+
+        <dt>Mức căng tối đa</dt>
+        <dd>@(Model.MucCangToiDa ?? 0)</dd>
+
+        <dt>Chất liệu khung</dt>
+        <dd>@Model.ChatLieuKhung</dd>
+
+        <dt>Đối tượng sử dụng</dt>
+        <dd>@Model.DoiTuongSuDung</dd>
+
+        <dt>Phong cách đánh</dt>
+        <dd>@Model.PhongCachDanh</dd>
+
+        <dt>Mô tả</dt>
+        <dd>@Model.MoTa</dd>
+
+        <dt>Trạng thái</dt>
+        <dd>@(Model.TrangThai == true ? "Đang bán" : "Ngừng bán")</dd>
+    </dl>
+
+    <!-- BUTTON -->
+    <div class="sp-actions">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="❌ Xóa sản phẩm" class="btn btn-danger" />
+            @Html.ActionLink("↩ Quay lại", "Index", null,
+                new { @class = "btn btn-secondary ms-2" })
+        }
+    </div>
+</div>

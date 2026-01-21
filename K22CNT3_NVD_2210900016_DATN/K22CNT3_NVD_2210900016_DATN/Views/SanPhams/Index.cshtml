@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Danh sách sản phẩm";
 }
+
 <style>
     .product-card {
         height: 100%;
@@ -64,7 +65,10 @@
         {
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="card product-card">
-                    <img src="@item.HinhAnh"
+
+                    <img src="@(string.IsNullOrEmpty(item.HinhAnh)
+                                ? Url.Content("~/Content/Images/no-image.png")
+                                : item.HinhAnh)"
                          class="card-img-top"
                          alt="@item.TenSP" />
 
@@ -74,11 +78,27 @@
                         <p class="card-text">
                             <strong>Thương hiệu:</strong> @item.ThuongHieu <br />
                             <strong>Giá:</strong> @item.DonGia.ToString("N0") đ <br />
-                            <strong>Số lượng:</strong> @item.SoLuong <br />
+                            <strong>Số lượng:</strong> @(item.SoLuong ?? 0) <br />
                             <strong>Đơn vị:</strong> @item.DVT <br />
-                            <strong>Bảo hành:</strong> @item.BaoHanhThang tháng <br />
+                            <strong>Bảo hành:</strong> @(item.BaoHanhThang ?? 0) tháng <br />
+
+                            <strong>Trọng lượng:</strong> @item.TrongLuong <br />
+                            <strong>Độ cứng:</strong> @item.DoCung <br />
+                            <strong>Điểm cân bằng:</strong> @item.DiemCanBang <br />
+                            <strong>Mức căng tối đa:</strong> @(item.MucCangToiDa ?? 0) lbs <br />
+                            <strong>Chất liệu khung:</strong> @item.ChatLieuKhung <br />
+                            <strong>Đối tượng:</strong> @item.DoiTuongSuDung <br />
+                            <strong>Phong cách:</strong> @item.PhongCachDanh <br />
+
                             <strong>Trạng thái:</strong>
-                            @(item.TrangThai == true ? "Đang bán" : "Ngừng bán")
+                            @if (item.TrangThai == true)
+                            {
+                                <span class="badge bg-success">Đang bán</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Ngừng bán</span>
+                            }
                         </p>
                     </div>
 
@@ -105,5 +125,3 @@
         }
     </div>
 </div>
-
-

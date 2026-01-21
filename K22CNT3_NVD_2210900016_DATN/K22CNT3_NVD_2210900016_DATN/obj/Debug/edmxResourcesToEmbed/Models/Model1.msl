@@ -104,6 +104,13 @@
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="QuanLyVotModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="PhongCachDanh" ColumnName="PhongCachDanh" />
+          <ScalarProperty Name="DoiTuongSuDung" ColumnName="DoiTuongSuDung" />
+          <ScalarProperty Name="ChatLieuKhung" ColumnName="ChatLieuKhung" />
+          <ScalarProperty Name="MucCangToiDa" ColumnName="MucCangToiDa" />
+          <ScalarProperty Name="DiemCanBang" ColumnName="DiemCanBang" />
+          <ScalarProperty Name="DoCung" ColumnName="DoCung" />
+          <ScalarProperty Name="TrongLuong" ColumnName="TrongLuong" />
           <ScalarProperty Name="ID_SP" ColumnName="ID_SP" />
           <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="ThuongHieu" ColumnName="ThuongHieu" />
