@@ -6,7 +6,7 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
 
             <div class="card shadow-lg">
                 <div class="card-header bg-primary text-white text-center">
@@ -15,25 +15,89 @@
 
                 <div class="card-body">
 
+                    <!-- Thông tin khách hàng -->
                     <p class="text-center">
                         <strong>Khách hàng:</strong> @Model.KhachHang.TenKhach
                     </p>
 
-                    <p class="text-center text-danger fw-bold fs-5">
+                    <!-- Thông tin đơn hàng -->
+                    <h5 class="mt-4 mb-3 fw-bold text-primary">
+                        📦 Thông tin đơn hàng
+                    </h5>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle text-center">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int stt = 1;
+                                }
+                                @foreach (var item in Model.GioHangChiTiets)
+                                {
+                                    <tr>
+                                        <td>@stt</td>
+                                        <td>@item.SanPham.TenSP</td>
+                                        <td>@String.Format("{0:N0} ₫", item.SanPham.DonGia)</td>
+                                        <td>@item.SoLuong</td>
+                                        <td class="text-danger fw-bold">
+                                            @String.Format("{0:N0} ₫", item.SanPham.DonGia * item.SoLuong)
+                                        </td>
+                                    </tr>
+                                    stt++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tổng tiền -->
+                    <p class="text-end fw-bold fs-5 text-danger mt-3">
                         Tổng tiền: @String.Format("{0:N0} ₫", Model.TongTien)
                     </p>
 
+                    <hr />
+
+                    <!-- Form thanh toán -->
                     @using (Html.BeginForm("ThanhToan", "GioHangChiTiets", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="form-group mb-3">
-                            <label class="fw-bold">Phương thức thanh toán</label>
-                            <select name="PhuongThuc" class="form-control">
-                                <option value="Tien mat">Tiền mặt</option>
-                                <option value="Chuyen khoan">Chuyển khoản</option>
-                            </select>
+                        <div class="form-group mb-4">
+                            <label class="fw-bold d-block mb-2">
+                                Phương thức thanh toán
+                            </label>
+
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="PhuongThuc"
+                                       id="tienMat"
+                                       value="Tien mat"
+                                       checked />
+                                <label class="form-check-label" for="tienMat">
+                                    💵 Thanh toán tiền mặt
+                                </label>
+                            </div>
+
+                            <div class="form-check mt-2">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="PhuongThuc"
+                                       id="chuyenKhoan"
+                                       value="Chuyen khoan" />
+                                <label class="form-check-label" for="chuyenKhoan">
+                                    💳 Chuyển khoản ngân hàng
+                                </label>
+                            </div>
                         </div>
+
 
                         <div class="text-center">
                             <button type="submit" class="btn btn-success btn-lg px-4">

@@ -275,7 +275,9 @@ ADD TrongLuong NVARCHAR(10),          -- 3U, 4U
     PhongCachDanh NVARCHAR(100);      -- Công, Thủ, Toàn diện
 ALTER TABLE GioHang
 ADD TongTien DECIMAL(18,2) NULL;
-
-
+select * 
+from LichSuTichDiem
+where ID_DonHang = 1
+select distinct TrangThai from DonHang
 
 

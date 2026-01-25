@@ -43,6 +43,35 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(LichSuTichDiem model)
         {
+            // ❌ Đã tích điểm cho đơn hàng này rồi
+            if (model.ID_DonHang.HasValue)
+            {
+                bool daTich = db.LichSuTichDiems
+                    .Any(x => x.ID_DonHang == model.ID_DonHang);
+
+                if (daTich)
+                {
+                    ModelState.AddModelError("", "Đơn hàng này đã được tích điểm.");
+                }
+            }
+
+            if (model.ID_DonDV.HasValue)
+            {
+                bool daTich = db.LichSuTichDiems
+                    .Any(x => x.ID_DonDV == model.ID_DonDV);
+
+                if (daTich)
+                {
+                    ModelState.AddModelError("", "Đơn dịch vụ này đã được tích điểm.");
+                }
+            }
+
+            if (!ModelState.IsValid)
+            {
+                LoadDropDowns(model.ID_HoiVien, model.ID_DonHang, model.ID_DonDV);
+                return View(model);
+            }
+
             if (model.ID_DonHang.HasValue && model.ID_DonDV.HasValue)
             {
                 ModelState.AddModelError("", "Chỉ được chọn Đơn hàng hoặc Đơn dịch vụ.");
@@ -63,13 +92,13 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             {
                 var dh = db.DonHangs.Find(model.ID_DonHang);
                 model.DiemCong = (int)(dh.TongTien / 10000);
-                model.LyDo = "Tích điểm từ đơn hàng #" + dh.ID_DonHang;
+                model.LyDo = "Tích điểm từ đơn hàng";
             }
             else
             {
                 var dv = db.DonDichVus.Find(model.ID_DonDV);
                 model.DiemCong = (int)(dv.TongTien / 10000);
-                model.LyDo = "Tích điểm từ đơn dịch vụ #" + dv.ID_DonDV;
+                model.LyDo = "Tích điểm từ đơn dịch vụ";
             }
 
             model.NgayTichDiem = DateTime.Now;
@@ -117,13 +146,13 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             {
                 var dh = db.DonHangs.Find(model.ID_DonHang);
                 model.DiemCong = (int)(dh.TongTien / 10000);
-                model.LyDo = "Tích điểm từ đơn hàng #" + dh.ID_DonHang;
+                model.LyDo = "Tích điểm từ đơn hàng";
             }
             else
             {
                 var dv = db.DonDichVus.Find(model.ID_DonDV);
                 model.DiemCong = (int)(dv.TongTien / 10000);
-                model.LyDo = "Tích điểm từ đơn dịch vụ #" + dv.ID_DonDV;
+                model.LyDo = "Tích điểm từ đơn dịch vụ";
             }
 
             hv.DiemTichLuy += model.DiemCong ?? 0;
@@ -183,9 +212,9 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
 
         // ================= DROPDOWN =================
         private void LoadDropDowns(
-    int? hoiVienId = null,
-    int? donHangId = null,
-    int? donDvId = null)
+            int? hoiVienId = null,
+            int? donHangId = null,
+            int? donDvId = null)
         {
             // Hội viên
             ViewBag.ID_HoiVien = new SelectList(
@@ -195,10 +224,10 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
                 hoiVienId
             );
 
-            // Đơn hàng - chỉ lấy đơn HOÀN THÀNH
+            // Đơn hàng - đã thanh toán
             ViewBag.ID_DonHang = new SelectList(
                 db.DonHangs
-                  .Where(x => x.TrangThai == "HoanThanh"),
+                  .Where(x => x.TrangThai == "Da thanh toan"),
                 "ID_DonHang",
                 "ID_DonHang",
                 donHangId
