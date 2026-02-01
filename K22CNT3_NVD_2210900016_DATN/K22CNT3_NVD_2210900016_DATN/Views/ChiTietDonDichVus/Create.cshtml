@@ -16,39 +16,88 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <!-- GIỮ ID ĐƠN -->
+        <!-- GIỮ ID ĐƠN DỊCH VỤ -->
         @Html.HiddenFor(m => m.ID_DonDV)
 
         <div class="row g-3">
 
+            <!-- DỊCH VỤ -->
             <div class="col-md-6">
                 @Html.LabelFor(m => m.ID_DichVu)
-                @Html.DropDownList("ID_DichVu", null, "-- Chọn dịch vụ --", new { @class = "form-select" })
+                @Html.DropDownListFor(
+                    m => m.ID_DichVu,
+                    (SelectList)ViewBag.ID_DichVu,
+                    "-- Chọn dịch vụ --",
+                    new { @class = "form-select", id = "ID_DichVu" }
+                )
+                @Html.ValidationMessageFor(m => m.ID_DichVu, "", new { @class = "text-danger" })
             </div>
 
+
+            <!-- SẢN PHẨM (CÓ THỂ BỎ TRỐNG) -->
             <div class="col-md-6">
                 @Html.LabelFor(m => m.ID_SP)
-                @Html.DropDownList("ID_SP", null, "-- Chọn sản phẩm --", new { @class = "form-select" })
+                @Html.DropDownListFor(
+                    m => m.ID_SP,
+                    (SelectList)ViewBag.ID_SP,
+                    "-- Không chọn sản phẩm --",
+                    new { @class = "form-select" }
+                )
             </div>
 
+            <!-- SỐ LƯỢNG -->
             <div class="col-md-4">
                 @Html.LabelFor(m => m.SoLuong)
-                @Html.TextBoxFor(m => m.SoLuong, new { @class = "form-control", type = "number", min = "1", id = "SoLuong" })
+                @Html.TextBoxFor(
+                    m => m.SoLuong,
+                    new
+                    {
+                        @class = "form-control",
+                        type = "number",
+                        min = "1",
+                        id = "SoLuong"
+                    }
+                )
+                @Html.ValidationMessageFor(m => m.SoLuong, "", new { @class = "text-danger" })
             </div>
 
+            <!-- ĐƠN GIÁ -->
             <div class="col-md-4">
                 @Html.LabelFor(m => m.DonGia)
-                @Html.TextBoxFor(m => m.DonGia, new { @class = "form-control", type = "number", min = "0", id = "DonGia" })
+                @Html.TextBoxFor(
+                    m => m.DonGia,
+                    new
+                    {
+                        @class = "form-control",
+                        type = "number",
+                        min = "0",
+                        id = "DonGia"
+                    }
+                )
+                @Html.ValidationMessageFor(m => m.DonGia, "", new { @class = "text-danger" })
             </div>
 
+            <!-- THÀNH TIỀN (HIỂN THỊ) -->
             <div class="col-md-4">
                 <label class="fw-bold">Thành tiền</label>
-                <input type="text" id="ThanhTienView" class="form-control fw-bold text-success" readonly />
+                <input type="text"
+                       id="ThanhTienView"
+                       class="form-control fw-bold text-success"
+                       readonly />
             </div>
 
+            <!-- THÔNG SỐ KỸ THUẬT (KHÔNG BẮT BUỘC) -->
             <div class="col-md-12">
                 @Html.LabelFor(m => m.ThongSoKyThuat)
-                @Html.TextAreaFor(m => m.ThongSoKyThuat, new { @class = "form-control", rows = 3 })
+                @Html.TextAreaFor(
+                    m => m.ThongSoKyThuat,
+                    new
+                    {
+                        @class = "form-control",
+                        rows = 3,
+                        placeholder = "Nhap thong so ky thuat (co the de trong)"
+                    }
+                )
             </div>
 
         </div>
@@ -73,6 +122,7 @@
         let sl = parseFloat(document.getElementById("SoLuong").value) || 0;
         let dg = parseFloat(document.getElementById("DonGia").value) || 0;
         let tt = sl * dg;
+
         document.getElementById("ThanhTienView").value =
             tt.toLocaleString("vi-VN") + " ₫";
     }

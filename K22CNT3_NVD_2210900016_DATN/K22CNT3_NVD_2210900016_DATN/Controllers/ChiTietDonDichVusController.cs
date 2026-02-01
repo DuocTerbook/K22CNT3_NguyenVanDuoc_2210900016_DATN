@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using K22CNT3_NVD_2210900016_DATN.Models;
 
@@ -9,175 +10,225 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
     {
         private QuanLyVotEntities db = new QuanLyVotEntities();
 
-        // GET: ChiTietDonDichVu
+        // ================= INDEX =================
         public ActionResult Index(int? donDichVuId)
         {
-            if (donDichVuId.HasValue)
-            {
-                var chiTiets = db.ChiTietDonDichVus
-                    .Include("DonDichVu")
-                    .Include("DichVu")
-                    .Include("SanPham")
-                    .Where(c => c.ID_DonDV == donDichVuId)
-                    .ToList();
-                ViewBag.DonDichVuId = donDichVuId;
-                return View(chiTiets);
-            }
-            return View(db.ChiTietDonDichVus.Include("DonDichVu").Include("DichVu").Include("SanPham").ToList());
-        }
-
-        // GET: ChiTietDonDichVu/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            ChiTietDonDichVu chiTiet = db.ChiTietDonDichVus
+            var data = db.ChiTietDonDichVus
                 .Include("DonDichVu")
                 .Include("DichVu")
                 .Include("SanPham")
-                .FirstOrDefault(c => c.ID_CTDonDV == id);
-            if (chiTiet == null)
-            {
-                return HttpNotFound();
-            }
-            return View(chiTiet);
-        }
-
-        // GET: ChiTietDonDichVu/Create
-        public ActionResult Create(int? donDichVuId)
-        {
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "TenKhach", donDichVuId);
-            ViewBag.ID_DichVu = new SelectList(db.DichVus.Where(d => d.TrangThai == true), "ID_DichVu", "TenDichVu");
-            ViewBag.ID_SP = new SelectList(db.SanPhams.Where(s => s.TrangThai == true), "ID_SP", "TenSP");
+                .AsQueryable();
 
             if (donDichVuId.HasValue)
             {
-                var model = new ChiTietDonDichVu { ID_DonDV = donDichVuId.Value };
-                return View(model);
+                data = data.Where(x => x.ID_DonDV == donDichVuId);
+                ViewBag.DonDichVuId = donDichVuId;
             }
 
-            return View();
+            return View(data.ToList());
         }
 
-        // POST: ChiTietDonDichVu/Create
+        // ================= CREATE (GET) =================
+        public ActionResult Create(int? donDichVuId)
+        {
+            var model = new ChiTietDonDichVu
+            {
+                SoLuong = 1
+            };
+
+            // Nếu có đơn → gán
+            if (donDichVuId.HasValue &&
+                db.DonDichVus.Any(x => x.ID_DonDV == donDichVuId))
+            {
+                model.ID_DonDV = donDichVuId.Value;
+            }
+
+            // Dropdown chọn đơn dịch vụ
+            ViewBag.ID_DonDV = new SelectList(
+                db.DonDichVus,
+                "ID_DonDV",
+                "MaDon" // hoặc cột bạn muốn hiển thị
+            );
+
+            LoadDropdowns();
+            return View(model);
+        }
+
+
+        // ================= CREATE (POST) =================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_DonDV,ID_DichVu,ID_SP,SoLuong,DonGia,ThongSoKyThuat")] ChiTietDonDichVu chiTiet)
+        public ActionResult Create(ChiTietDonDichVu chiTiet)
         {
+            // ❌ BỎ VALIDATE CÁC FIELD KHÔNG NHẬP
+            ModelState.Remove("ThongSoKyThuat");
+            ModelState.Remove("ThanhTien");
+
+            // ===== KIỂM TRA FK =====
+            if (!db.DonDichVus.Any(d => d.ID_DonDV == chiTiet.ID_DonDV))
+                ModelState.AddModelError("", "Don dich vu khong ton tai");
+
+            if (!db.DichVus.Any(d => d.ID_DichVu == chiTiet.ID_DichVu))
+                ModelState.AddModelError("ID_DichVu", "Vui long chon dich vu");
+
+            // ===== XỬ LÝ GIÁ TRỊ =====
+            if (chiTiet.ID_SP == 0)
+                chiTiet.ID_SP = null;
+
+            if (string.IsNullOrWhiteSpace(chiTiet.ThongSoKyThuat))
+                chiTiet.ThongSoKyThuat = "";
+
+            if (chiTiet.SoLuong == null || chiTiet.SoLuong <= 0)
+                chiTiet.SoLuong = 1;
+
+            if (chiTiet.DonGia == null || chiTiet.DonGia <= 0)
+            {
+                var dv = db.DichVus.Find(chiTiet.ID_DichVu);
+                if (dv != null)
+                    chiTiet.DonGia = dv.DonGia;
+            }
+
+            chiTiet.ThanhTien = chiTiet.SoLuong * chiTiet.DonGia;
+
+            // ===== SAVE =====
             if (ModelState.IsValid)
             {
-                // Lấy đơn giá từ dịch vụ nếu không nhập
-                if (chiTiet.DonGia == 0)
-                {
-                    var dichVu = db.DichVus.Find(chiTiet.ID_DichVu);
-                    if (dichVu != null)
-                        chiTiet.DonGia = dichVu.DonGia;
-                }
-
                 db.ChiTietDonDichVus.Add(chiTiet);
                 db.SaveChanges();
 
-                // Cập nhật tổng tiền đơn dịch vụ
                 UpdateTongTienDonDichVu(chiTiet.ID_DonDV);
 
-                TempData["SuccessMessage"] = "Thêm chi tiết dịch vụ thành công!";
+                TempData["SuccessMessage"] = "Them chi tiet dich vu thanh cong";
                 return RedirectToAction("Index", new { donDichVuId = chiTiet.ID_DonDV });
             }
 
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "TenKhach", chiTiet.ID_DonDV);
-            ViewBag.ID_DichVu = new SelectList(db.DichVus, "ID_DichVu", "TenDichVu", chiTiet.ID_DichVu);
-            ViewBag.ID_SP = new SelectList(db.SanPhams, "ID_SP", "TenSP", chiTiet.ID_SP);
+            LoadDropdowns(chiTiet);
             return View(chiTiet);
         }
 
-        // GET: ChiTietDonDichVu/Edit/5
+        // ================= EDIT (GET) =================
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            ChiTietDonDichVu chiTiet = db.ChiTietDonDichVus.Find(id);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var chiTiet = db.ChiTietDonDichVus.Find(id);
             if (chiTiet == null)
-            {
                 return HttpNotFound();
-            }
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "TenKhach", chiTiet.ID_DonDV);
-            ViewBag.ID_DichVu = new SelectList(db.DichVus, "ID_DichVu", "TenDichVu", chiTiet.ID_DichVu);
-            ViewBag.ID_SP = new SelectList(db.SanPhams, "ID_SP", "TenSP", chiTiet.ID_SP);
+
+            LoadDropdowns(chiTiet);
             return View(chiTiet);
         }
 
-        // POST: ChiTietDonDichVu/Edit/5
+        // ================= EDIT (POST) =================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_CTDonDV,ID_DonDV,ID_DichVu,ID_SP,SoLuong,DonGia,ThongSoKyThuat")] ChiTietDonDichVu chiTiet)
+        public ActionResult Edit(ChiTietDonDichVu chiTiet)
         {
+            ModelState.Remove("ThongSoKyThuat");
+            ModelState.Remove("ThanhTien");
+
+            if (chiTiet.ID_SP == 0)
+                chiTiet.ID_SP = null;
+
+            if (string.IsNullOrWhiteSpace(chiTiet.ThongSoKyThuat))
+                chiTiet.ThongSoKyThuat = "";
+
+            chiTiet.ThanhTien = chiTiet.SoLuong * chiTiet.DonGia;
+
             if (ModelState.IsValid)
             {
                 db.Entry(chiTiet).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
-                // Cập nhật tổng tiền đơn dịch vụ
                 UpdateTongTienDonDichVu(chiTiet.ID_DonDV);
 
-                TempData["SuccessMessage"] = "Cập nhật chi tiết dịch vụ thành công!";
+                TempData["SuccessMessage"] = "Cap nhat thanh cong";
                 return RedirectToAction("Index", new { donDichVuId = chiTiet.ID_DonDV });
             }
-            ViewBag.ID_DonDV = new SelectList(db.DonDichVus, "ID_DonDV", "TenKhach", chiTiet.ID_DonDV);
-            ViewBag.ID_DichVu = new SelectList(db.DichVus, "ID_DichVu", "TenDichVu", chiTiet.ID_DichVu);
-            ViewBag.ID_SP = new SelectList(db.SanPhams, "ID_SP", "TenSP", chiTiet.ID_SP);
+
+            LoadDropdowns(chiTiet);
             return View(chiTiet);
         }
-
-        // GET: ChiTietDonDichVu/Delete/5
-        public ActionResult Delete(int? id)
+        // ================= DETAILS =================
+        public ActionResult Details(int? id)
         {
             if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            ChiTietDonDichVu chiTiet = db.ChiTietDonDichVus
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var chiTiet = db.ChiTietDonDichVus
                 .Include("DonDichVu")
                 .Include("DichVu")
                 .Include("SanPham")
-                .FirstOrDefault(c => c.ID_CTDonDV == id);
+                .FirstOrDefault(x => x.ID_CTDonDV == id);
+
             if (chiTiet == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(chiTiet);
         }
 
-        // POST: ChiTietDonDichVu/Delete/5
+
+        // ================= DELETE =================
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var chiTiet = db.ChiTietDonDichVus
+                .Include("DichVu")
+                .Include("SanPham")
+                .FirstOrDefault(x => x.ID_CTDonDV == id);
+
+            if (chiTiet == null)
+                return HttpNotFound();
+
+            return View(chiTiet);
+        }
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ChiTietDonDichVu chiTiet = db.ChiTietDonDichVus.Find(id);
-            int donDichVuId = chiTiet.ID_DonDV;
+            var chiTiet = db.ChiTietDonDichVus.Find(id);
+            int donId = chiTiet.ID_DonDV;
+
             db.ChiTietDonDichVus.Remove(chiTiet);
             db.SaveChanges();
 
-            // Cập nhật tổng tiền đơn dịch vụ
-            UpdateTongTienDonDichVu(donDichVuId);
+            UpdateTongTienDonDichVu(donId);
 
-            TempData["SuccessMessage"] = "Xóa chi tiết dịch vụ thành công!";
-            return RedirectToAction("Index", new { donDichVuId = donDichVuId });
+            return RedirectToAction("Index", new { donDichVuId = donId });
         }
 
-        private void UpdateTongTienDonDichVu(int donDichVuId)
+        // ================= HÀM DÙNG CHUNG =================
+        private void LoadDropdowns(ChiTietDonDichVu model = null)
         {
-            var tongTien = db.ChiTietDonDichVus
-                .Where(c => c.ID_DonDV == donDichVuId)
-                .Sum(c => (decimal?)c.ThanhTien) ?? 0;
+            ViewBag.ID_DichVu = new SelectList(
+                db.DichVus.Where(x => x.TrangThai == true),
+                "ID_DichVu",
+                "TenDichVu",
+                model?.ID_DichVu
+            );
 
-            var donDichVu = db.DonDichVus.Find(donDichVuId);
-            if (donDichVu != null)
+            ViewBag.ID_SP = new SelectList(
+                db.SanPhams.Where(x => x.TrangThai == true),
+                "ID_SP",
+                "TenSP",
+                model?.ID_SP
+            );
+        }
+
+        private void UpdateTongTienDonDichVu(int donId)
+        {
+            var tong = db.ChiTietDonDichVus
+                .Where(x => x.ID_DonDV == donId)
+                .Sum(x => (decimal?)x.ThanhTien) ?? 0;
+
+            var don = db.DonDichVus.Find(donId);
+            if (don != null)
             {
-                donDichVu.TongTien = tongTien;
+                don.TongTien = tong;
                 db.SaveChanges();
             }
         }
@@ -185,9 +236,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
                 db.Dispose();
-            }
             base.Dispose(disposing);
         }
     }

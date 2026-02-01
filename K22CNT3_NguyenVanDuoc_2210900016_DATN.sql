@@ -281,3 +281,5 @@ where ID_DonHang = 1
 select distinct TrangThai from DonHang
 
 
+select * from ChiTietDonDichVu
+EXEC sp_helpconstraint 'ChiTietDonDichVu';

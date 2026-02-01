@@ -47,7 +47,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             );
 
             ViewBag.TrangThai = new SelectList(
-                new[] { "ChuaXuLy", "DangXuLy", "HoanThanh" }
+                new[] { "Chưa Xủ Lý", "Đang Xử Lý", "Hoàn Thành" }
             );
 
             return View();
@@ -73,7 +73,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             );
 
             ViewBag.TrangThai = new SelectList(
-                new[] { "ChuaXuLy", "DangXuLy", "HoanThanh" },
+                new[] { "Chưa Xủ Lý", "Đang Xử Lý", "Hoàn Thành" },
                 donDichVu.TrangThai
             );
 
@@ -98,7 +98,7 @@ namespace K22CNT3_NVD_2210900016_DATN.Controllers
             );
 
             ViewBag.TrangThai = new SelectList(
-                new[] { "ChuaXuLy", "DangXuLy", "HoanThanh" },
+                new[] { "Chưa Xủ Lý", "Đang Xử Lý", "Hoàn Thành" },
                 donDichVu.TrangThai
             );
 
