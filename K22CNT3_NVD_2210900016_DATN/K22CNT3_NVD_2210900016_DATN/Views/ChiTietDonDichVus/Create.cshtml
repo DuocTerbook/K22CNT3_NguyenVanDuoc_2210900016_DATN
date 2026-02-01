@@ -1,83 +1,89 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonDichVu
 
 @{
-    ViewBag.Title = "Thêm chi tiết dịch vụ";
+    ViewBag.Title = "Thêm chi tiết đơn dịch vụ";
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+<style>
+    .center-wrapper {
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-<div class="container py-4">
-    <h3 class="fw-bold text-primary mb-3">
-        <i class="fas fa-plus-circle"></i> Thêm chi tiết dịch vụ
-    </h3>
+    .form-card {
+        width: 100%;
+        max-width: 800px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        .form-card h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #0d6efd;
+        }
 
-        <!-- GIỮ ID ĐƠN DỊCH VỤ -->
-        @Html.HiddenFor(m => m.ID_DonDV)
+    .form-group label {
+        font-weight: 600;
+    }
 
-        <div class="row g-3">
+    .btn + .btn {
+        margin-left: 10px;
+    }
+</style>
 
-            <!-- DỊCH VỤ -->
-            <div class="col-md-6">
-                @Html.LabelFor(m => m.ID_DichVu)
-                @Html.DropDownListFor(
-                    m => m.ID_DichVu,
-                    (SelectList)ViewBag.ID_DichVu,
-                    "-- Chọn dịch vụ --",
-                    new { @class = "form-select", id = "ID_DichVu" }
-                )
+<div class="center-wrapper">
+    <div class="form-card">
+        <h3>Thêm chi tiết đơn dịch vụ</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <!-- Đơn dịch vụ -->
+            <div class="form-group mb-3">
+                @Html.LabelFor(m => m.ID_DonDV, "Đơn dịch vụ")
+                @Html.DropDownList("ID_DonDV", null, "-- Chọn đơn dịch vụ --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ID_DonDV, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- Dịch vụ -->
+            <div class="form-group mb-3">
+                @Html.LabelFor(m => m.ID_DichVu, "Dịch vụ")
+                @Html.DropDownList("ID_DichVu", null, "-- Chọn dịch vụ --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.ID_DichVu, "", new { @class = "text-danger" })
             </div>
 
-
-            <!-- SẢN PHẨM (CÓ THỂ BỎ TRỐNG) -->
-            <div class="col-md-6">
-                @Html.LabelFor(m => m.ID_SP)
-                @Html.DropDownListFor(
-                    m => m.ID_SP,
-                    (SelectList)ViewBag.ID_SP,
-                    "-- Không chọn sản phẩm --",
-                    new { @class = "form-select" }
-                )
+            <!-- Sản phẩm -->
+            <div class="form-group mb-3">
+                @Html.LabelFor(m => m.ID_SP, "Sản phẩm")
+                @Html.DropDownList("ID_SP", null, "-- Chọn sản phẩm --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ID_SP, "", new { @class = "text-danger" })
             </div>
 
-            <!-- SỐ LƯỢNG -->
-            <div class="col-md-4">
-                @Html.LabelFor(m => m.SoLuong)
-                @Html.TextBoxFor(
-                    m => m.SoLuong,
-                    new
-                    {
-                        @class = "form-control",
-                        type = "number",
-                        min = "1",
-                        id = "SoLuong"
-                    }
-                )
-                @Html.ValidationMessageFor(m => m.SoLuong, "", new { @class = "text-danger" })
+            <div class="row">
+                <!-- Số lượng -->
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(m => m.SoLuong)
+                    @Html.EditorFor(m => m.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.SoLuong, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Đơn giá -->
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(m => m.DonGia)
+                    @Html.EditorFor(m => m.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.DonGia, "", new { @class = "text-danger" })
+                </div>
             </div>
 
-            <!-- ĐƠN GIÁ -->
-            <div class="col-md-4">
-                @Html.LabelFor(m => m.DonGia)
-                @Html.TextBoxFor(
-                    m => m.DonGia,
-                    new
-                    {
-                        @class = "form-control",
-                        type = "number",
-                        min = "0",
-                        id = "DonGia"
-                    }
-                )
-                @Html.ValidationMessageFor(m => m.DonGia, "", new { @class = "text-danger" })
-            </div>
-
-            <!-- THÀNH TIỀN (HIỂN THỊ) -->
+            <!-- Thành tiền -->
             <div class="col-md-4">
                 <label class="fw-bold">Thành tiền</label>
                 <input type="text"
@@ -86,37 +92,25 @@
                        readonly />
             </div>
 
-            <!-- THÔNG SỐ KỸ THUẬT (KHÔNG BẮT BUỘC) -->
-            <div class="col-md-12">
+            <!-- Thông số kỹ thuật -->
+            <div class="form-group mb-4">
                 @Html.LabelFor(m => m.ThongSoKyThuat)
-                @Html.TextAreaFor(
-                    m => m.ThongSoKyThuat,
-                    new
-                    {
-                        @class = "form-control",
-                        rows = 3,
-                        placeholder = "Nhap thong so ky thuat (co the de trong)"
-                    }
-                )
+                @Html.TextAreaFor(m => m.ThongSoKyThuat, 3, 50,
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ThongSoKyThuat, "", new { @class = "text-danger" })
             </div>
 
-        </div>
-
-        <hr />
-
-        <div class="d-flex justify-content-between">
-            <a href="@Url.Action("Index", new { donDichVuId = Model.ID_DonDV })"
-               class="btn btn-secondary">
-                Quay lại
-            </a>
-
-            <button type="submit" class="btn btn-primary">
-                Lưu
-            </button>
-        </div>
-    }
+            <!-- Buttons -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="fa fa-plus"></i> Thêm mới
+                </button>
+                @Html.ActionLink("Quay lại", "Index", null,
+                    new { @class = "btn btn-secondary px-4" })
+            </div>
+        }
+    </div>
 </div>
-
 <script>
     function tinhTien() {
         let sl = parseFloat(document.getElementById("SoLuong").value) || 0;

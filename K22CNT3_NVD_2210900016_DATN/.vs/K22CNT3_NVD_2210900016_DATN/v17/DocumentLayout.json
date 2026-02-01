@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\controllers\\chitietdondichvuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\controllers\\chitietdondichvuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|d:\\k22cnt3_nguyenvanduoc_2210900016_datn\\k22cnt3_nvd_2210900016_datn\\k22cnt3_nvd_2210900016_datn\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|d:\\k22cnt3_nguyenvanduoc_2210900016_datn\\k22cnt3_nvd_2210900016_datn\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\controllers\\chitietdondichvuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\controllers\\chitietdondichvuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\controllers\\dondichvuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\controllers\\adminauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\controllers\\adminauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\dondichvus\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -299,14 +307,6 @@
       "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\controllers\\sancaulongscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\chitietdondichvus\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\k22cnt3_nvd_2210900016_datn\\views\\loaidichvus\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{97658540-6826-4F02-A85F-BC72947D7EC3}|K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN.csproj|solutionrelative:k22cnt3_nvd_2210900016_datn\\views\\loaidichvus\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -550,11 +550,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\Shared\\_Layout.cshtml",
@@ -568,26 +568,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Create.cshtml",
               "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Create.cshtml",
               "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Create.cshtml",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAwwIQAAAAAAAAA",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAwwHIAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-16T01:30:14.276Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "ChiTietDonDichVusController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\ChiTietDonDichVusController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\ChiTietDonDichVusController.cs",
               "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\ChiTietDonDichVusController.cs",
               "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Controllers\\ChiTietDonDichVusController.cs",
-              "ViewState": "AQIAANMAAAAAAAAAAAAUwPMAAAAAAAAA",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAiwJ0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-15T02:17:28.821Z",
               "EditorCaption": ""
@@ -595,32 +595,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
+              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
+              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
+              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAwwGQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-16T01:27:15.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
+              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
+              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
+              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAwwG0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-16T01:29:23.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
+              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
+              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
+              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAwwGQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-16T01:28:34.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Index.cshtml",
               "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Index.cshtml",
               "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Index.cshtml",
-              "ViewState": "AQIAAHcAAAAAAAAAAAAwwJsAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-16T01:25:04.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminAuthController.cs",
-              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
-              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
-              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
-              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAABUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T02:33:57.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "DonDichVusController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\DonDichVusController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\DonDichVusController.cs",
@@ -628,24 +654,23 @@
               "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Controllers\\DonDichVusController.cs",
               "ViewState": "AQIAAHQAAAAAAAAAAAAYwJQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T02:17:01.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T02:17:01.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
-              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
-              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
-              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Edit.cshtml",
-              "ViewState": "AQIAADAAAAAAAAAAAAAwwFQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-16T01:27:15.544Z"
+              "DocumentIndex": 8,
+              "Title": "AdminAuthController.cs",
+              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
+              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
+              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
+              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Controllers\\AdminAuthController.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T02:33:57.52Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Create.cshtml",
@@ -657,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "DonHangsController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\DonHangsController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\DonHangsController.cs",
@@ -669,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "LichSuTichDiemsController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\LichSuTichDiemsController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\LichSuTichDiemsController.cs",
@@ -681,7 +706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Index.cshtml",
@@ -693,7 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ThanhToans\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ThanhToans\\Details.cshtml",
@@ -705,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ThanhToans\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ThanhToans\\Index.cshtml",
@@ -717,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "XacNhanThanhToan.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\XacNhanThanhToan.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\XacNhanThanhToan.cshtml",
@@ -729,7 +754,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "ThanhToansController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\ThanhToansController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\ThanhToansController.cs",
@@ -741,7 +766,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "ThanhCong.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\ThanhCong.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\ThanhCong.cshtml",
@@ -753,7 +778,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\KhachHangs\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\KhachHangs\\Delete.cshtml",
@@ -765,7 +790,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "KhachHangsController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\KhachHangsController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\KhachHangsController.cs",
@@ -777,7 +802,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "GioHangChiTietsController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\GioHangChiTietsController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\GioHangChiTietsController.cs",
@@ -789,7 +814,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\Index.cshtml",
@@ -801,7 +826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DonHangs\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DonHangs\\Index.cshtml",
@@ -813,7 +838,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "SanPhamsController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\SanPhamsController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\SanPhamsController.cs",
@@ -825,7 +850,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\GioHangChiTiets\\Delete.cshtml",
@@ -837,7 +862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Index.cshtml",
@@ -849,7 +874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Create.cshtml",
@@ -861,7 +886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Delete.cshtml",
@@ -873,7 +898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Details.cshtml",
@@ -885,7 +910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Edit.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanPhams\\Edit.cshtml",
@@ -897,7 +922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "SanPham.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\SanPham.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\SanPham.cs",
@@ -909,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "ThanhToan.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\ThanhToan.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\ThanhToan.cs",
@@ -921,7 +946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "SanCauLong.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\SanCauLong.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\SanCauLong.cs",
@@ -933,7 +958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "QuanTri.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\QuanTri.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\QuanTri.cs",
@@ -945,7 +970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "PhieuNhap.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\PhieuNhap.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\PhieuNhap.cs",
@@ -957,7 +982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "NhaCungCap.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\NhaCungCap.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\NhaCungCap.cs",
@@ -969,7 +994,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "LoaiDichVu.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\LoaiDichVu.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\LoaiDichVu.cs",
@@ -981,7 +1006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "LichSuTichDiem.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\LichSuTichDiem.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\LichSuTichDiem.cs",
@@ -993,7 +1018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "KhachHang.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\KhachHang.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\KhachHang.cs",
@@ -1005,7 +1030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "HoiVien.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\HoiVien.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\HoiVien.cs",
@@ -1017,7 +1042,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "GioHangChiTiet.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\GioHangChiTiet.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\GioHangChiTiet.cs",
@@ -1029,7 +1054,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "GioHang.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\GioHang.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\GioHang.cs",
@@ -1041,7 +1066,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "DonHang.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\DonHang.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\DonHang.cs",
@@ -1053,7 +1078,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "DonDichVu.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\DonDichVu.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\DonDichVu.cs",
@@ -1065,7 +1090,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "DichVu.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\DichVu.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\DichVu.cs",
@@ -1077,7 +1102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "DatSan.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\DatSan.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\DatSan.cs",
@@ -1089,7 +1114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "ChiTietPhieuNhap.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\ChiTietPhieuNhap.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\ChiTietPhieuNhap.cs",
@@ -1101,7 +1126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "ChiTietDonHang.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Models\\ChiTietDonHang.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Models\\ChiTietDonHang.cs",
@@ -1113,7 +1138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 53,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Edit.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Edit.cshtml",
@@ -1125,7 +1150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 51,
               "Title": "HoiViensController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\HoiViensController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\HoiViensController.cs",
@@ -1137,7 +1162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 49,
               "Title": "DoiDiem.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\DoiDiem.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\DoiDiem.cshtml",
@@ -1149,7 +1174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 48,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\LoaiDichVus\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\LoaiDichVus\\Details.cshtml",
@@ -1161,7 +1186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 50,
               "Title": "TichDiem.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\TichDiem.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\TichDiem.cshtml",
@@ -1173,7 +1198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 55,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Details.cshtml",
@@ -1185,7 +1210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 52,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Details.cshtml",
@@ -1197,7 +1222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 54,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DonDichVus\\Index.cshtml",
@@ -1209,7 +1234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 56,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Create.cshtml",
@@ -1221,7 +1246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 57,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Create.cshtml",
@@ -1233,7 +1258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 58,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Index.cshtml",
@@ -1245,7 +1270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 60,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Edit.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Edit.cshtml",
@@ -1257,7 +1282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 59,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Details.cshtml",
@@ -1269,7 +1294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 61,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\LichSuTichDiems\\Delete.cshtml",
@@ -1281,7 +1306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 62,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Delete.cshtml",
@@ -1293,7 +1318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 63,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Edit.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\HoiViens\\Edit.cshtml",
@@ -1305,7 +1330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 64,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Edit.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Edit.cshtml",
@@ -1317,7 +1342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 65,
               "Title": "DatSansController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\DatSansController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\DatSansController.cs",
@@ -1329,7 +1354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 69,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Index.cshtml",
@@ -1341,7 +1366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 66,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Create.cshtml",
@@ -1353,7 +1378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 68,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Details.cshtml",
@@ -1365,7 +1390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 67,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\DatSans\\Delete.cshtml",
@@ -1377,7 +1402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 70,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Index.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Index.cshtml",
@@ -1389,7 +1414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 74,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Edit.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Edit.cshtml",
@@ -1401,7 +1426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 73,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Details.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Details.cshtml",
@@ -1413,7 +1438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 72,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Delete.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Delete.cshtml",
@@ -1425,7 +1450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 71,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Create.cshtml",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\SanCauLongs\\Create.cshtml",
@@ -1437,31 +1462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
-              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
-              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
-              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Delete.cshtml",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAkwIYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-16T01:29:23.51Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 75,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
-              "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
-              "ToolTip": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
-              "RelativeToolTip": "K22CNT3_NVD_2210900016_DATN\\Views\\ChiTietDonDichVus\\Details.cshtml",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAkwH4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-16T01:28:34.006Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 73,
               "Title": "SanCauLongsController.cs",
               "DocumentMoniker": "D:\\K22CNT3_NguyenVanDuoc_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\K22CNT3_NVD_2210900016_DATN\\Controllers\\SanCauLongsController.cs",
               "RelativeDocumentMoniker": "K22CNT3_NVD_2210900016_DATN\\Controllers\\SanCauLongsController.cs",

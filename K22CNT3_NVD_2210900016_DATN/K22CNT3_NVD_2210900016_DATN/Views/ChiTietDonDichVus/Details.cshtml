@@ -1,126 +1,100 @@
 ﻿@model K22CNT3_NVD_2210900016_DATN.Models.ChiTietDonDichVu
 
 @{
-    ViewBag.Title = "Chi tiết dịch vụ";
+    ViewBag.Title = "Chi tiết đơn dịch vụ";
 }
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 
 <style>
+    body {
+        background-color: #f4f6f9;
+    }
+
     .page-title {
         font-weight: 700;
-        color: #1f2937;
+        color: #0d6efd;
     }
 
-    .detail-card {
-        border-radius: 18px;
+    .custom-card {
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(0,0,0,.12);
         border: none;
-        box-shadow: 0 10px 30px rgba(0,0,0,.12);
     }
 
-    .detail-item {
-        padding: 12px 0;
-        border-bottom: 1px solid #eee;
-    }
-
-    .detail-label {
+    .info-label {
         font-weight: 600;
-        color: #374151;
+        color: #555;
     }
 
-    .detail-value {
-        font-size: 15px;
-        color: #111827;
+    .info-value {
+        font-weight: 500;
     }
 
     .money {
+        color: #198754;
         font-weight: 700;
-        color: #dc2626;
     }
 </style>
 
-<div class="container py-4">
-
-    <!-- HEADER -->
-    <div class="mb-3">
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
         <h3 class="page-title">
-            📄 Chi tiết đơn dịch vụ
+            <i class="fas fa-eye"></i> Chi tiết đơn dịch vụ
         </h3>
-        <small class="text-muted">Thông tin chi tiết dịch vụ trong đơn</small>
     </div>
 
-    <div class="card detail-card">
-        <div class="card-body px-4 py-4">
+    <div class="card custom-card">
+        <div class="card-body">
+            <div class="row g-3">
 
-            <div class="row">
-
-                <div class="col-md-6 detail-item">
-                    <div class="detail-label">Khách hàng</div>
-                    <div class="detail-value">
-                        @Model.DonDichVu.TenKhach
-                    </div>
+                <div class="col-md-6">
+                    <div class="info-label">Đơn dịch vụ</div>
+                    <div class="info-value">@Model.DonDichVu.TenKhach</div>
                 </div>
 
-                <div class="col-md-6 detail-item">
-                    <div class="detail-label">Dịch vụ</div>
-                    <div class="detail-value">
-                        @Model.DichVu.TenDichVu
-                    </div>
+                <div class="col-md-6">
+                    <div class="info-label">Dịch vụ</div>
+                    <div class="info-value">@Model.DichVu.TenDichVu</div>
                 </div>
 
-                <div class="col-md-6 detail-item">
-                    <div class="detail-label">Sản phẩm</div>
-                    <div class="detail-value">
-                        @Model.SanPham.TenSP
-                    </div>
+                <div class="col-md-6">
+                    <div class="info-label">Sản phẩm</div>
+                    <div class="info-value">@Model.SanPham.TenSP</div>
                 </div>
 
-                <div class="col-md-3 detail-item">
-                    <div class="detail-label">Số lượng</div>
-                    <div class="detail-value">
-                        @Model.SoLuong
-                    </div>
+                <div class="col-md-6">
+                    <div class="info-label">Số lượng</div>
+                    <div class="info-value">@Model.SoLuong</div>
                 </div>
 
-                <div class="col-md-3 detail-item">
-                    <div class="detail-label">Đơn giá</div>
-                    <div class="detail-value money">
-                        @String.Format("{0:N0} ₫", Model.DonGia)
-                    </div>
+                <div class="col-md-6">
+                    <div class="info-label">Đơn giá</div>
+                    <div class="info-value">@Model.DonGia</div>
                 </div>
 
-                <div class="col-md-6 detail-item">
-                    <div class="detail-label">Thành tiền</div>
-                    <div class="detail-value money">
-                        @String.Format("{0:N0} ₫", Model.ThanhTien)
-                    </div>
+                <div class="col-md-6">
+                    <div class="info-label">Thành tiền</div>
+                    <div class="info-value money">@Model.ThanhTien</div>
                 </div>
 
-                <div class="col-md-12 detail-item">
-                    <div class="detail-label">Thông số kỹ thuật</div>
-                    <div class="detail-value">
-                        @(string.IsNullOrEmpty(Model.ThongSoKyThuat)
-                            ? "Không có"
-                            : Model.ThongSoKyThuat)
-                    </div>
+                <div class="col-12">
+                    <div class="info-label">Thông số kỹ thuật</div>
+                    <div class="info-value">@Model.ThongSoKyThuat</div>
                 </div>
-
             </div>
 
-            <hr />
-
-            <div class="d-flex justify-content-between">
-                <a href="@Url.Action("Index", new { donDichVuId = Model.ID_DonDV })"
-                   class="btn btn-secondary">
-                    <i class="fas fa-arrow-left me-1"></i> Quay lại
+            <div class="mt-4 text-end">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Quay lại
                 </a>
 
                 <a href="@Url.Action("Edit", new { id = Model.ID_CTDonDV })"
-                   class="btn btn-warning">
-                    <i class="fas fa-edit me-1"></i> Chỉnh sửa
+                   class="btn btn-warning ms-2">
+                    <i class="fas fa-edit"></i> Chỉnh sửa
                 </a>
             </div>
-
         </div>
     </div>
 </div>
