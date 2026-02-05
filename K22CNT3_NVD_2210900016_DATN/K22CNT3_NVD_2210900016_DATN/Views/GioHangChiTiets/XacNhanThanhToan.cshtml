@@ -95,6 +95,31 @@
                                 <label class="form-check-label" for="chuyenKhoan">
                                     💳 Chuyển khoản ngân hàng
                                 </label>
+                                <!-- QR chuyển khoản -->
+                                <div id="qrChuyenKhoan" class="text-center mt-4 d-none">
+                                    <p class="fw-bold text-success mb-2">
+                                        📱 Quét mã QR để chuyển khoản
+                                    </p>
+
+                                    <img src="~/Content/images/qr-vietcombank.png"
+                                         alt="QR Vietcombank"
+                                         class="img-fluid rounded shadow"
+                                         style="max-width: 280px;" />
+
+                                    <p class="mt-3 mb-0">
+                                        <strong>Ngân hàng:</strong> Vietcombank
+                                    </p>
+                                    <p class="mb-0">
+                                        <strong>Chủ tài khoản:</strong> NGUYEN VAN DUOC
+                                    </p>
+                                    <p class="mb-0">
+                                        <strong>Số tài khoản:</strong> 1061285159
+                                    </p>
+                                    <p class="text-danger fw-bold">
+                                        Nội dung CK: THANHTOAN_@Model.ID_GioHang
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
 
@@ -111,3 +136,24 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tienMat = document.getElementById("tienMat");
+        const chuyenKhoan = document.getElementById("chuyenKhoan");
+        const qrBox = document.getElementById("qrChuyenKhoan");
+
+        function toggleQR() {
+            if (chuyenKhoan.checked) {
+                qrBox.classList.remove("d-none");
+            } else {
+                qrBox.classList.add("d-none");
+            }
+        }
+
+        tienMat.addEventListener("change", toggleQR);
+        chuyenKhoan.addEventListener("change", toggleQR);
+
+        toggleQR(); // load trang lần đầu
+    });
+</script>
+
